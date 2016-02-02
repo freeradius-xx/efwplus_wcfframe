@@ -1,0 +1,927 @@
+----------------------------------------
+Timestamp: 2015-10-17 09:04:35
+
+Message: HandlingInstanceID: c6199dcb-d995-4b12-bc05-211a2af2f8a1
+An exception of type 'System.Collections.Generic.KeyNotFoundException' occurred and was caught.
+-----------------------------------------------------------------------------------------------
+10/17/2015 17:04:35
+Type : System.Collections.Generic.KeyNotFoundException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 给定关键字不在字典中。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : TValue get_Item(TKey)
+HResult : -2146232969
+Stack Trace :    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 EFWCoreLib.CoreFrame.Init.AppPluginManage.GetPluginWinformControllerAttributeInfo(String pluginname, String name, ModulePlugin& mp) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\CoreFrame\Init\AppPluginManage.cs:行号 137
+   在 EFWCoreLib.WcfFrame.ClientController.ControllerHelper.CreateController(String controllername) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\ControllerHelper.cs:行号 23
+   在 EFWCoreLib.CoreFrame.Init.AppGlobal.AppGlobal_Init(Object sender, EventArgs e) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\CoreFrame\Init\AppGlobal.cs:行号 234
+
+Additional Info:
+
+MachineName : HY-PC
+TimeStamp : 2015-10-17 09:04:35
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : EFWWin.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : HY-PC\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: HY-PC
+
+App Domain: EFWWin.vshost.exe
+
+ProcessId: 8100
+
+Process Name: D:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\Output\EFWWin.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:6032
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2015-10-17 09:06:45
+
+Message: HandlingInstanceID: c869b976-23b2-4b0f-a184-50a0c449364c
+An exception of type 'System.Collections.Generic.KeyNotFoundException' occurred and was caught.
+-----------------------------------------------------------------------------------------------
+10/17/2015 17:06:45
+Type : System.Collections.Generic.KeyNotFoundException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 给定关键字不在字典中。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : TValue get_Item(TKey)
+HResult : -2146232969
+Stack Trace :    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 EFWCoreLib.CoreFrame.Init.AppPluginManage.GetPluginWinformControllerAttributeInfo(String pluginname, String name, ModulePlugin& mp) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\CoreFrame\Init\AppPluginManage.cs:行号 137
+   在 EFWCoreLib.WcfFrame.ClientController.ControllerHelper.CreateController(String controllername) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\ControllerHelper.cs:行号 23
+   在 EFWCoreLib.CoreFrame.Init.AppGlobal.AppGlobal_Init(Object sender, EventArgs e) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\CoreFrame\Init\AppGlobal.cs:行号 234
+
+Additional Info:
+
+MachineName : HY-PC
+TimeStamp : 2015-10-17 09:06:45
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : EFWWin.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : HY-PC\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: HY-PC
+
+App Domain: EFWWin.vshost.exe
+
+ProcessId: 2400
+
+Process Name: D:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\Output\EFWWin.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:5144
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2015-10-17 09:07:00
+
+Message: HandlingInstanceID: 3c24eab9-b37b-4b19-8aac-700b97e183f3
+An exception of type 'System.Collections.Generic.KeyNotFoundException' occurred and was caught.
+-----------------------------------------------------------------------------------------------
+10/17/2015 17:07:00
+Type : System.Collections.Generic.KeyNotFoundException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 给定关键字不在字典中。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : TValue get_Item(TKey)
+HResult : -2146232969
+Stack Trace :    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 EFWCoreLib.CoreFrame.Init.AppPluginManage.GetPluginWinformControllerAttributeInfo(String pluginname, String name, ModulePlugin& mp) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\CoreFrame\Init\AppPluginManage.cs:行号 137
+   在 EFWCoreLib.WcfFrame.ClientController.ControllerHelper.CreateController(String controllername) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\ControllerHelper.cs:行号 23
+   在 EFWCoreLib.CoreFrame.Init.AppGlobal.AppGlobal_Init(Object sender, EventArgs e) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\CoreFrame\Init\AppGlobal.cs:行号 234
+
+Additional Info:
+
+MachineName : HY-PC
+TimeStamp : 2015-10-17 09:07:00
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : EFWWin.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : HY-PC\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: HY-PC
+
+App Domain: EFWWin.vshost.exe
+
+ProcessId: 7952
+
+Process Name: D:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\Output\EFWWin.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:3300
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2015-10-17 09:12:09
+
+Message: HandlingInstanceID: e16e2e87-b530-447b-93bd-95a4b0a31d75
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+10/17/2015 17:12:09
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 无法连接到 net.tcp://127.0.0.1:9999/WCFHandlerService。连接尝试持续了 00:00:01.1830326 时间跨度。TCP 错误代码 10061: 由于目标计算机积极拒绝，无法连接。 127.0.0.1:9999。
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : Void CreateConnection(EFWCoreLib.WcfFrame.WcfService.Contract.IClientService)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ClientController.WcfClientManage.CreateConnection(IClientService client) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientManage.cs:行号 68
+   在 EFWCoreLib.CoreFrame.Init.AppGlobal.AppGlobal_Init(Object sender, EventArgs e) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\CoreFrame\Init\AppGlobal.cs:行号 239
+
+Additional Info:
+
+MachineName : HY-PC
+TimeStamp : 2015-10-17 09:12:09
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : EFWWin.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : HY-PC\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: HY-PC
+
+App Domain: EFWWin.vshost.exe
+
+ProcessId: 3488
+
+Process Name: D:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\Output\EFWWin.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:7876
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2015-10-17 09:12:38
+
+Message: HandlingInstanceID: 7dace85d-1927-4edb-a28a-16d3a308adeb
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+10/17/2015 17:12:38
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 无法连接到 net.tcp://127.0.0.1:9999/WCFHandlerService。连接尝试持续了 00:00:01.0890305 时间跨度。TCP 错误代码 10061: 由于目标计算机积极拒绝，无法连接。 127.0.0.1:9999。
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : Void CreateConnection(EFWCoreLib.WcfFrame.WcfService.Contract.IClientService)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ClientController.WcfClientManage.CreateConnection(IClientService client) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientManage.cs:行号 68
+   在 EFWCoreLib.CoreFrame.Init.AppGlobal.AppGlobal_Init(Object sender, EventArgs e) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\CoreFrame\Init\AppGlobal.cs:行号 239
+
+Additional Info:
+
+MachineName : HY-PC
+TimeStamp : 2015-10-17 09:12:38
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : EFWWin.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : HY-PC\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: HY-PC
+
+App Domain: EFWWin.vshost.exe
+
+ProcessId: 1700
+
+Process Name: D:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\Output\EFWWin.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:1708
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2015-10-17 15:24:50
+
+Message: HandlingInstanceID: a7d273b3-93e0-40f8-ae1e-a1e2f18df55b
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+10/17/2015 23:24:50
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 无法连接到 net.tcp://127.0.0.1:9999/WCFHandlerService。连接尝试持续了 00:00:01.4220032 时间跨度。TCP 错误代码 10061: 由于目标计算机积极拒绝，无法连接。 127.0.0.1:9999。
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : Void CreateConnection(EFWCoreLib.WcfFrame.WcfService.Contract.IClientService)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ClientController.WcfClientManage.CreateConnection(IClientService client) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientManage.cs:行号 68
+   在 EFWCoreLib.CoreFrame.Init.AppGlobal.AppGlobal_Init(Object sender, EventArgs e) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\CoreFrame\Init\AppGlobal.cs:行号 240
+
+Additional Info:
+
+MachineName : HY-PC
+TimeStamp : 2015-10-17 15:24:50
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : EFWWin.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : HY-PC\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: HY-PC
+
+App Domain: EFWWin.vshost.exe
+
+ProcessId: 5208
+
+Process Name: D:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\Output\EFWWin.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:8760
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2015-10-19 12:56:34
+
+Message: HandlingInstanceID: ae5f1869-dc52-42b4-9215-ccdae4a0fa7a
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+10/19/2015 20:56:33
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 未将对象引用设置到对象的实例。
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : Void CreateConnection(EFWCoreLib.WcfFrame.WcfService.Contract.IClientService)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ClientController.WcfClientManage.CreateConnection(IClientService client) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientManage.cs:行号 68
+   在 EFWCoreLib.CoreFrame.Init.AppGlobal.AppGlobal_Init(Object sender, EventArgs e) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\CoreFrame\Init\AppGlobal.cs:行号 240
+
+Additional Info:
+
+MachineName : HY-PC
+TimeStamp : 2015-10-19 12:56:34
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : EFWWin.exe
+ThreadIdentity : 
+WindowsIdentity : HY-PC\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: HY-PC
+
+App Domain: EFWWin.exe
+
+ProcessId: 7572
+
+Process Name: D:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\Output\EFWWin.exe
+
+Thread Name: 
+
+Win32 ThreadId:4872
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2015-10-19 12:58:40
+
+Message: HandlingInstanceID: 1929d29f-66f3-440d-abe7-8a4687d811fb
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+10/19/2015 20:58:40
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 未将对象引用设置到对象的实例。
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : Void CreateConnection(EFWCoreLib.WcfFrame.WcfService.Contract.IClientService)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ClientController.WcfClientManage.CreateConnection(IClientService client) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientManage.cs:行号 68
+   在 EFWCoreLib.CoreFrame.Init.AppGlobal.AppGlobal_Init(Object sender, EventArgs e) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\CoreFrame\Init\AppGlobal.cs:行号 240
+
+Additional Info:
+
+MachineName : HY-PC
+TimeStamp : 2015-10-19 12:58:40
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : EFWWin.exe
+ThreadIdentity : 
+WindowsIdentity : HY-PC\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: HY-PC
+
+App Domain: EFWWin.exe
+
+ProcessId: 7088
+
+Process Name: D:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\Output\EFWWin.exe
+
+Thread Name: 
+
+Win32 ThreadId:3272
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2015-10-19 12:59:20
+
+Message: HandlingInstanceID: 0f3888af-9011-42b5-9e8b-8b6d4d6c8940
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+10/19/2015 20:59:20
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 未将对象引用设置到对象的实例。
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : Void CreateConnection(EFWCoreLib.WcfFrame.WcfService.Contract.IClientService)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ClientController.WcfClientManage.CreateConnection(IClientService client) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientManage.cs:行号 68
+   在 EFWCoreLib.CoreFrame.Init.AppGlobal.AppGlobal_Init(Object sender, EventArgs e) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\CoreFrame\Init\AppGlobal.cs:行号 240
+
+Additional Info:
+
+MachineName : HY-PC
+TimeStamp : 2015-10-19 12:59:20
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : EFWWin.exe
+ThreadIdentity : 
+WindowsIdentity : HY-PC\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: HY-PC
+
+App Domain: EFWWin.exe
+
+ProcessId: 7336
+
+Process Name: D:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\Output\EFWWin.exe
+
+Thread Name: 
+
+Win32 ThreadId:6104
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2015-10-19 13:00:16
+
+Message: HandlingInstanceID: f629d7bc-c04e-4983-b160-e3519dfece9d
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+10/19/2015 21:00:16
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 未将对象引用设置到对象的实例。
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : Void CreateConnection(EFWCoreLib.WcfFrame.WcfService.Contract.IClientService)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ClientController.WcfClientManage.CreateConnection(IClientService client) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientManage.cs:行号 68
+   在 EFWCoreLib.CoreFrame.Init.AppGlobal.AppGlobal_Init(Object sender, EventArgs e) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\CoreFrame\Init\AppGlobal.cs:行号 240
+
+Additional Info:
+
+MachineName : HY-PC
+TimeStamp : 2015-10-19 13:00:16
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : EFWWin.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : HY-PC\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: HY-PC
+
+App Domain: EFWWin.vshost.exe
+
+ProcessId: 7668
+
+Process Name: D:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\Output\EFWWin.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:7864
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2015-10-19 13:02:36
+
+Message: HandlingInstanceID: 81f5fa19-f392-4f4f-a1f1-762564d8da37
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+10/19/2015 21:02:36
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 未将对象引用设置到对象的实例。
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : Void CreateConnection(EFWCoreLib.WcfFrame.WcfService.Contract.IClientService)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ClientController.WcfClientManage.CreateConnection(IClientService client) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientManage.cs:行号 68
+   在 EFWCoreLib.CoreFrame.Init.AppGlobal.AppGlobal_Init(Object sender, EventArgs e) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\CoreFrame\Init\AppGlobal.cs:行号 240
+
+Additional Info:
+
+MachineName : HY-PC
+TimeStamp : 2015-10-19 13:02:36
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : EFWWin.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : HY-PC\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: HY-PC
+
+App Domain: EFWWin.vshost.exe
+
+ProcessId: 6780
+
+Process Name: D:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\Output\EFWWin.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:1856
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2015-10-19 13:07:50
+
+Message: HandlingInstanceID: c8353971-56dc-4ac4-9096-555340a8043a
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+10/19/2015 21:07:50
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 发送到 net.tcp://127.0.0.1:8888/RouterService 的请求操作在配置的超时(00:00:59.9969998)内未收到回复。分配给此操作的时间可能已经是更长超时的一部分。这可能由于服务仍在处理操作或服务无法发送回复消息。请考虑增加操作超时(将通道/代理转换为 IContextChannel 并设置 OperationTimeout 属性)并确保服务能够连接到客户端。
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : Void CreateConnection(EFWCoreLib.WcfFrame.WcfService.Contract.IClientService)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ClientController.WcfClientManage.CreateConnection(IClientService client) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientManage.cs:行号 68
+   在 EFWCoreLib.CoreFrame.Init.AppGlobal.AppGlobal_Init(Object sender, EventArgs e) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\CoreFrame\Init\AppGlobal.cs:行号 240
+
+Additional Info:
+
+MachineName : HY-PC
+TimeStamp : 2015-10-19 13:07:50
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : EFWWin.exe
+ThreadIdentity : 
+WindowsIdentity : HY-PC\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: HY-PC
+
+App Domain: EFWWin.exe
+
+ProcessId: 7700
+
+Process Name: D:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\Output\EFWWin.exe
+
+Thread Name: 
+
+Win32 ThreadId:7752
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2015-10-19 13:12:29
+
+Message: HandlingInstanceID: d308875f-96f2-4135-9dc3-b9f2c356e5e6
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+10/19/2015 21:12:29
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 发送到 net.tcp://127.0.0.1:8888/RouterService 的请求操作在配置的超时(00:00:59.9990000)内未收到回复。分配给此操作的时间可能已经是更长超时的一部分。这可能由于服务仍在处理操作或服务无法发送回复消息。请考虑增加操作超时(将通道/代理转换为 IContextChannel 并设置 OperationTimeout 属性)并确保服务能够连接到客户端。
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : Void CreateConnection(EFWCoreLib.WcfFrame.WcfService.Contract.IClientService)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ClientController.WcfClientManage.CreateConnection(IClientService client) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientManage.cs:行号 68
+   在 EFWCoreLib.CoreFrame.Init.AppGlobal.AppGlobal_Init(Object sender, EventArgs e) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\CoreFrame\Init\AppGlobal.cs:行号 240
+
+Additional Info:
+
+MachineName : HY-PC
+TimeStamp : 2015-10-19 13:12:29
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : EFWWin.exe
+ThreadIdentity : 
+WindowsIdentity : HY-PC\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: HY-PC
+
+App Domain: EFWWin.exe
+
+ProcessId: 6240
+
+Process Name: D:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\Output\EFWWin.exe
+
+Thread Name: 
+
+Win32 ThreadId:7488
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2015-10-19 13:17:29
+
+Message: HandlingInstanceID: cd289cbe-78b1-415a-abf1-1e6dfdc11b6c
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+10/19/2015 21:17:28
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 发送到 net.tcp://127.0.0.1:8888/RouterService 的请求操作在配置的超时(00:01:00)内未收到回复。分配给此操作的时间可能已经是更长超时的一部分。这可能由于服务仍在处理操作或服务无法发送回复消息。请考虑增加操作超时(将通道/代理转换为 IContextChannel 并设置 OperationTimeout 属性)并确保服务能够连接到客户端。
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : Void CreateConnection(EFWCoreLib.WcfFrame.WcfService.Contract.IClientService)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ClientController.WcfClientManage.CreateConnection(IClientService client) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientManage.cs:行号 68
+   在 EFWCoreLib.CoreFrame.Init.AppGlobal.AppGlobal_Init(Object sender, EventArgs e) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\CoreFrame\Init\AppGlobal.cs:行号 240
+
+Additional Info:
+
+MachineName : HY-PC
+TimeStamp : 2015-10-19 13:17:29
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : EFWWin.exe
+ThreadIdentity : 
+WindowsIdentity : HY-PC\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: HY-PC
+
+App Domain: EFWWin.exe
+
+ProcessId: 6112
+
+Process Name: D:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\Output\EFWWin.exe
+
+Thread Name: 
+
+Win32 ThreadId:8056
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2015-10-19 13:19:11
+
+Message: HandlingInstanceID: b815b0f7-5a9c-4008-ae66-51d88da1e55f
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+10/19/2015 21:19:11
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 发送到 net.tcp://127.0.0.1:8888/RouterService 的请求操作在配置的超时(00:00:59.9989999)内未收到回复。分配给此操作的时间可能已经是更长超时的一部分。这可能由于服务仍在处理操作或服务无法发送回复消息。请考虑增加操作超时(将通道/代理转换为 IContextChannel 并设置 OperationTimeout 属性)并确保服务能够连接到客户端。
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : Void CreateConnection(EFWCoreLib.WcfFrame.WcfService.Contract.IClientService)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ClientController.WcfClientManage.CreateConnection(IClientService client) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientManage.cs:行号 68
+   在 EFWCoreLib.CoreFrame.Init.AppGlobal.AppGlobal_Init(Object sender, EventArgs e) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\CoreFrame\Init\AppGlobal.cs:行号 240
+
+Additional Info:
+
+MachineName : HY-PC
+TimeStamp : 2015-10-19 13:19:11
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : EFWWin.exe
+ThreadIdentity : 
+WindowsIdentity : HY-PC\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: HY-PC
+
+App Domain: EFWWin.exe
+
+ProcessId: 5048
+
+Process Name: D:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\Output\EFWWin.exe
+
+Thread Name: 
+
+Win32 ThreadId:1960
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2015-10-19 13:25:26
+
+Message: HandlingInstanceID: 354fec2b-d255-4af1-a7ad-5f11659ed954
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+10/19/2015 21:25:26
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.UI_ControllerEvent(String eventname, Object[] objs) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 136
+
+Additional Info:
+
+MachineName : HY-PC
+TimeStamp : 2015-10-19 13:25:26
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : EFWWin.exe
+ThreadIdentity : 
+WindowsIdentity : HY-PC\Administrator
+	Inner Exception
+	---------------
+	Type : System.ServiceModel.CommunicationObjectFaultedException, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 通信对象 System.ServiceModel.Channels.ServiceChannel 无法用于通信，因为其处于“出错”状态。
+	Source : mscorlib
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : Void HandleReturnMessage(System.Runtime.Remoting.Messaging.IMessage, System.Runtime.Remoting.Messaging.IMessage)
+	HResult : -2146233087
+	Stack Trace : 
+	Server stack trace: 
+	   在 System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrNotOpen()
+	   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+	   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+	   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+	
+	Exception rethrown at [0]: 
+	   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+	   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+	   在 EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.ProcessRequest(String mProxyID, String controller, String method, String jsondata)
+	   在 EFWCoreLib.WcfFrame.ClientController.WcfClientManage.Request(String controller, String method, String jsondata) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientManage.cs:行号 143
+	   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.InvokeWCFService(String controller, String method, String jsondata) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 199
+	   在 WinMainUIFrame.Winform.Controller.wcfclientLoginController.UserLogin() 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\WinMainUIFrame\WinMainUIFrame.Winform\Controller\wcfclientLoginController.cs:行号 138
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: HY-PC
+
+App Domain: EFWWin.exe
+
+ProcessId: 5800
+
+Process Name: D:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\Output\EFWWin.exe
+
+Thread Name: 
+
+Win32 ThreadId:8156
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2015-10-19 13:25:28
+
+Message: HandlingInstanceID: 78508c36-13fd-4fe3-8148-0693ad559b2b
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+10/19/2015 21:25:28
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.UI_ControllerEvent(String eventname, Object[] objs) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 136
+
+Additional Info:
+
+MachineName : HY-PC
+TimeStamp : 2015-10-19 13:25:28
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : EFWWin.exe
+ThreadIdentity : 
+WindowsIdentity : HY-PC\Administrator
+	Inner Exception
+	---------------
+	Type : System.ServiceModel.CommunicationObjectFaultedException, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 通信对象 System.ServiceModel.Channels.ServiceChannel 无法用于通信，因为其处于“出错”状态。
+	Source : mscorlib
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : Void HandleReturnMessage(System.Runtime.Remoting.Messaging.IMessage, System.Runtime.Remoting.Messaging.IMessage)
+	HResult : -2146233087
+	Stack Trace : 
+	Server stack trace: 
+	   在 System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrNotOpen()
+	   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+	   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+	   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+	
+	Exception rethrown at [0]: 
+	   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+	   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+	   在 EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.ProcessRequest(String mProxyID, String controller, String method, String jsondata)
+	   在 EFWCoreLib.WcfFrame.ClientController.WcfClientManage.Request(String controller, String method, String jsondata) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientManage.cs:行号 143
+	   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.InvokeWCFService(String controller, String method, String jsondata) 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 199
+	   在 WinMainUIFrame.Winform.Controller.wcfclientLoginController.UserLogin() 位置 d:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\WinMainUIFrame\WinMainUIFrame.Winform\Controller\wcfclientLoginController.cs:行号 138
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: HY-PC
+
+App Domain: EFWWin.exe
+
+ProcessId: 5800
+
+Process Name: D:\工作台\efwplus_taobao\KKKProject\efwplus_wcfframe\Output\EFWWin.exe
+
+Thread Name: 
+
+Win32 ThreadId:8156
+
+Extended Properties: 
+----------------------------------------
