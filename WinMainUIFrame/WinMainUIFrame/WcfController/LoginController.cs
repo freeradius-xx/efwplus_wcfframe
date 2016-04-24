@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Management;
 using System.Text;
@@ -106,19 +107,43 @@ namespace WinMainUIFrame.WcfController
             bool b = NewObject<User>().AlterPassWrod(Convert.ToInt32(userId), oldpass, newpass);
             return ToJson(b);
         }
-        // [WCFMethod]
-        //public string GetNotReadMessages()
-        //{
-        //    List<BaseMessage> listmsg= NewObject<EFWBaseLib.ObjectModel.SysMessage.Message>().GetNotReadMessages(GetSysLoginRight.UserId, GetSysLoginRight.DeptId, GetSysLoginRight.WorkId);
-        //    return ToJson(listmsg);
-        //}
-        // [WCFMethod]
-        // public string MessageRead()
-        // {
-        //     int messageId = ToInt32(ParamJsonData);
+         [WCFMethod]
+         public string GetNotReadMessages()
+         {
+             List<BaseMessage> listmsg;
+             string strsql = @"select * from BaseMessage where (Limittime>getdate()) and MessageType in (
+																		select Code from BaseMessageType a where  (select count(1) from BaseGroupUser  where GroupId in (a.ReceiveGroup) and userId={0})>0
+																		)
+                                and (id not in (select messageid from BaseMessageRead where userid={0})) 
+                                and (ReceiveWork={2} or ReceiveWork=0)
+                                and (ReceiveDept={1} or ReceiveDept=0)
+                                and (ReceiveUser={0} or ReceiveUser=0)";
+             strsql = string.Format(strsql, LoginUserInfo.UserId, LoginUserInfo.DeptId, LoginUserInfo.WorkId);
 
-        //     NewDao<EFWBaseLib.Dao.MessageDao>().MessageRead(messageId, GetSysLoginRight.UserId);
-        //     return ToJson(true);
-        // }
+             DataTable dt = oleDb.GetDataTable(strsql);
+             if (dt.Rows.Count > 0)
+                 listmsg = ConvertExtend.ToList<BaseMessage>(dt, oleDb, _container, _cache, _pluginName, null);
+             else
+                 listmsg = new List<BaseMessage>();
+
+             //List<BaseMessage> listmsg = NewObject<EFWBaseLib.ObjectModel.SysMessage.Message>().GetNotReadMessages(GetSysLoginRight.UserId, GetSysLoginRight.DeptId, GetSysLoginRight.WorkId);
+             return ToJson(listmsg);
+         }
+         [WCFMethod]
+         public string MessageRead()
+         {
+             int messageId = ToInt32(ParamJsonData);
+
+             string strsql = "select count(*) from BaseMessageRead where messageid={0} and userid={1}";
+             strsql = string.Format(strsql, messageId, LoginUserInfo.UserId);
+             if (Convert.ToInt32(oleDb.GetDataResult(strsql)) == 0)
+             {
+                 strsql = "insert into BaseMessageRead(messageid,userid,readtime) values(" + messageId + "," + LoginUserInfo.UserId + ",'" + DateTime.Now.Date.ToString() + "')";
+                 oleDb.DoCommand(strsql);
+             }
+
+             //NewDao<EFWBaseLib.Dao.MessageDao>().MessageRead(messageId, GetSysLoginRight.UserId);
+             return ToJson(true);
+         }
     }
 }

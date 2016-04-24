@@ -19,6 +19,13 @@ namespace Books_Wcf.Winform.Controller
             _ifrmbookmanager = (IfrmBookManager)DefaultView;
             //初始化加载书籍目录
             //GetBooks();
+            /*
+            //利用wcf回调实现服务端发消息给客户端
+            replyClientCallBack.ReplyClientAction = new Action<string>(
+                (s) =>
+                {
+                    //将s输出到界面上
+                });*/
         }
 
         //保存

@@ -10,16 +10,17 @@ using System.Threading;
 
 namespace EFWCoreLib.WcfFrame.WcfService
 {
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Reentrant,UseSynchronizationContext=false, IncludeExceptionDetailInFaults = true)]
+    //InstanceContextMode.PerSession  为每一个客户端创建服务实列,但是每次只能响应会话通道的一次请求，异步请求就没意义，客户端多线程没有意义
+    //InstanceContextMode.PerCall  会话的每一次请求都会创建服务对象，异步请求也支持，但是影响请求性能
+    //InstanceContextMode.Single 所有会话的请求都共用一个服务对象
+
+    //ConcurrencyMode = ConcurrencyMode.Multiple  使用这个配置可能会出现不同步问题，WcfServerManage.wcfClientDic对象出现问题
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession, ConcurrencyMode = ConcurrencyMode.Multiple,UseSynchronizationContext=false, IncludeExceptionDetailInFaults = true)]
     public class WCFHandlerService : MarshalByRefObject, IWCFHandlerService
     {
-        //public static List<IClientService> mCallBackList;
 
         public WCFHandlerService()
         {
-            //mCallBackList = new List<IClientService>();
-
-            //WcfServerManage.StartWCFHost();
         }
 
         #region IapiWCFHandlerService 成员
@@ -29,18 +30,18 @@ namespace EFWCoreLib.WcfFrame.WcfService
             //客户端回调
             IClientService mCallBack = OperationContext.Current.GetCallbackChannel<IClientService>();
 
-            string ClientID= WcfServerManage.CreateDomain(OperationContext.Current.SessionId, ipAddress, DateTime.Now, mCallBack);
+            string ClientID= WcfServerManage.CreateClient(OperationContext.Current.SessionId, ipAddress, DateTime.Now, mCallBack);
           
             //mCallBackList.Add(mCallBack);
-
-            OperationContext.Current.Channel.Closing += new EventHandler(Channel_Closing);
-            //OperationContext.Current.Channel.Faulted += new EventHandler(Channel_Faulted);
             return ClientID;
         }
 
 
         public string ProcessRequest(string mProxyID, string controller, string method, string jsondata)
         {
+            //WcfServerManage.hostwcfMsg.BeginInvoke(DateTime.Now, mProxyID, null, null);//异步方式不影响后台数据请求
+            //Thread.Sleep(40000);//测试并发问题， 此处没有问题
+
             return WcfServerManage.ProcessRequest(mProxyID, controller, method, jsondata);
         }
 
@@ -58,17 +59,23 @@ namespace EFWCoreLib.WcfFrame.WcfService
 
         public bool UnDomain(string mProxyID)
         {
-            return WcfServerManage.UnDomain(mProxyID);
+            //OperationContext.Current.Channel.Close();
+            return WcfServerManage.UnClient(mProxyID);
         }
 
         public bool Heartbeat(string mProxyID)
         {
-            return WcfServerManage.Heartbeat(OperationContext.Current.SessionId, mProxyID);
+            return WcfServerManage.Heartbeat(mProxyID);
         }
 
         public void SendBroadcast(string jsondata)
         {
             WcfServerManage.SendBroadcast(jsondata);
+        }
+
+        public string ServerConfig()
+        {
+            return WcfServerManage.ServerConfig();
         }
 
         #endregion
@@ -83,7 +90,6 @@ namespace EFWCoreLib.WcfFrame.WcfService
             //Loader.ShowHostMsg(DateTime.Now, "WCF通道关闭");
             //throw new Exception("WCF通道关闭");
         }
-
     }
 
 

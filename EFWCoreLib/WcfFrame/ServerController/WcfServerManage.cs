@@ -8,6 +8,7 @@ using EFWCoreLib.WcfFrame.ServerController;
 using EFWCoreLib.WcfFrame.WcfService.Contract;
 using System.Reflection;
 using EFWCoreLib.CoreFrame.Init;
+using EFWCoreLib.CoreFrame.Common;
 
 namespace EFWCoreLib.WcfFrame.ServerController
 {
@@ -19,9 +20,17 @@ namespace EFWCoreLib.WcfFrame.ServerController
         /// <summary>
         /// 客户端列表
         /// </summary>
-        public static Dictionary<string, WCFClientInfo> wcfClientDic = new Dictionary<string, WCFClientInfo>();
+        static Dictionary<string, WCFClientInfo> wcfClientDic = new Dictionary<string, WCFClientInfo>();
         public static bool IsDebug = false;
         public static bool IsHeartbeat = false;
+        public static int HeartbeatTime = 1;//默认间隔1秒,客户端5倍
+        public static bool IsMessage = false;
+        public static int MessageTime = 1;//默认间隔1秒
+        public static bool IsCompressJson = false;//是否压缩Json数据
+        public static bool IsEncryptionJson = false;//是否加密Json数据
+        public static bool IsOverTime = false;
+        public static int OverTime = 1;//超时记录日志
+
         /// <summary>
         /// 开始服务主机
         /// </summary>
@@ -32,7 +41,17 @@ namespace EFWCoreLib.WcfFrame.ServerController
             ShowHostMsg(DateTime.Now, "WCFHandlerService服务初始化完成");
 
             if (IsHeartbeat == true)
-                StartListenClients();
+            {
+                if (timer == null)
+                    StartListenClients();
+                else
+                    timer.Start();
+            }
+            else
+            {
+                if (timer != null)
+                    timer.Stop();
+            }
         }
         /// <summary>
         /// 停止服务主机
@@ -45,13 +64,14 @@ namespace EFWCoreLib.WcfFrame.ServerController
             }
         }
 
-        public static string CreateDomain(string sessionId, string ipaddress, DateTime time, IClientService clientService)
+        public static string CreateClient(string sessionId, string ipaddress, DateTime time, IClientService clientService)
         {
             string clientId = Guid.NewGuid().ToString();
 
             try
             {
                 AddClient(sessionId, clientId, ipaddress, time, clientService);
+                hostwcfclientinfoList(wcfClientDic.Values.ToList());
                 return clientId;
             }
             catch (Exception ex)
@@ -60,52 +80,112 @@ namespace EFWCoreLib.WcfFrame.ServerController
             }
         }
 
-        public static bool Heartbeat(string sessionId,string clientId)
-        {
-            return UpdateClient(sessionId, clientId);
+        public static bool Heartbeat(string clientId)
+        {   
+            bool b= UpdateHeartbeatClient(clientId);
+            if (b == true)
+            {
+                ReConnectionClient(clientId);
+                return true;
+            }
+            else
+                return false;
         }
 
         public static string ProcessRequest(string clientId, string controller, string method, string jsondata)
         {
+            string retJson = null;
+            WCFClientInfo ClientInfo = null;
             try
             {
-                if (IsDebug==true)
+                lock (wcfClientDic)
+                {
+                    if (wcfClientDic.ContainsKey(clientId) == false)
+                        throw new Exception("客户端不存在，正在创建新的连接！");
+
+                    ClientInfo = wcfClientDic[clientId].Clone() as WCFClientInfo;
+                }
+
+                //显示调试信息
+                if (WcfServerManage.IsDebug == true)
                     ShowHostMsg(DateTime.Now, "客户端[" + clientId + "]正在执行：" + controller + "." + method + "(" + jsondata + ")");
 
+                begintime();
                 object[] paramValue = null;//jsondata?
-                string retJson = null;
+
+                //解压参数
+                string _jsondata = jsondata;
+                if (WcfServerManage.IsCompressJson)
+                {
+                    _jsondata = ZipComporessor.Decompress(jsondata);
+                }
 
                 WcfServerController wscontroller = ControllerHelper.CreateController(controller);
-                lock (wscontroller)
+                wscontroller.ParamJsonData = _jsondata;
+                wscontroller.ClientInfo = ClientInfo;
+
+                MethodInfo methodinfo = ControllerHelper.CreateMethodInfo(controller, method, wscontroller);
+                //?此处存在并发问题
+                Object retObj = methodinfo.Invoke(wscontroller, paramValue); //带参数方法的调用并返回值
+                if (retObj != null)
+                    retJson = retObj.ToString();
+
+
+                retJson = "{\"flag\":0,\"msg\":" + "\"\"" + ",\"data\":" + retJson + "}";
+                //压缩结果
+                if (WcfServerManage.IsCompressJson)
                 {
-                    wscontroller.ParamJsonData = jsondata;
-                    wscontroller.ClientInfo = wcfClientDic[clientId];
-                    MethodInfo methodinfo = ControllerHelper.CreateMethodInfo(controller, method, wscontroller);
-                    Object retObj = methodinfo.Invoke(wscontroller, paramValue); //带参数方法的调用并返回值
-                    if (retObj != null)
-                        retJson = retObj.ToString();
+                    retJson = ZipComporessor.Compress(retJson);
                 }
-                return "{\"flag\":0,\"msg\":" + "\"\"" + ",\"data\":" + retJson + "}";
+
+                //System.Threading.Thread.Sleep(20000);//测试并发问题，此处也没有问题
+                double outtime = endtime();
+                //记录超时的方法
+                if (WcfServerManage.IsOverTime == true)
+                {
+                    if (outtime > Convert.ToDouble(WcfServerManage.OverTime * 1000))
+                    {
+                        WriterOverTimeLog(outtime, controller + "." + method + "(" + _jsondata + ")");
+                    }
+                }
+                //显示调试信息
+                if (WcfServerManage.IsDebug == true)
+                    ShowHostMsg(DateTime.Now, "客户端[" + clientId + "]收到结果(耗时[" + outtime + "])：" + retJson);
+
+                //更新客户端信息
+                UpdateRequestClient(clientId, jsondata == null ? 0 : jsondata.Length, retJson == null ? 0 : retJson.Length);
+
+                return retJson;
             }
             catch (Exception err)
             {
                 //记录错误日志
-                EFWCoreLib.CoreFrame.EntLib.ZhyContainer.CreateException().HandleException(err, "HISPolicy");
+                //EFWCoreLib.CoreFrame.EntLib.ZhyContainer.CreateException().HandleException(err, "HISPolicy");
 
                 if (err.InnerException == null)
                 {
+                    retJson = "{\"flag\":1,\"msg\":" + "\"" + err.Message + "\"" + "}";
+                    if (WcfServerManage.IsCompressJson)
+                    {
+                        retJson = ZipComporessor.Compress(retJson);
+                    }
                     ShowHostMsg(DateTime.Now, "客户端[" + clientId + "]执行失败：" + controller + "." + method + "(" + jsondata + ")\n错误原因：" + err.Message);
-                    return "{\"flag\":1,\"msg\":" + "\"" + err.Message + "\"" + "}";
+                    return retJson;
                 }
                 else
                 {
+                    retJson = "{\"flag\":1,\"msg\":" + "\"" + err.InnerException.Message + "\"" + "}";
+                    if (WcfServerManage.IsCompressJson)
+                    {
+                        retJson = ZipComporessor.Compress(retJson);
+                    }
                     ShowHostMsg(DateTime.Now, "客户端[" + clientId + "]执行失败：" + controller + "." + method + "(" + jsondata + ")\n错误原因：" + err.InnerException.Message);
-                    return "{\"flag\":1,\"msg\":" + "\"" + err.InnerException.Message + "\"" + "}";
+                    return retJson;
                 }
             }
         }
 
-        public static bool UnDomain(string clientId)
+        public static bool UnClient(string clientId)
         {
             RemoveClient(clientId);
             hostwcfclientinfoList(wcfClientDic.Values.ToList());
@@ -114,13 +194,42 @@ namespace EFWCoreLib.WcfFrame.ServerController
 
         public static void SendBroadcast(string jsondata)
         {
-            foreach (WCFClientInfo client in wcfClientDic.Values)
+            lock (wcfClientDic)
             {
-                IClientService mCallBack = client.clientServiceCallBack;
-                //?
-                mCallBack.ReplyClient(jsondata);
+                foreach (WCFClientInfo client in wcfClientDic.Values)
+                {
+                    IClientService mCallBack = client.clientServiceCallBack;
+                    //?
+                    mCallBack.ReplyClient(jsondata);
+                }
             }
         }
+
+        public static string ServerConfig()
+        {
+            string IsHeartbeat = WcfServerManage.IsHeartbeat ? "1" : "0";
+            string HeartbeatTime = WcfServerManage.HeartbeatTime.ToString();
+            string IsMessage = WcfServerManage.IsMessage ? "1" : "0";
+            string MessageTime = WcfServerManage.MessageTime.ToString();
+            string IsCompressJson = WcfServerManage.IsCompressJson ? "1" : "0";
+            string IsEncryptionJson = WcfServerManage.IsEncryptionJson ? "1" : "0";
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append(IsHeartbeat);
+            sb.Append("#");
+            sb.Append(HeartbeatTime);
+            sb.Append("#");
+            sb.Append(IsMessage);
+            sb.Append("#");
+            sb.Append(MessageTime);
+            sb.Append("#");
+            sb.Append(IsCompressJson);
+            sb.Append("#");
+            sb.Append(IsEncryptionJson);
+            return sb.ToString();
+        }
+
+
 
         public static HostWCFClientInfoListHandler hostwcfclientinfoList;
         public static HostWCFMsgHandler hostwcfMsg;
@@ -137,55 +246,86 @@ namespace EFWCoreLib.WcfFrame.ServerController
                 wcfClientDic.Add(clientId, info);
             }
             ShowHostMsg(DateTime.Now, "客户端[" + ipaddress + "]已连接WCF服务主机");
-            hostwcfclientinfoList(wcfClientDic.Values.ToList());
         }
-        private static bool UpdateClient(string sessionId, string clientId)
+
+        private static bool UpdateRequestClient(string clientId, int rlen, int slen)
         {
-            if (wcfClientDic.ContainsKey(clientId))
+            lock (wcfClientDic)
             {
-                lock (wcfClientDic)
+                if (wcfClientDic.ContainsKey(clientId))
+                {
+
+                    wcfClientDic[clientId].RequestCount += 1;
+                    wcfClientDic[clientId].receiveData += rlen;
+                    wcfClientDic[clientId].sendData += slen;
+                }
+            }
+            return true;
+        }
+
+        private static bool UpdateHeartbeatClient(string clientId)
+        {
+            lock (wcfClientDic)
+            {
+                if (wcfClientDic.ContainsKey(clientId))
+                {
+
+                    wcfClientDic[clientId].startTime = DateTime.Now;
+                    wcfClientDic[clientId].HeartbeatCount += 1;
+                    return true;
+                }
+                else
+                    return false;
+            }
+        }
+        private static void RemoveClient(string clientId)
+        {
+            lock (wcfClientDic)
+            {
+                if (wcfClientDic.ContainsKey(clientId))
+                {
+
+                    wcfClientDic.Remove(clientId);
+                    ShowHostMsg(DateTime.Now, "客户端[" + clientId + "]已退出断开连接WCF服务主机");
+                }
+            }
+        }
+        private static void ReConnectionClient(string clientId)
+        {
+            lock (wcfClientDic)
+            {
+                if (wcfClientDic.ContainsKey(clientId))
                 {
                     if (wcfClientDic[clientId].IsConnect == false)
                     {
                         ShowHostMsg(DateTime.Now, "客户端[" + clientId + "]已重新连接WCF服务主机");
                         wcfClientDic[clientId].IsConnect = true;
                     }
-
-                    wcfClientDic[clientId].startTime = DateTime.Now;
-                    wcfClientDic[clientId].HeartbeatCount += 1;
                 }
-                hostwcfclientinfoList(wcfClientDic.Values.ToList());
-                return true;
-            }
-            else
-                return false;
-        }
-        private static void RemoveClient(string clientId)
-        {
-            if (wcfClientDic.ContainsKey(clientId))
-            {
-                //string ipaddress = wcfClientDic[clientId].ipAddress;
-                lock (wcfClientDic)
-                {
-                    wcfClientDic.Remove(clientId);
-                }
-                //wcfClientDic[clientId].IsConnect = false;
-                ShowHostMsg(DateTime.Now, "客户端[" + clientId + "]已退出断开连接WCF服务主机");
-                //hostwcfclientinfoList(wcfClientDic.Values.ToList());
             }
         }
         private static void DisConnectionClient(string clientId)
         {
-            if (wcfClientDic.ContainsKey(clientId) && wcfClientDic[clientId].IsConnect == true)
+            lock (wcfClientDic)
             {
-                wcfClientDic[clientId].IsConnect = false;
-                ShowHostMsg(DateTime.Now, "客户端[" + clientId + "]已超时断开连接WCF服务主机");
-                //hostwcfclientinfoList(wcfClientDic.Values.ToList());
+                if (wcfClientDic.ContainsKey(clientId))
+                {
+
+                    if (wcfClientDic[clientId].IsConnect == true)
+                    {
+                        wcfClientDic[clientId].IsConnect = false;
+                        ShowHostMsg(DateTime.Now, "客户端[" + clientId + "]已超时断开连接WCF服务主机");
+                    }
+                }
             }
         }
         private static void ShowHostMsg(DateTime time, string text)
         {
-            hostwcfMsg(time, text);
+            lock (hostwcfMsg)
+            {
+                hostwcfMsg.BeginInvoke(time, text, null, null);//异步方式不影响后台数据请求
+                //hostwcfMsg(time, text);
+            }
         }
 
 
@@ -194,7 +334,7 @@ namespace EFWCoreLib.WcfFrame.ServerController
         private static void StartListenClients()
         {
             timer = new System.Timers.Timer();
-            timer.Interval = 500;
+            timer.Interval = WcfServerManage.HeartbeatTime*1000;
             timer.Elapsed += new System.Timers.ElapsedEventHandler(timer_Elapsed);
             timer.Start();
         }
@@ -207,28 +347,74 @@ namespace EFWCoreLib.WcfFrame.ServerController
                 {
                     foreach (WCFClientInfo client in wcfClientDic.Values)
                     {
-                        if (client.startTime.AddSeconds(10) < DateTime.Now)//断开10秒就置为断开
+                        if (client.startTime.AddSeconds(WcfServerManage.HeartbeatTime * 10) < DateTime.Now)//断开10秒就置为断开
                         {
                             DisConnectionClient(client.clientId);
                         }
 
-                        if (client.startTime.AddMinutes(10) < DateTime.Now)//断开10分钟直接移除客户端
+                        if (client.startTime.AddSeconds(WcfServerManage.HeartbeatTime * 100) < DateTime.Now)//断开10分钟直接移除客户端
                         {
                             RemoveClient(client.clientId);
                         }
                     }
 
-                    hostwcfclientinfoList(wcfClientDic.Values.ToList());
+                    lock (hostwcfclientinfoList)
+                    {
+                        hostwcfclientinfoList(wcfClientDic.Values.ToList());
+                    }
+
+                    WriterOverTimeFile();
                 }
             }
             catch { }
+        }
+
+        static DateTime begindate;
+        static void begintime()
+        {
+            begindate = DateTime.Now;
+        }
+        //返回毫秒
+        static double endtime()
+        {
+            return DateTime.Now.Subtract(begindate).TotalMilliseconds;
+        }
+
+        static StringBuilder overtimesb = new StringBuilder();
+        static void WriterOverTimeLog(double overtime, string text)
+        {
+            string info = "时间：" + DateTime.Now.ToString() + "\t\t" + "耗时：" + overtime + "\t\t" + "方法：" + text + "\r\n";
+            lock (overtimesb)
+            {
+                overtimesb.AppendLine(info);
+            }
+        }
+
+        static void WriterOverTimeFile()
+        {
+            string info = null;
+            lock (overtimesb)
+            {
+                info = overtimesb.ToString();
+                if (info != null)
+                    overtimesb.Clear();
+            }
+            if (string.IsNullOrEmpty(info) == false)
+            {
+                string filepath = AppGlobal.AppRootPath + "OverTimeLog\\" + DateTime.Now.ToString("yyyyMM") + ".txt";
+                if (System.IO.Directory.Exists(AppGlobal.AppRootPath + "OverTimeLog") == false)
+                {
+                    System.IO.Directory.CreateDirectory(AppGlobal.AppRootPath + "OverTimeLog");
+                }
+                System.IO.File.AppendAllText(filepath, info);
+            }
         }
     }
 
     /// <summary>
     /// 连接客户端信息
     /// </summary>
-    public class WCFClientInfo
+    public class WCFClientInfo:ICloneable
     {
         public string clientId { get; set; }
         public string ipAddress { get; set; }
@@ -237,6 +423,27 @@ namespace EFWCoreLib.WcfFrame.ServerController
         public SysLoginRight LoginRight { get; set; }
         public int HeartbeatCount { get; set; }
         public bool IsConnect { get; set; }
+        /// <summary>
+        /// 请求次数
+        /// </summary>
+        public int RequestCount { get; set; }
+        /// <summary>
+        /// 接收数据
+        /// </summary>
+        public long receiveData { get; set; }
+        /// <summary>
+        /// 发送数据
+        /// </summary>
+        public long sendData { get; set; }
+
+        #region ICloneable 成员
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+
+        #endregion
     }
 
     public delegate void HostWCFClientInfoListHandler(List<WCFClientInfo> dic);

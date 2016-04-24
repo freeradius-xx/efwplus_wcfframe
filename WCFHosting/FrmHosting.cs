@@ -59,18 +59,24 @@ namespace WCFHosting
 
             mAppHost = new ServiceHost(typeof(WCFHandlerService));
 
-            ServiceMetadataBehavior smb = mAppHost.Description.Behaviors.Find<ServiceMetadataBehavior>();
-            if (smb == null)
-            {
-                mAppHost.Description.Behaviors.Add(new ServiceMetadataBehavior());
-            }
+            //ServiceMetadataBehavior smb = mAppHost.Description.Behaviors.Find<ServiceMetadataBehavior>();
+            //if (smb == null)
+            //{
+            //    mAppHost.Description.Behaviors.Add(new ServiceMetadataBehavior());
+            //}
 
             //mAppHost.AddServiceEndpoint(typeof(IMetadataExchange), MetadataExchangeBindings.CreateMexTcpBinding(), "mex");
 
             mAppHost.Open();
-
             WcfServerManage.IsDebug = HostSettingConfig.GetValue("debug") == "1" ? true : false;
             WcfServerManage.IsHeartbeat = HostSettingConfig.GetValue("heartbeat") == "1" ? true : false;
+            WcfServerManage.HeartbeatTime = Convert.ToInt32(HostSettingConfig.GetValue("heartbeattime"));
+            WcfServerManage.IsMessage = HostSettingConfig.GetValue("message") == "1" ? true : false;
+            WcfServerManage.MessageTime = Convert.ToInt32(HostSettingConfig.GetValue("messagetime"));
+            WcfServerManage.IsCompressJson = HostSettingConfig.GetValue("compress") == "1" ? true : false;
+            WcfServerManage.IsEncryptionJson = HostSettingConfig.GetValue("encryption") == "1" ? true : false;
+            WcfServerManage.IsOverTime = HostSettingConfig.GetValue("overtime") == "1" ? true : false;
+            WcfServerManage.OverTime = Convert.ToInt32(HostSettingConfig.GetValue("overtimetime"));
             WcfServerManage.StartWCFHost();
 
             AddMsg(DateTime.Now, "WCF主机启动完成");
@@ -83,11 +89,11 @@ namespace WCFHosting
 
             mRouterHost = new ServiceHost(typeof(RouterHandlerService));
 
-            ServiceMetadataBehavior smb = mRouterHost.Description.Behaviors.Find<ServiceMetadataBehavior>();
-            if (smb == null)
-            {
-                mRouterHost.Description.Behaviors.Add(new ServiceMetadataBehavior());
-            }
+            //ServiceMetadataBehavior smb = mRouterHost.Description.Behaviors.Find<ServiceMetadataBehavior>();
+            //if (smb == null)
+            //{
+            //    mRouterHost.Description.Behaviors.Add(new ServiceMetadataBehavior());
+            //}
             //mRouterHost.AddServiceEndpoint(typeof(IMetadataExchange), MetadataExchangeBindings.CreateMexTcpBinding(), "mex");
 
             mRouterHost.Open();
@@ -108,18 +114,28 @@ namespace WCFHosting
         {
             if (MessageBox.Show("您确定要停止服务吗？", "询问窗", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
-                if (mAppHost != null)
+                try
                 {
-                    WcfServerManage.StopWCFHost();
-                    mAppHost.Close();
-                    AddMsg(DateTime.Now, "WCF主机已关闭");
-                }
+                    if (mAppHost != null)
+                    {
+                        WcfServerManage.StopWCFHost();
+                        mAppHost.Close();
+                        AddMsg(DateTime.Now, "WCF主机已关闭");
+                    }
 
-                if (mRouterHost != null)
+                    if (mRouterHost != null)
+                    {
+                        mRouterHost.Close();
+                        RouterHandlerService.Dispose();
+                        AddMsg(DateTime.Now, "路由器已关闭");
+                    }
+                }
+                catch
                 {
-                    mRouterHost.Close();
-                    RouterHandlerService.Dispose();
-                    AddMsg(DateTime.Now, "路由器已关闭");
+                    if (mAppHost != null)
+                        mAppHost.Abort();
+                    if (mRouterHost != null)
+                        mRouterHost.Abort();
                 }
                 RunState = HostState.NoOpen;
             }
@@ -150,7 +166,9 @@ namespace WCFHosting
             {
                 if (richTextMsg.Text.Length == 0)
                     msg = msg.Replace("\n", "");
-                richTextMsg.AppendText(msg);
+                if (richTextMsg.Lines.Length > 1 && richTextMsg.Lines[richTextMsg.Lines.Length - 1].Length == 0)
+                    msg = msg.Replace("\n", "");
+                richTextMsg.AppendText(msg + "\n");
             }
         }
         private void setgrid(DataGridView grid, object data)
@@ -229,6 +247,12 @@ namespace WCFHosting
         private void 关于ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new AboutBox().ShowDialog();
+        }
+
+        private void btnplugin_Click(object sender, EventArgs e)
+        {
+            FrmPlugin plugin = new FrmPlugin();
+            plugin.ShowDialog();
         }
     }
 

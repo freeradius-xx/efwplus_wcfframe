@@ -925,3 +925,1803 @@ Win32 ThreadId:8156
 
 Extended Properties: 
 ----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-21 09:25:36
+
+Message: HandlingInstanceID: c88dd66d-78f0-4755-9c4e-136c69be895f
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+04/21/2016 17:25:36
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 84
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-21 09:25:36
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 输入的用户名密码不正确！
+	Source : WinMainUIFrame
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : System.String UserLogin()
+	HResult : -2146233088
+	Stack Trace :    在 WinMainUIFrame.WcfController.LoginController.UserLogin()
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 11176
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:3596
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-21 09:25:52
+
+Message: HandlingInstanceID: 48df11fd-6ee3-459f-96fe-824cebbed98d
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+04/21/2016 17:25:52
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 84
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-21 09:25:52
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 输入的用户名密码不正确！
+	Source : WinMainUIFrame
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : System.String UserLogin()
+	HResult : -2146233088
+	Stack Trace :    在 WinMainUIFrame.WcfController.LoginController.UserLogin()
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 11176
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:2772
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-21 09:28:28
+
+Message: HandlingInstanceID: 1fe2c687-6115-47b5-8150-60a0a4ee651f
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+04/21/2016 17:28:28
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 84
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-21 09:28:28
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 输入的用户名密码不正确！
+	Source : WinMainUIFrame
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : System.String UserLogin()
+	HResult : -2146233088
+	Stack Trace :    在 WinMainUIFrame.WcfController.LoginController.UserLogin()
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 11176
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:7148
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-21 09:28:35
+
+Message: HandlingInstanceID: 015bb477-275e-4fbd-8187-154a7ce5a0e2
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+04/21/2016 17:28:35
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 84
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-21 09:28:35
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 输入的用户名密码不正确！
+	Source : WinMainUIFrame
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : System.String UserLogin()
+	HResult : -2146233088
+	Stack Trace :    在 WinMainUIFrame.WcfController.LoginController.UserLogin()
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 11176
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:7148
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-21 09:30:04
+
+Message: HandlingInstanceID: cb1f997c-75d7-4cb3-bd11-85b419bdf416
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+04/21/2016 17:30:04
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 84
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-21 09:30:04
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 输入的用户名密码不正确！
+	Source : WinMainUIFrame
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : System.String UserLogin()
+	HResult : -2146233088
+	Stack Trace :    在 WinMainUIFrame.WcfController.LoginController.UserLogin()
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 11176
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:10272
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-21 09:32:09
+
+Message: HandlingInstanceID: a94975e2-a7fa-4cff-aefc-6c663c01d715
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+04/21/2016 17:32:09
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 84
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-21 09:32:09
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 输入的用户名密码不正确！
+	Source : WinMainUIFrame
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : System.String UserLogin()
+	HResult : -2146233088
+	Stack Trace :    在 WinMainUIFrame.WcfController.LoginController.UserLogin()
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 11176
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:8092
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-21 09:34:30
+
+Message: HandlingInstanceID: a588aaed-a47a-4cc3-9dad-36d406ae0558
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+04/21/2016 17:34:30
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 84
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-21 09:34:30
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 输入的用户名密码不正确！
+	Source : WinMainUIFrame
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : System.String UserLogin()
+	HResult : -2146233088
+	Stack Trace :    在 WinMainUIFrame.WcfController.LoginController.UserLogin()
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 7752
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:11052
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-21 09:35:15
+
+Message: HandlingInstanceID: 57cffa5b-b2dd-4ef5-9094-5684474d80a0
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+04/21/2016 17:35:15
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 84
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-21 09:35:15
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 输入的用户名密码不正确！
+	Source : WinMainUIFrame
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : System.String UserLogin()
+	HResult : -2146233088
+	Stack Trace :    在 WinMainUIFrame.WcfController.LoginController.UserLogin()
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 7752
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:10772
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-21 09:35:23
+
+Message: HandlingInstanceID: 42411a42-4fc6-44cb-b0c8-46b4490b95ac
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+04/21/2016 17:35:23
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 84
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-21 09:35:23
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 输入的用户名密码不正确！
+	Source : WinMainUIFrame
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : System.String UserLogin()
+	HResult : -2146233088
+	Stack Trace :    在 WinMainUIFrame.WcfController.LoginController.UserLogin()
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 7752
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:10772
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-21 12:24:33
+
+Message: HandlingInstanceID: 5805b797-dacf-46d3-9ed0-f84ebeef9e51
+An exception of type 'System.NullReferenceException' occurred and was caught.
+-----------------------------------------------------------------------------
+04/21/2016 20:24:33
+Type : System.NullReferenceException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 未将对象引用设置到对象的实例。
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : EFWCoreLib.CoreFrame.Init.AttributeManager.WcfControllerAttributeInfo GetPluginWcfControllerAttributeInfo(System.String, System.String, EFWCoreLib.CoreFrame.Plugin.ModulePlugin ByRef)
+HResult : -2147467261
+Stack Trace :    在 EFWCoreLib.CoreFrame.Init.AppPluginManage.GetPluginWcfControllerAttributeInfo(String pluginname, String name, ModulePlugin& mp) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\CoreFrame\Init\AppPluginManage.cs:行号 163
+   在 EFWCoreLib.WcfFrame.ServerController.ControllerHelper.CreateController(String controllername) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\ControllerHelper.cs:行号 22
+   在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 78
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-21 12:24:33
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 6580
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:4492
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-21 12:24:44
+
+Message: HandlingInstanceID: 53d83808-6054-4781-a8e4-87a443cd4408
+An exception of type 'System.NullReferenceException' occurred and was caught.
+-----------------------------------------------------------------------------
+04/21/2016 20:24:44
+Type : System.NullReferenceException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 未将对象引用设置到对象的实例。
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : EFWCoreLib.CoreFrame.Init.AttributeManager.WcfControllerAttributeInfo GetPluginWcfControllerAttributeInfo(System.String, System.String, EFWCoreLib.CoreFrame.Plugin.ModulePlugin ByRef)
+HResult : -2147467261
+Stack Trace :    在 EFWCoreLib.CoreFrame.Init.AppPluginManage.GetPluginWcfControllerAttributeInfo(String pluginname, String name, ModulePlugin& mp) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\CoreFrame\Init\AppPluginManage.cs:行号 163
+   在 EFWCoreLib.WcfFrame.ServerController.ControllerHelper.CreateController(String controllername) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\ControllerHelper.cs:行号 22
+   在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 78
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-21 12:24:44
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 6580
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:8500
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-21 16:15:18
+
+Message: HandlingInstanceID: d91d9b28-2794-41b8-9f1e-6cc578f59e63
+An exception of type 'System.NullReferenceException' occurred and was caught.
+-----------------------------------------------------------------------------
+04/22/2016 00:15:18
+Type : System.NullReferenceException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 未将对象引用设置到对象的实例。
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : EFWCoreLib.CoreFrame.Init.AttributeManager.WcfControllerAttributeInfo GetPluginWcfControllerAttributeInfo(System.String, System.String, EFWCoreLib.CoreFrame.Plugin.ModulePlugin ByRef)
+HResult : -2147467261
+Stack Trace :    在 EFWCoreLib.CoreFrame.Init.AppPluginManage.GetPluginWcfControllerAttributeInfo(String pluginname, String name, ModulePlugin& mp) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\CoreFrame\Init\AppPluginManage.cs:行号 163
+   在 EFWCoreLib.WcfFrame.ServerController.ControllerHelper.CreateController(String controllername) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\ControllerHelper.cs:行号 22
+   在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 80
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-21 16:15:18
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 1416
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:8168
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-22 14:21:17
+
+Message: HandlingInstanceID: f2157ca4-fcb3-4e0c-94c9-fe02e5d1b4c3
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+04/22/2016 22:21:17
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 客户端不存在，正在创建新的连接！
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.String ProcessRequest(System.String, System.String, System.String, System.String)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 105
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-22 14:21:17
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 11412
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:13976
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-22 14:21:28
+
+Message: HandlingInstanceID: 0651188c-b2e2-41f8-84a3-ba0dedaf22bf
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+04/22/2016 22:21:28
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 客户端不存在，正在创建新的连接！
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.String ProcessRequest(System.String, System.String, System.String, System.String)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 105
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-22 14:21:28
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 11412
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:13976
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-22 14:52:20
+
+Message: HandlingInstanceID: ef59b6f9-af90-4946-a2cd-ba3abaad94cd
+An exception of type 'System.NullReferenceException' occurred and was caught.
+-----------------------------------------------------------------------------
+04/22/2016 22:52:20
+Type : System.NullReferenceException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 未将对象引用设置到对象的实例。
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : EFWCoreLib.CoreFrame.Init.AttributeManager.WcfControllerAttributeInfo GetPluginWcfControllerAttributeInfo(System.String, System.String, EFWCoreLib.CoreFrame.Plugin.ModulePlugin ByRef)
+HResult : -2147467261
+Stack Trace :    在 EFWCoreLib.CoreFrame.Init.AppPluginManage.GetPluginWcfControllerAttributeInfo(String pluginname, String name, ModulePlugin& mp) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\CoreFrame\Init\AppPluginManage.cs:行号 163
+   在 EFWCoreLib.WcfFrame.ServerController.ControllerHelper.CreateController(String controllername) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\ControllerHelper.cs:行号 22
+   在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 105
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-22 14:52:20
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 13368
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:4176
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-22 15:06:26
+
+Message: HandlingInstanceID: 48702118-d8cc-4c57-8f46-d0fceaf4bce3
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+04/22/2016 23:06:26
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 客户端不存在，正在创建新的连接！
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.String ProcessRequest(System.String, System.String, System.String, System.String)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 105
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-22 15:06:26
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 11612
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:3888
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-22 15:15:38
+
+Message: HandlingInstanceID: 2902b23d-9e71-4e64-9c88-d6568e1100b4
+An exception of type 'System.NullReferenceException' occurred and was caught.
+-----------------------------------------------------------------------------
+04/22/2016 23:15:38
+Type : System.NullReferenceException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 未将对象引用设置到对象的实例。
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : EFWCoreLib.CoreFrame.Init.AttributeManager.WcfControllerAttributeInfo GetPluginWcfControllerAttributeInfo(System.String, System.String, EFWCoreLib.CoreFrame.Plugin.ModulePlugin ByRef)
+HResult : -2147467261
+Stack Trace :    在 EFWCoreLib.CoreFrame.Init.AppPluginManage.GetPluginWcfControllerAttributeInfo(String pluginname, String name, ModulePlugin& mp) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\CoreFrame\Init\AppPluginManage.cs:行号 163
+   在 EFWCoreLib.WcfFrame.ServerController.ControllerHelper.CreateController(String controllername) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\ControllerHelper.cs:行号 22
+   在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 105
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-22 15:15:38
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 14312
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:10476
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-22 15:20:49
+
+Message: HandlingInstanceID: 306f5d0b-06a0-442f-a57c-126041688b05
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+04/22/2016 23:20:49
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 客户端不存在，正在创建新的连接！
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.String ProcessRequest(System.String, System.String, System.String, System.String)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 105
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-22 15:20:49
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 4492
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:3548
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-22 15:21:03
+
+Message: HandlingInstanceID: 0bc7ebf3-a685-4eb6-9d8c-04d030e98ca7
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+04/22/2016 23:21:03
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 客户端不存在，正在创建新的连接！
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.String ProcessRequest(System.String, System.String, System.String, System.String)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 105
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-22 15:21:03
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 4492
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:3548
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-22 15:21:08
+
+Message: HandlingInstanceID: d25063ea-c168-4ecb-bdc2-f496fb2edeb2
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+04/22/2016 23:21:08
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 客户端不存在，正在创建新的连接！
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.String ProcessRequest(System.String, System.String, System.String, System.String)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 105
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-22 15:21:08
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 4492
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:3548
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-22 15:21:11
+
+Message: HandlingInstanceID: ef24f4bc-46a0-4672-a94a-dec9ee9d373f
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+04/22/2016 23:21:11
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 客户端不存在，正在创建新的连接！
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.String ProcessRequest(System.String, System.String, System.String, System.String)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 105
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-22 15:21:11
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 4492
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:13756
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-22 15:21:13
+
+Message: HandlingInstanceID: cedab8b2-2caa-4464-b552-0d536993fdf5
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+04/22/2016 23:21:13
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 客户端不存在，正在创建新的连接！
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.String ProcessRequest(System.String, System.String, System.String, System.String)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 105
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-22 15:21:13
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 4492
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:3548
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-22 15:22:22
+
+Message: HandlingInstanceID: e9eebcf9-8c8a-4694-a7d0-0ef10c176037
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+04/22/2016 23:22:22
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 客户端不存在，正在创建新的连接！
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.String ProcessRequest(System.String, System.String, System.String, System.String)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 105
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-22 15:22:22
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 4492
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:3548
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-22 15:22:30
+
+Message: HandlingInstanceID: d2f5225a-acc9-475b-a8f1-d998d45146fb
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+04/22/2016 23:22:30
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 客户端不存在，正在创建新的连接！
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.String ProcessRequest(System.String, System.String, System.String, System.String)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 105
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-22 15:22:30
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 4492
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:3548
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-22 15:22:37
+
+Message: HandlingInstanceID: 4ee1069f-5f45-4c98-86b5-4bb7c0a5b952
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+04/22/2016 23:22:37
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 客户端不存在，正在创建新的连接！
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.String ProcessRequest(System.String, System.String, System.String, System.String)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 105
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-22 15:22:37
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 4492
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:3548
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-22 15:22:55
+
+Message: HandlingInstanceID: 550c834a-0473-4d21-a4ca-bae7afb3ca4f
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+04/22/2016 23:22:55
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 客户端不存在，正在创建新的连接！
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.String ProcessRequest(System.String, System.String, System.String, System.String)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 105
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-22 15:22:55
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 4492
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:3548
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-22 15:40:24
+
+Message: HandlingInstanceID: 8609137e-041a-4665-8e65-16bcaa2359c0
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+04/22/2016 23:40:24
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 客户端不存在，正在创建新的连接！
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.String ProcessRequest(System.String, System.String, System.String, System.String)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 105
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-22 15:40:24
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 14248
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:3036
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-22 15:53:13
+
+Message: HandlingInstanceID: 1a80cc52-1cd1-4157-a8ca-81ac21278afe
+An exception of type 'System.NullReferenceException' occurred and was caught.
+-----------------------------------------------------------------------------
+04/22/2016 23:53:13
+Type : System.NullReferenceException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 未将对象引用设置到对象的实例。
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : EFWCoreLib.CoreFrame.Init.AttributeManager.WcfControllerAttributeInfo GetPluginWcfControllerAttributeInfo(System.String, System.String, EFWCoreLib.CoreFrame.Plugin.ModulePlugin ByRef)
+HResult : -2147467261
+Stack Trace :    在 EFWCoreLib.CoreFrame.Init.AppPluginManage.GetPluginWcfControllerAttributeInfo(String pluginname, String name, ModulePlugin& mp) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\CoreFrame\Init\AppPluginManage.cs:行号 163
+   在 EFWCoreLib.WcfFrame.ServerController.ControllerHelper.CreateController(String controllername) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\ControllerHelper.cs:行号 22
+   在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 105
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-22 15:53:13
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 11332
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:11948
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-23 10:13:47
+
+Message: HandlingInstanceID: 2badae3a-152a-47da-8210-5a18fa6476f4
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+04/23/2016 18:13:46
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 控制器名称错误!
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : EFWCoreLib.WcfFrame.ServerController.WcfServerController CreateController(System.String)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ServerController.ControllerHelper.CreateController(String controllername) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\ControllerHelper.cs:行号 19
+   在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 113
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-23 10:13:47
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 8172
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:6404
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-23 10:16:49
+
+Message: HandlingInstanceID: 93a4dd34-e6d6-4f2d-94f9-c6ddb775c8ad
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+04/23/2016 18:16:49
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 控制器名称错误!
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : EFWCoreLib.WcfFrame.ServerController.WcfServerController CreateController(System.String)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ServerController.ControllerHelper.CreateController(String controllername) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\ControllerHelper.cs:行号 19
+   在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 113
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-23 10:16:49
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 9040
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:7180
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-23 13:33:21
+
+Message: HandlingInstanceID: 3f00d992-5ca3-4cd1-827e-24690d557fd3
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+04/23/2016 21:33:21
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 客户端不存在，正在创建新的连接！
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.String ProcessRequest(System.String, System.String, System.String, System.String)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 107
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-23 13:33:21
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 8248
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:6944
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-23 13:48:14
+
+Message: HandlingInstanceID: a7cdcd28-d680-4360-9d6e-5652a65687dc
+An exception of type 'System.Collections.Generic.KeyNotFoundException' occurred and was caught.
+-----------------------------------------------------------------------------------------------
+04/23/2016 21:48:14
+Type : System.Collections.Generic.KeyNotFoundException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 给定关键字不在字典中。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : TValue get_Item(TKey)
+HResult : -2146232969
+Stack Trace :    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 117
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-23 13:48:14
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 9352
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:9904
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-04-23 14:07:26
+
+Message: HandlingInstanceID: 634d6252-6115-4924-865e-8456072f2c5f
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+04/23/2016 22:07:26
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 客户端不存在，正在创建新的连接！
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.String ProcessRequest(System.String, System.String, System.String, System.String)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ServerController.WcfServerManage.ProcessRequest(String clientId, String controller, String method, String jsondata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\ServerController\WcfServerManage.cs:行号 107
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-04-23 14:07:26
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.vshost.exe
+
+ProcessId: 9140
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:7712
+
+Extended Properties: 
+----------------------------------------

@@ -24,6 +24,13 @@ namespace WCFHosting
             HostSettingConfig.SetValue("wcfservice", ckwcf.Checked ? "1" : "0");
             HostSettingConfig.SetValue("router", ckrouter.Checked ? "1" : "0");
             HostSettingConfig.SetValue("heartbeat", ckheartbeat.Checked ? "1" : "0");
+            HostSettingConfig.SetValue("heartbeattime",txtheartbeattime.Text);
+            HostSettingConfig.SetValue("message", ckmessage.Checked ? "1" : "0");
+            HostSettingConfig.SetValue("messagetime", txtmessagetime.Text);
+            HostSettingConfig.SetValue("compress", ckJsoncompress.Checked ? "1" : "0");
+            HostSettingConfig.SetValue("encryption", ckEncryption.Checked ? "1" : "0");
+            HostSettingConfig.SetValue("overtime", ckovertime.Checked ? "1" : "0");
+            HostSettingConfig.SetValue("overtimetime", txtovertime.Text);
             HostSettingConfig.SaveConfig();
             isOk = true;
             this.Close();
@@ -41,6 +48,13 @@ namespace WCFHosting
             ckwcf.Checked = HostSettingConfig.GetValue("wcfservice") == "1" ? true : false;
             ckrouter.Checked = HostSettingConfig.GetValue("router") == "1" ? true : false;
             ckheartbeat.Checked = HostSettingConfig.GetValue("heartbeat") == "1" ? true : false;
+            txtheartbeattime.Text = HostSettingConfig.GetValue("heartbeattime");
+            ckmessage.Checked = HostSettingConfig.GetValue("message") == "1" ? true : false;
+            txtmessagetime.Text = HostSettingConfig.GetValue("messagetime");
+            ckJsoncompress.Checked = HostSettingConfig.GetValue("compress") == "1" ? true : false;
+            ckEncryption.Checked = HostSettingConfig.GetValue("encryption") == "1" ? true : false;
+            ckovertime.Checked = HostSettingConfig.GetValue("overtime") == "1" ? true : false;
+            txtovertime.Text = HostSettingConfig.GetValue("overtimetime");
         }
 
     }

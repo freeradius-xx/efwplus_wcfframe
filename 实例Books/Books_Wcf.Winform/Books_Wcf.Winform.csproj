@@ -54,6 +54,12 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Books_Wcf">
+      <HintPath>..\..\Output\Books_Wcf.dll</HintPath>
+    </Reference>
+    <Reference Include="EFWCoreLib">
+      <HintPath>..\..\Output\EFWCoreLib.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching">
       <HintPath>..\..\Output\Microsoft.Practices.EnterpriseLibrary.Caching.dll</HintPath>
     </Reference>
@@ -96,16 +102,6 @@
     <EmbeddedResource Include="ViewForm\frmBookManager.resx">
       <DependentUpon>frmBookManager.cs</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\EFWCoreLib\EFWCoreLib.csproj">
-      <Project>{c5a8c124-18c0-43f4-b5a2-0f71bb833e82}</Project>
-      <Name>EFWCoreLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Books_Wcf\Books_Wcf.csproj">
-      <Project>{79168a48-52a6-4486-9cd1-c3e05f9bd94b}</Project>
-      <Name>Books_Wcf</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

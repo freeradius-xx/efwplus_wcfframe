@@ -17,7 +17,6 @@
     </baseinfo>
     <businessinfo>
       <dll name="Books_Wcf.dll" version="1.0" />
-      <dll name="Books_Wcf.Winform.dll" version="1.0" />
     </businessinfo>
     <issue>
     </issue>

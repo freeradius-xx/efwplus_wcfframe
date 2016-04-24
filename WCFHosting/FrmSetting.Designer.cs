@@ -36,6 +36,16 @@
             this.txthostname = new System.Windows.Forms.TextBox();
             this.ckwcf = new System.Windows.Forms.CheckBox();
             this.ckheartbeat = new System.Windows.Forms.CheckBox();
+            this.ckJsoncompress = new System.Windows.Forms.CheckBox();
+            this.ckEncryption = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtheartbeattime = new System.Windows.Forms.TextBox();
+            this.txtmessagetime = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.ckmessage = new System.Windows.Forms.CheckBox();
+            this.txtovertime = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.ckovertime = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // ckdebug
@@ -52,7 +62,7 @@
             // btnOk
             // 
             this.btnOk.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnOk.Location = new System.Drawing.Point(242, 211);
+            this.btnOk.Location = new System.Drawing.Point(246, 263);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 28);
             this.btnOk.TabIndex = 1;
@@ -63,7 +73,7 @@
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCancel.Location = new System.Drawing.Point(334, 211);
+            this.btnCancel.Location = new System.Drawing.Point(338, 263);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 28);
             this.btnCancel.TabIndex = 2;
@@ -75,7 +85,7 @@
             // 
             this.ckrouter.AutoSize = true;
             this.ckrouter.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ckrouter.Location = new System.Drawing.Point(22, 124);
+            this.ckrouter.Location = new System.Drawing.Point(22, 126);
             this.ckrouter.Name = "ckrouter";
             this.ckrouter.Size = new System.Drawing.Size(111, 21);
             this.ckrouter.TabIndex = 3;
@@ -97,14 +107,14 @@
             this.txthostname.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txthostname.Location = new System.Drawing.Point(91, 28);
             this.txthostname.Name = "txthostname";
-            this.txthostname.Size = new System.Drawing.Size(236, 23);
+            this.txthostname.Size = new System.Drawing.Size(322, 23);
             this.txthostname.TabIndex = 5;
             // 
             // ckwcf
             // 
             this.ckwcf.AutoSize = true;
             this.ckwcf.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ckwcf.Location = new System.Drawing.Point(22, 103);
+            this.ckwcf.Location = new System.Drawing.Point(22, 104);
             this.ckwcf.Name = "ckwcf";
             this.ckwcf.Size = new System.Drawing.Size(125, 21);
             this.ckwcf.TabIndex = 6;
@@ -115,18 +125,129 @@
             // 
             this.ckheartbeat.AutoSize = true;
             this.ckheartbeat.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ckheartbeat.Location = new System.Drawing.Point(22, 144);
+            this.ckheartbeat.Location = new System.Drawing.Point(22, 147);
             this.ckheartbeat.Name = "ckheartbeat";
             this.ckheartbeat.Size = new System.Drawing.Size(123, 21);
             this.ckheartbeat.TabIndex = 7;
             this.ckheartbeat.Text = "开启心跳检测功能";
             this.ckheartbeat.UseVisualStyleBackColor = true;
             // 
+            // ckJsoncompress
+            // 
+            this.ckJsoncompress.AutoSize = true;
+            this.ckJsoncompress.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ckJsoncompress.Location = new System.Drawing.Point(231, 83);
+            this.ckJsoncompress.Name = "ckJsoncompress";
+            this.ckJsoncompress.Size = new System.Drawing.Size(101, 21);
+            this.ckJsoncompress.TabIndex = 8;
+            this.ckJsoncompress.Text = "开启Json压缩";
+            this.ckJsoncompress.UseVisualStyleBackColor = true;
+            // 
+            // ckEncryption
+            // 
+            this.ckEncryption.AutoSize = true;
+            this.ckEncryption.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ckEncryption.Location = new System.Drawing.Point(231, 104);
+            this.ckEncryption.Name = "ckEncryption";
+            this.ckEncryption.Size = new System.Drawing.Size(99, 21);
+            this.ckEncryption.TabIndex = 9;
+            this.ckEncryption.Text = "开启数据加密";
+            this.ckEncryption.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Location = new System.Drawing.Point(170, 147);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(76, 17);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "间隔时间(秒)";
+            // 
+            // txtheartbeattime
+            // 
+            this.txtheartbeattime.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtheartbeattime.Location = new System.Drawing.Point(250, 147);
+            this.txtheartbeattime.Name = "txtheartbeattime";
+            this.txtheartbeattime.Size = new System.Drawing.Size(56, 23);
+            this.txtheartbeattime.TabIndex = 11;
+            this.txtheartbeattime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtmessagetime
+            // 
+            this.txtmessagetime.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtmessagetime.Location = new System.Drawing.Point(250, 171);
+            this.txtmessagetime.Name = "txtmessagetime";
+            this.txtmessagetime.Size = new System.Drawing.Size(56, 23);
+            this.txtmessagetime.TabIndex = 14;
+            this.txtmessagetime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Location = new System.Drawing.Point(170, 171);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(76, 17);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "间隔时间(秒)";
+            // 
+            // ckmessage
+            // 
+            this.ckmessage.AutoSize = true;
+            this.ckmessage.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ckmessage.Location = new System.Drawing.Point(22, 170);
+            this.ckmessage.Name = "ckmessage";
+            this.ckmessage.Size = new System.Drawing.Size(99, 21);
+            this.ckmessage.TabIndex = 12;
+            this.ckmessage.Text = "开启消息发送";
+            this.ckmessage.UseVisualStyleBackColor = true;
+            // 
+            // txtovertime
+            // 
+            this.txtovertime.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtovertime.Location = new System.Drawing.Point(250, 196);
+            this.txtovertime.Name = "txtovertime";
+            this.txtovertime.Size = new System.Drawing.Size(56, 23);
+            this.txtovertime.TabIndex = 17;
+            this.txtovertime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.Location = new System.Drawing.Point(170, 196);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(76, 17);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "超过时间(秒)";
+            // 
+            // ckovertime
+            // 
+            this.ckovertime.AutoSize = true;
+            this.ckovertime.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ckovertime.Location = new System.Drawing.Point(22, 195);
+            this.ckovertime.Name = "ckovertime";
+            this.ckovertime.Size = new System.Drawing.Size(147, 21);
+            this.ckovertime.TabIndex = 15;
+            this.ckovertime.Text = "开启日志记录耗时方法";
+            this.ckovertime.UseVisualStyleBackColor = true;
+            // 
             // FrmSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(425, 251);
+            this.ClientSize = new System.Drawing.Size(425, 313);
+            this.Controls.Add(this.txtovertime);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.ckovertime);
+            this.Controls.Add(this.txtmessagetime);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.ckmessage);
+            this.Controls.Add(this.txtheartbeattime);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.ckEncryption);
+            this.Controls.Add(this.ckJsoncompress);
             this.Controls.Add(this.ckheartbeat);
             this.Controls.Add(this.ckwcf);
             this.Controls.Add(this.txthostname);
@@ -158,5 +279,15 @@
         private System.Windows.Forms.TextBox txthostname;
         private System.Windows.Forms.CheckBox ckwcf;
         private System.Windows.Forms.CheckBox ckheartbeat;
+        private System.Windows.Forms.CheckBox ckJsoncompress;
+        private System.Windows.Forms.CheckBox ckEncryption;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtheartbeattime;
+        private System.Windows.Forms.TextBox txtmessagetime;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox ckmessage;
+        private System.Windows.Forms.TextBox txtovertime;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox ckovertime;
     }
 }

@@ -58,6 +58,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\efwplus开发平台\WinformPlatform\DevComponents.DotNetBar2.dll</HintPath>
     </Reference>
+    <Reference Include="EFWCoreLib, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Output\EFWCoreLib.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Output\Newtonsoft.Json.dll</HintPath>
@@ -221,12 +225,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\EFWCoreLib\EFWCoreLib.csproj">
-      <Project>{c5a8c124-18c0-43f4-b5a2-0f71bb833e82}</Project>
-      <Name>EFWCoreLib</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />

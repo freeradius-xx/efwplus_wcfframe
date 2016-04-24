@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHosting));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnStart = new System.Windows.Forms.ToolStripButton();
             this.btnStop = new System.Windows.Forms.ToolStripButton();
@@ -46,6 +46,14 @@
             this.richTextMsg = new System.Windows.Forms.RichTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.gridClientList = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.gridRouter = new System.Windows.Forms.DataGridView();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,11 +68,7 @@
             this.停止ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnplugin = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -82,6 +86,7 @@
             this.btnStop,
             this.toolStripSeparator3,
             this.btnSetting,
+            this.btnplugin,
             this.toolStripDropDownButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -138,24 +143,24 @@
             // 帮助ToolStripMenuItem
             // 
             this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
-            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.帮助ToolStripMenuItem.Text = "帮助";
             // 
             // 注册ToolStripMenuItem
             // 
             this.注册ToolStripMenuItem.Name = "注册ToolStripMenuItem";
-            this.注册ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.注册ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.注册ToolStripMenuItem.Text = "注册";
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(97, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
             // 
             // 关于ToolStripMenuItem
             // 
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.关于ToolStripMenuItem.Text = "关于";
             this.关于ToolStripMenuItem.Click += new System.EventHandler(this.关于ToolStripMenuItem_Click);
             // 
@@ -190,9 +195,11 @@
             this.richTextMsg.Location = new System.Drawing.Point(3, 4);
             this.richTextMsg.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.richTextMsg.Name = "richTextMsg";
+            this.richTextMsg.ReadOnly = true;
             this.richTextMsg.Size = new System.Drawing.Size(796, 535);
             this.richTextMsg.TabIndex = 0;
             this.richTextMsg.Text = "";
+            this.richTextMsg.WordWrap = false;
             // 
             // tabPage2
             // 
@@ -217,7 +224,10 @@
             this.Column9,
             this.Column2,
             this.Column4,
-            this.Column3});
+            this.Column3,
+            this.Column10,
+            this.Column11,
+            this.Column12});
             this.gridClientList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridClientList.Location = new System.Drawing.Point(3, 4);
             this.gridClientList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -226,6 +236,70 @@
             this.gridClientList.RowTemplate.Height = 23;
             this.gridClientList.Size = new System.Drawing.Size(796, 535);
             this.gridClientList.TabIndex = 0;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "clientId";
+            this.Column1.HeaderText = "客户端编码";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 250;
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "IsConnect";
+            this.Column9.HeaderText = "连接/断开";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Width = 80;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "ipAddress";
+            this.Column2.HeaderText = "计算机IP地址";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 150;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "HeartbeatCount";
+            this.Column4.HeaderText = "心跳数";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 70;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "startTime";
+            dataGridViewCellStyle2.Format = "G";
+            dataGridViewCellStyle2.NullValue = null;
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Column3.HeaderText = "连接时间";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 150;
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "RequestCount";
+            this.Column10.HeaderText = "请求次数";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "receiveData";
+            this.Column11.HeaderText = "接收数据";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            // 
+            // Column12
+            // 
+            this.Column12.DataPropertyName = "sendData";
+            this.Column12.HeaderText = "发送数据";
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
             // 
             // tabPage3
             // 
@@ -350,48 +424,14 @@
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
-            // Column1
+            // btnplugin
             // 
-            this.Column1.DataPropertyName = "clientId";
-            this.Column1.HeaderText = "客户端编码";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 250;
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "IsConnect";
-            this.Column9.HeaderText = "连接/断开";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            this.Column9.Width = 80;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "ipAddress";
-            this.Column2.HeaderText = "计算机IP地址";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 150;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "HeartbeatCount";
-            this.Column4.HeaderText = "心跳数";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 70;
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.DataPropertyName = "startTime";
-            dataGridViewCellStyle1.Format = "G";
-            dataGridViewCellStyle1.NullValue = null;
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Column3.HeaderText = "连接时间";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
+            this.btnplugin.Image = ((System.Drawing.Image)(resources.GetObject("btnplugin.Image")));
+            this.btnplugin.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnplugin.Name = "btnplugin";
+            this.btnplugin.Size = new System.Drawing.Size(52, 22);
+            this.btnplugin.Text = "插件";
+            this.btnplugin.Click += new System.EventHandler(this.btnplugin_Click);
             // 
             // FrmHosting
             // 
@@ -409,8 +449,8 @@
             this.Name = "FrmHosting";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WCF服务主机";
-            this.Load += new System.EventHandler(this.FrmHosting_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmHosting_FormClosing);
+            this.Load += new System.EventHandler(this.FrmHosting_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -461,6 +501,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.ToolStripButton btnplugin;
 
     }
 }

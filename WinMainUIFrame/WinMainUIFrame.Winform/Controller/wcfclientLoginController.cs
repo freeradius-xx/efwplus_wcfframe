@@ -235,16 +235,18 @@ namespace WinMainUIFrame.Winform.Controller
         }
         #endregion
 
-        //public List<BaseMessage> GetNotReadMessages()
-        //{
-        //    Object retdata = InvokeWCFService("LoginController", "GetNotReadMessages");
-        //    return ToListObj<BaseMessage>(retdata);
-        //}
+        [WinformMethod]
+        public List<BaseMessage> GetNotReadMessages()
+        {
+            Object retdata = InvokeWCFService("LoginController", "GetNotReadMessages");
+            return ToListObj<BaseMessage>(retdata);
+        }
 
-        //public void MessageRead(int messageId)
-        //{
-        //    Object retdata = InvokeWCFService("LoginController", "MessageRead",ToJson(messageId));
-        //}
+        [WinformMethod]
+        public void MessageRead(int messageId)
+        {
+            Object retdata = InvokeWCFService("LoginController", "MessageRead", ToJson(messageId));
+        }
 
         [WinformMethod]
         public string GetSysName()

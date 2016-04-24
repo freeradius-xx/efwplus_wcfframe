@@ -63,7 +63,13 @@ namespace EFWCoreLib.WcfFrame.WcfService.Contract
         /// </summary>
         /// <param name="jsondata"></param>
         [OperationContract(IsOneWay = true)]
-        void SendBroadcast(string jsondata); 
+        void SendBroadcast(string jsondata);
+
+        /// <summary>
+        /// 返回服务端配置
+        /// </summary>
+        [OperationContract(IsOneWay = false)]
+        string ServerConfig();
     }
 
     /// <summary>

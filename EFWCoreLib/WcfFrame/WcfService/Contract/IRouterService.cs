@@ -10,7 +10,7 @@ namespace EFWCoreLib.WcfFrame.WcfService.Contract
     /// <summary>
     /// WCF路由服务
     /// </summary>
-    [ServiceContract(SessionMode = SessionMode.Required, CallbackContract = typeof(IDuplexRouterCallback))]
+    [ServiceContract(Namespace = "http://www.efwplus.cn/", Name = "RouterHandlerService", SessionMode = SessionMode.Required, CallbackContract = typeof(IDuplexRouterCallback))]
     public interface IRouterService
     {
         [OperationContract(Action = "*", ReplyAction = "*")]

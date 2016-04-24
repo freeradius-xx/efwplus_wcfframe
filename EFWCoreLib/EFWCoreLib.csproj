@@ -40,7 +40,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\</OutputPath>
+    <OutputPath>..\Output\</OutputPath>
     <DefineConstants>TRACE;DEBUG;WcfFrame</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -301,8 +301,10 @@
     <Compile Include="WcfFrame\ServerController\JsonWcfServerController.cs" />
     <Compile Include="WcfFrame\ServerController\WcfServerController.cs" />
     <Compile Include="WcfFrame\ServerController\WcfServerManage.cs" />
+    <Compile Include="WcfFrame\WcfService\Contract\IFileTransfer.cs" />
     <Compile Include="WcfFrame\WcfService\Contract\IRouterService.cs" />
     <Compile Include="WcfFrame\WcfService\Contract\IWCFHandlerService.cs" />
+    <Compile Include="WcfFrame\WcfService\FileTransferHandlerService.cs" />
     <Compile Include="WcfFrame\WcfService\RouterHandlerService.cs" />
     <Compile Include="WcfFrame\WcfService\WCFHandlerService.cs" />
     <Compile Include="WinformFrame\Controller\ControllerHelper.cs" />

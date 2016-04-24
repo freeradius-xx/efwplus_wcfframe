@@ -16,9 +16,9 @@ namespace EFWCoreLib.WcfFrame.WcfService
     
     //[ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, AddressFilterMode = AddressFilterMode.Any, ValidateMustUnderstand = false)]
     /// <summary>
-    /// WCF路由服务
+    /// WCF路由服务,用InstanceContextMode.Single
     /// </summary>
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Multiple, AddressFilterMode = AddressFilterMode.Any, ValidateMustUnderstand = false)]
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Reentrant, AddressFilterMode = AddressFilterMode.Any, ValidateMustUnderstand = false, IncludeExceptionDetailInFaults = true)]
     public class RouterHandlerService : IRouterService
     {
         static public IDictionary<int, RegistrationInfo> RegistrationList = new Dictionary<int, RegistrationInfo>();
@@ -46,9 +46,14 @@ namespace EFWCoreLib.WcfFrame.WcfService
             //Binding binding = null;
             EndpointAddress endpointAddress = null;
             GetServiceEndpoint(requestMessage, out endpointAddress);
+
+            //ContractDescription cd=ContractDescription.GetContract(typeof(RouterHandlerService));
+            //ServiceEndpoint svcEndpoint = new ServiceEndpoint(cd);
+            //svcEndpoint.Address=endpointAddress;
+
             IDuplexRouterCallback callback = OperationContext.Current.GetCallbackChannel<IDuplexRouterCallback>();
-            NetTcpBinding tbinding = new NetTcpBinding("netTcpExpenseService_ForSupplier");
-            using (DuplexChannelFactory<IRouterService> factory = new DuplexChannelFactory<IRouterService>(new InstanceContext(null, new DuplexRouterCallback(callback)), tbinding, endpointAddress))
+            NetTcpBinding tbinding = new NetTcpBinding("NetTcpBinding_WCFHandlerService");
+            using (DuplexChannelFactory<IRouterService> factory = new DuplexChannelFactory<IRouterService>(new InstanceContext(null, new DuplexRouterCallback(callback)), tbinding,endpointAddress))
             {
 
                 factory.Endpoint.Behaviors.Add(new MustUnderstandBehavior(false));

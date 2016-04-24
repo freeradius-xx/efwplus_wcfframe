@@ -55,6 +55,10 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.5.452, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Output\ICSharpCode.SharpZipLib.DLL</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -81,11 +85,18 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="PluginManage\FastZipHelper.cs" />
     <Compile Include="FrmHosting.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmHosting.Designer.cs">
       <DependentUpon>FrmHosting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PluginManage\FrmPlugin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PluginManage\FrmPlugin.Designer.cs">
+      <DependentUpon>FrmPlugin.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmSetting.cs">
       <SubType>Form</SubType>
@@ -94,6 +105,7 @@
       <DependentUpon>FrmSetting.cs</DependentUpon>
     </Compile>
     <Compile Include="HostSettingConfig.cs" />
+    <Compile Include="PluginManage\PluginSysManage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AboutBox.resx">
@@ -101,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmHosting.resx">
       <DependentUpon>FrmHosting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PluginManage\FrmPlugin.resx">
+      <DependentUpon>FrmPlugin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSetting.resx">
       <DependentUpon>FrmSetting.cs</DependentUpon>
@@ -145,6 +160,14 @@
     <ProjectReference Include="..\EFWCoreLib\EFWCoreLib.csproj">
       <Project>{c5a8c124-18c0-43f4-b5a2-0f71bb833e82}</Project>
       <Name>EFWCoreLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WinMainUIFrame\WinMainUIFrame\WinMainUIFrame.csproj">
+      <Project>{d780897a-2d34-4830-b98e-eed04dfc8acf}</Project>
+      <Name>WinMainUIFrame</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\实例Books\Books_Wcf\Books_Wcf.csproj">
+      <Project>{79168a48-52a6-4486-9cd1-c3e05f9bd94b}</Project>
+      <Name>Books_Wcf</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -58,6 +58,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\efwplus开发平台\WinformPlatform\DevComponents.DotNetBar2.dll</HintPath>
     </Reference>
+    <Reference Include="EFWCoreLib">
+      <HintPath>..\..\Output\EFWCoreLib.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Output\Microsoft.Practices.EnterpriseLibrary.Caching.dll</HintPath>
@@ -93,12 +96,12 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WinMainUIFrame">
+      <HintPath>..\..\Output\WinMainUIFrame.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\CustomConfigManager.cs" />
-    <Compile Include="Controller\EmpUserController.cs" />
-    <Compile Include="Controller\LoginController.cs" />
-    <Compile Include="Controller\RightController.cs" />
     <Compile Include="Controller\wcfclientEmpUserController.cs" />
     <Compile Include="Controller\wcfclientLoginController.cs" />
     <Compile Include="Controller\wcfclientRightController.cs" />
@@ -188,6 +191,13 @@
     <Compile Include="ViewForm\FrmWeclome.Designer.cs">
       <DependentUpon>FrmWeclome.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewForm\Messages.cs" />
+    <Compile Include="ViewForm\MessageTimer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ViewForm\MessageTimer.Designer.cs">
+      <DependentUpon>MessageTimer.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewForm\ReDept.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -217,6 +227,12 @@
     </Compile>
     <Compile Include="ViewForm\RightManager\frmMenu.Designer.cs">
       <DependentUpon>frmMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewForm\TaskbarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewForm\TaskbarForm.Designer.cs">
+      <DependentUpon>TaskbarForm.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -272,6 +288,9 @@
     <EmbeddedResource Include="ViewForm\RightManager\frmMenu.resx">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ViewForm\TaskbarForm.resx">
+      <DependentUpon>TaskbarForm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -286,17 +305,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\EFWCoreLib\EFWCoreLib.csproj">
-      <Project>{c5a8c124-18c0-43f4-b5a2-0f71bb833e82}</Project>
-      <Name>EFWCoreLib</Name>
-    </ProjectReference>
     <ProjectReference Include="..\EfwControls\EfwControls.csproj">
       <Project>{a7618987-492b-4d5d-92c2-0381ec45817f}</Project>
       <Name>EfwControls</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WinMainUIFrame\WinMainUIFrame.csproj">
-      <Project>{d780897a-2d34-4830-b98e-eed04dfc8acf}</Project>
-      <Name>WinMainUIFrame</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

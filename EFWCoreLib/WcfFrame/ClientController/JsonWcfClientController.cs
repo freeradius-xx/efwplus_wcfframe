@@ -5,6 +5,7 @@ using System.Text;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Data;
+using Newtonsoft.Json.Linq;
 
 namespace EFWCoreLib.WcfFrame.ClientController
 {
@@ -14,17 +15,17 @@ namespace EFWCoreLib.WcfFrame.ClientController
 
         public string ToJson(params object[] data)
         {
-            string value = JavaScriptConvert.SerializeObject(data, new AspNetDateTimeConverter(), new AspNetBytesConverter());
+            string value = JsonConvert.SerializeObject(data);
             return value;
         }
         public string ToJson(object model)
         {
-            string value = JavaScriptConvert.SerializeObject(model, new AspNetDateTimeConverter(),new AspNetBytesConverter());
+            string value = JsonConvert.SerializeObject(model);
             return value;
         }
         public string ToJson(System.Data.DataTable dt)
         {
-            string value = JavaScriptConvert.SerializeObject(dt);
+            string value = JsonConvert.SerializeObject(dt, Formatting.Indented);
             return value;
         }
         public string ToJson(string data)
@@ -86,21 +87,21 @@ namespace EFWCoreLib.WcfFrame.ClientController
 
         public object[] ToArray(object data)
         {
-            return (data as Newtonsoft.Json.JavaScriptArray).ToArray();
+            return (data as JArray).ToArray();
         }
         public List<T> ToListObj<T>(object data)
         {
-            if (data is JavaScriptArray)
+            if (data is JArray)
             {
                 PropertyInfo[] pros = typeof(T).GetProperties();
                 List<T> list = new List<T>();
-                for (int i = 0; i < (data as JavaScriptArray).Count; i++)
+                for (int i = 0; i < (data as JArray).Count; i++)
                 {
                     T obj = (T)Activator.CreateInstance(typeof(T));
-                    object _data = (data as JavaScriptArray)[i];
+                    object _data = (data as JArray)[i];
                     for (int k = 0; k < pros.Length; k++)
                     {
-                        object val = convertVal(pros[k].PropertyType, (_data as JavaScriptObject)[pros[k].Name]);
+                        object val = convertVal(pros[k].PropertyType, (_data as JObject)[pros[k].Name]);
                         pros[k].SetValue(obj, val, null);
                     }
                     list.Add(obj);
@@ -110,35 +111,15 @@ namespace EFWCoreLib.WcfFrame.ClientController
 
             return null;
         }
-        public DataTable ToDataTable(object data)
+
+        public DataTable ToDataTable(Object data)
         {
-            if (data is JavaScriptArray && (data as JavaScriptArray).Count > 0)
-            {
-                JavaScriptObject _data = (data as JavaScriptArray)[0] as JavaScriptObject;
-                DataTable dt = new DataTable();
-                foreach (var name in _data.Keys)
-                {
-                    dt.Columns.Add(name, _data[name].GetType());
-                }
-
-                for (int i = 0; i < (data as JavaScriptArray).Count; i++)
-                {
-                    object _jsarray = (data as JavaScriptArray)[i];
-                    DataRow dr = dt.NewRow();
-                    for (int k = 0; k < dt.Columns.Count; k++)
-                    {
-                        dr[k] = convertVal(dt.Columns[k].DataType, (_jsarray as JavaScriptObject)[dt.Columns[k].ColumnName]);
-                    }
-                    dt.Rows.Add(dr);
-                }
-
-                return dt;
-            }
-            return null;
+            return ToDataTable(data.ToString());
         }
+
         public DataTable ToDataTable(string data)
         {
-            return ToDataTable(JavaScriptConvert.DeserializeObject(data));
+            return JsonConvert.DeserializeObject<DataTable>(data);
         }
         public T ToObject<T>(object data)
         {
@@ -146,7 +127,7 @@ namespace EFWCoreLib.WcfFrame.ClientController
             PropertyInfo[] pros = typeof(T).GetProperties();
             for (int k = 0; k < pros.Length; k++)
             {
-                object val = convertVal(pros[k].PropertyType, (data as JavaScriptObject)[pros[k].Name]);
+                object val = convertVal(pros[k].PropertyType, (data as JObject)[pros[k].Name]);
                 pros[k].SetValue(obj, val, null);
             }
 
@@ -154,7 +135,7 @@ namespace EFWCoreLib.WcfFrame.ClientController
         }
         public T ToObject<T>(string data)
         {
-            return JavaScriptConvert.DeserializeObject<T>(data);
+            return JsonConvert.DeserializeObject<T>(data);
         }
         public string ToString(object data)
         {
@@ -179,46 +160,4 @@ namespace EFWCoreLib.WcfFrame.ClientController
         #endregion
     }
 
-    public class AspNetDateTimeConverter : JsonConverter
-    {
-        public override bool CanConvert(Type objectType)
-        {
-            return typeof(DateTime).IsAssignableFrom(objectType);
-        }
-
-        public override void WriteJson(JsonWriter writer, object value)
-        {
-            DateTime datetime = Convert.ToDateTime(value);
-            writer.WriteValue(datetime.ToString());
-        }
-    }
-
-    public class AspNetBytesConverter : JsonConverter
-    {
-        public override bool CanConvert(Type objectType)
-        {
-            return typeof(byte[]).IsAssignableFrom(objectType);
-        }
-
-        public override void WriteJson(JsonWriter writer, object value)
-        {
-            string sBytes = "null";
-            if (value != null)
-            {
-                sBytes = Convert.ToBase64String((byte[])value);
-            }
-            writer.WriteValue(sBytes);
-        }
-
-        public override object ReadJson(JsonReader reader, Type objectType)
-        {
-            byte[] sBytes = null;
-            if (reader.Value != null && reader.Value.ToString().Length >= 10)
-            {
-                sBytes = Convert.FromBase64String(reader.Value.ToString());
-            }
-
-            return sBytes;
-        }
-    }
 }

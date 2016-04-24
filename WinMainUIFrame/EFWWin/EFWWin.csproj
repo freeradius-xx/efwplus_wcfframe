@@ -39,7 +39,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\Output\</OutputPath>
+    <OutputPath>..\..\Output_Client\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -55,6 +55,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EFWCoreLib">
+      <HintPath>..\..\Output\EFWCoreLib.dll</HintPath>
+    </Reference>
     <Reference Include="SimpleUpdater">
       <HintPath>..\..\Output\SimpleUpdater.EXE</HintPath>
     </Reference>
@@ -120,17 +123,9 @@
     <Content Include="msn.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\EFWCoreLib\EFWCoreLib.csproj">
-      <Project>{c5a8c124-18c0-43f4-b5a2-0f71bb833e82}</Project>
-      <Name>EFWCoreLib</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\实例Books\Books_Wcf.Winform\Books_Wcf.Winform.csproj">
       <Project>{37492867-21a2-4102-8f30-eccafa84edea}</Project>
       <Name>Books_Wcf.Winform</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\实例Books\Books_Wcf\Books_Wcf.csproj">
-      <Project>{79168a48-52a6-4486-9cd1-c3e05f9bd94b}</Project>
-      <Name>Books_Wcf</Name>
     </ProjectReference>
     <ProjectReference Include="..\EfwControls\EfwControls.csproj">
       <Project>{a7618987-492b-4d5d-92c2-0381ec45817f}</Project>
@@ -139,10 +134,6 @@
     <ProjectReference Include="..\WinMainUIFrame.Winform\WinMainUIFrame.Winform.csproj">
       <Project>{1932a78b-7d0a-4c2f-9855-afb43c327c7b}</Project>
       <Name>WinMainUIFrame.Winform</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WinMainUIFrame\WinMainUIFrame.csproj">
-      <Project>{d780897a-2d34-4830-b98e-eed04dfc8acf}</Project>
-      <Name>WinMainUIFrame</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

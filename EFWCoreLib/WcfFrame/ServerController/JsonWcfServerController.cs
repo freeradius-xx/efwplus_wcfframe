@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace EFWCoreLib.WcfFrame.ServerController
 {
@@ -47,12 +48,12 @@ namespace EFWCoreLib.WcfFrame.ServerController
         #region IToJson 成员
         public string ToJson(object model)
         {
-            string value = JavaScriptConvert.SerializeObject(model, new AspNetDateTimeConverter(), new AspNetBytesConverter());
+            string value = JsonConvert.SerializeObject(model);
             return value;
         }
         public string ToJson(System.Data.DataTable dt)
         {
-            string value = JavaScriptConvert.SerializeObject(dt);
+            string value = JsonConvert.SerializeObject(dt,Formatting.Indented);
             return value;
         }
         public string ToJson(string data)
@@ -82,7 +83,7 @@ namespace EFWCoreLib.WcfFrame.ServerController
         }
         public string ToJson(params object[] data)
         {
-            string value = JavaScriptConvert.SerializeObject(data, new AspNetDateTimeConverter(),new AspNetBytesConverter());
+            string value = JsonConvert.SerializeObject(data);
             return value;
         }
 
@@ -91,15 +92,15 @@ namespace EFWCoreLib.WcfFrame.ServerController
         #region IJsonToObject成员
         public T ToObject<T>(string json)
         {
-            return JavaScriptConvert.DeserializeObject<T>(json,new AspNetBytesConverter());
+            return JsonConvert.DeserializeObject<T>(json);
         }
         public object ToObject(string json)
         {
-            return JavaScriptConvert.DeserializeObject(json);
+            return JsonConvert.DeserializeObject(json);
         }
         public object[] ToArray(string json)
         {
-            return (ToObject(json) as Newtonsoft.Json.JavaScriptArray).ToArray();
+            return (ToObject(json) as JArray).ToArray();
         }
         public string ToString(string json)
         {
@@ -127,54 +128,54 @@ namespace EFWCoreLib.WcfFrame.ServerController
             if (typeof(T).Equals(typeof(int[])))
             {
                 List<int> intvals = new List<int>();
-                for (int i = 0; i < (data as JavaScriptArray).Count; i++)
+                for (int i = 0; i < (data as JArray).Count; i++)
                 {
-                    intvals.Add(Convert.ToInt32((data as JavaScriptArray)[i]));
+                    intvals.Add(Convert.ToInt32((data as JArray)[i]));
                 }
                 return (T)(intvals.ToArray() as object);
             }
             else if (typeof(T).Equals(typeof(string[])))
             {
                 List<string> intvals = new List<string>();
-                for (int i = 0; i < (data as JavaScriptArray).Count; i++)
+                for (int i = 0; i < (data as JArray).Count; i++)
                 {
-                    intvals.Add(Convert.ToString((data as JavaScriptArray)[i]));
+                    intvals.Add(Convert.ToString((data as JArray)[i]));
                 }
                 return (T)(intvals.ToArray() as object);
             }
             else if (typeof(T).Equals(typeof(decimal[])))
             {
                 List<decimal> intvals = new List<decimal>();
-                for (int i = 0; i < (data as JavaScriptArray).Count; i++)
+                for (int i = 0; i < (data as JArray).Count; i++)
                 {
-                    intvals.Add(Convert.ToDecimal((data as JavaScriptArray)[i]));
+                    intvals.Add(Convert.ToDecimal((data as JArray)[i]));
                 }
                 return (T)(intvals.ToArray() as object);
             }
             else if (typeof(T).Equals(typeof(Boolean[])))
             {
                 List<Boolean> intvals = new List<Boolean>();
-                for (int i = 0; i < (data as JavaScriptArray).Count; i++)
+                for (int i = 0; i < (data as JArray).Count; i++)
                 {
-                    intvals.Add(Convert.ToBoolean((data as JavaScriptArray)[i]));
+                    intvals.Add(Convert.ToBoolean((data as JArray)[i]));
                 }
                 return (T)(intvals.ToArray() as object);
             }
             else if (typeof(T).Equals(typeof(DateTime[])))
             {
                 List<DateTime> intvals = new List<DateTime>();
-                for (int i = 0; i < (data as JavaScriptArray).Count; i++)
+                for (int i = 0; i < (data as JArray).Count; i++)
                 {
-                    intvals.Add(Convert.ToDateTime((data as JavaScriptArray)[i]));
+                    intvals.Add(Convert.ToDateTime((data as JArray)[i]));
                 }
                 return (T)(intvals.ToArray() as object);
             }
             else if (typeof(T).Equals(typeof(object[])))
             {
                 List<object> intvals = new List<object>();
-                for (int i = 0; i < (data as JavaScriptArray).Count; i++)
+                for (int i = 0; i < (data as JArray).Count; i++)
                 {
-                    intvals.Add((data as JavaScriptArray)[i]);
+                    intvals.Add((data as JArray)[i]);
                 }
                 return (T)(intvals.ToArray() as object);
             }
@@ -184,7 +185,7 @@ namespace EFWCoreLib.WcfFrame.ServerController
                 PropertyInfo[] pros = typeof(T).GetProperties();
                 for (int k = 0; k < pros.Length; k++)
                 {
-                    object val = convertVal(pros[k].PropertyType, (data as JavaScriptObject)[pros[k].Name]);
+                    object val = convertVal(pros[k].PropertyType, (data as JObject)[pros[k].Name]);
                     pros[k].SetValue(obj, val, null);
                 }
                 return obj;
@@ -192,21 +193,21 @@ namespace EFWCoreLib.WcfFrame.ServerController
         }
         public object[] ToArray(object data)
         {
-            return (data as Newtonsoft.Json.JavaScriptArray).ToArray();
+            return (data as JArray).ToArray();
         }
         public List<T> ToListObj<T>(object data)
         {
-            if (data is JavaScriptArray)
+            if (data is JArray)
             {
                 PropertyInfo[] pros = typeof(T).GetProperties();
                 List<T> list = new List<T>();
-                for (int i = 0; i < (data as JavaScriptArray).Count; i++)
+                for (int i = 0; i < (data as JArray).Count; i++)
                 {
                     T obj = (T)Activator.CreateInstance(typeof(T));
-                    object _data = (data as JavaScriptArray)[i];
+                    object _data = (data as JArray)[i];
                     for (int k = 0; k < pros.Length; k++)
                     {
-                        object val = convertVal(pros[k].PropertyType, (_data as JavaScriptObject)[pros[k].Name]);
+                        object val = convertVal(pros[k].PropertyType, (_data as JObject)[pros[k].Name]);
                         pros[k].SetValue(obj, val, null);
                     }
                     list.Add(obj);
@@ -216,77 +217,17 @@ namespace EFWCoreLib.WcfFrame.ServerController
 
             return null;
         }
-        public DataTable ToDataTable(object data)
+
+        public DataTable ToDataTable(Object data)
         {
-            if (data is JavaScriptArray && (data as JavaScriptArray).Count > 0)
-            {
-                JavaScriptObject _data = (data as JavaScriptArray)[0] as JavaScriptObject;
-                DataTable dt = new DataTable();
-                foreach (var name in _data.Keys)
-                {
-                    dt.Columns.Add(name, _data[name].GetType());
-                }
-
-                for (int i = 0; i < (data as JavaScriptArray).Count; i++)
-                {
-                    object _jsarray = (data as JavaScriptArray)[i];
-                    DataRow dr = dt.NewRow();
-                    for (int k = 0; k < dt.Columns.Count; k++)
-                    {
-                        dr[k] = convertVal(dt.Columns[k].DataType, (_jsarray as JavaScriptObject)[dt.Columns[k].ColumnName]);
-                    }
-                    dt.Rows.Add(dr);
-                }
-
-                return dt;
-            }
-            return null;
+            return ToDataTable(data.ToString());
         }
+
         public DataTable ToDataTable(string data)
         {
-            return ToDataTable(JavaScriptConvert.DeserializeObject(data));
+            return JsonConvert.DeserializeObject<DataTable>(data);
         }
         #endregion
     }
 
-    public class AspNetDateTimeConverter : JsonConverter
-    {
-        public override bool CanConvert(Type objectType)
-        {
-            return typeof(DateTime).IsAssignableFrom(objectType);
-        }
-
-        public override void WriteJson(JsonWriter writer, object value)
-        {
-            DateTime datetime = Convert.ToDateTime(value);
-            writer.WriteValue(datetime.ToString());
-        }
-    }
-    public class AspNetBytesConverter : JsonConverter
-    {
-        public override bool CanConvert(Type objectType)
-        {
-            return typeof(byte[]).IsAssignableFrom(objectType);
-        }
-
-        public override void WriteJson(JsonWriter writer, object value)
-        {
-            string sBytes = "null";
-            if (value != null)
-            {
-                sBytes = Convert.ToBase64String((byte[])value);
-            }
-            writer.WriteValue(sBytes);
-        }
-
-        public override object ReadJson(JsonReader reader, Type objectType)
-        {
-            byte[] sBytes =null;
-            if (reader.Value!=null && reader.Value.ToString().Length>= 10)
-            {
-                sBytes = Convert.FromBase64String(reader.Value.ToString());
-            }  
-            return sBytes;
-        }
-    }
 }

@@ -139,6 +139,8 @@ namespace EFWCoreLib.WcfFrame.ClientController
             {
                 //记录错误日志
                 EFWCoreLib.CoreFrame.EntLib.ZhyContainer.CreateException().HandleException(err, "HISPolicy");
+                if(err.InnerException!=null)
+                    throw new Exception(err.InnerException.Message);
                 throw new Exception(err.Message);
             }
         }
@@ -198,28 +200,30 @@ namespace EFWCoreLib.WcfFrame.ClientController
             if(string.IsNullOrEmpty(jsondata))jsondata="[]";
             string retJson= WcfClientManage.Request(_pluginName+"@"+controller, method, jsondata);
 
-            object Result = JavaScriptConvert.DeserializeObject(retJson);
-            int ret = Convert.ToInt32(((Newtonsoft.Json.JavaScriptObject)(Result))["flag"]);
-            string msg = ((Newtonsoft.Json.JavaScriptObject)(Result))["msg"].ToString();
+            object Result = JsonConvert.DeserializeObject(retJson);
+            int ret = Convert.ToInt32(((Newtonsoft.Json.Linq.JObject)(Result))["flag"]);
+            string msg = ((Newtonsoft.Json.Linq.JObject)(Result))["msg"].ToString();
             if (ret == 1)
             {
                 throw new Exception(msg);
             }
             else
             {
-                return ((Newtonsoft.Json.JavaScriptObject)(Result))["data"];
+                return ((Newtonsoft.Json.Linq.JObject)(Result))["data"];
             }
         }
 
+        /*
+        //客户端手动调用此方法进行Json字符串压缩，服务端的方法也要对应压缩，还要实现自动压缩
         public virtual Object InvokeWCFServiceCompress(string controller, string method, string jsondata)
         {
             if (string.IsNullOrEmpty(jsondata)) jsondata = "[]";
             jsondata = ZipComporessor.Compress(jsondata);//压缩传入参数
             string retJson= WcfClientManage.Request(_pluginName+"@"+controller, method, jsondata);
          
-            object Result = JavaScriptConvert.DeserializeObject(retJson);
-            int ret = Convert.ToInt32(((Newtonsoft.Json.JavaScriptObject)(Result))["flag"]);
-            string msg = ((Newtonsoft.Json.JavaScriptObject)(Result))["msg"].ToString();
+            object Result = JsonConvert.DeserializeObject(retJson);
+            int ret = Convert.ToInt32(((Newtonsoft.Json.Linq.JObject)(Result))["flag"]);
+            string msg = ((Newtonsoft.Json.Linq.JObject)(Result))["msg"].ToString();
             if (ret == 1)
             {
                 throw new Exception(msg);
@@ -227,25 +231,25 @@ namespace EFWCoreLib.WcfFrame.ClientController
             else
             {
                 //解压输出结果
-                return JavaScriptConvert.DeserializeObject(ZipComporessor.Decompress(((Newtonsoft.Json.JavaScriptArray)((Newtonsoft.Json.JavaScriptObject)(Result))["data"])[0].ToString()));
+                return JsonConvert.DeserializeObject(ZipComporessor.Decompress(((Newtonsoft.Json.JArray)((Newtonsoft.Json.Linq.JObject)(Result))["data"])[0].ToString()));
             }
-        }
+        }*/
 
         public virtual IAsyncResult InvokeWCFServiceAsync(string controller, string method, string jsondata, Action<Object> action)
         {
             if (string.IsNullOrEmpty(jsondata)) jsondata = "[]";
             Action<string> retAction = delegate(string retJson)
             {
-                object Result = JavaScriptConvert.DeserializeObject(retJson);
-                int ret = Convert.ToInt32(((Newtonsoft.Json.JavaScriptObject)(Result))["flag"]);
-                string msg = ((Newtonsoft.Json.JavaScriptObject)(Result))["msg"].ToString();
+                object Result = JsonConvert.DeserializeObject(retJson);
+                int ret = Convert.ToInt32(((Newtonsoft.Json.Linq.JObject)(Result))["flag"]);
+                string msg = ((Newtonsoft.Json.Linq.JObject)(Result))["msg"].ToString();
                 if (ret == 1)
                 {
                     throw new Exception(msg);
                 }
                 else
                 {
-                    action(((Newtonsoft.Json.JavaScriptObject)(Result))["data"]);
+                    action(((Newtonsoft.Json.Linq.JObject)(Result))["data"]);
                 }
             };
             return WcfClientManage.RequestAsync(_pluginName + "@" + controller, method, jsondata, retAction);
