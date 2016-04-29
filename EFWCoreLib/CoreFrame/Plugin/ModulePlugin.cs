@@ -8,13 +8,18 @@ using EFWCoreLib.CoreFrame.DbProvider;
 using EFWCoreLib.CoreFrame.EntLib;
 using System.Configuration;
 using Microsoft.Practices.Unity.Configuration;
+using System.Reflection;
+using EFWCoreLib.CoreFrame.Init;
+using EFWCoreLib.CoreFrame.Init.AttributeManager;
+using EFWCoreLib.CoreFrame.Business;
+using System.IO;
 
 namespace EFWCoreLib.CoreFrame.Plugin
 {
     /// <summary>
     /// 模块插件
     /// </summary>
-    public class ModulePlugin
+    public class ModulePlugin : MarshalByRefObject
     {
         /// <summary>
         /// 插件配置
@@ -33,10 +38,17 @@ namespace EFWCoreLib.CoreFrame.Plugin
         /// </summary>
         public ICacheManager cache{get;set;}
 
+        /// <summary>
+        /// 执行控制器
+        /// </summary>
+        public AbstractControllerHelper helper { get; set; }
+
+        public AppType appType { get; set; }
+
         public ModulePlugin()
         {
-            container = ZhyContainer.CreateUnity();
-            plugin = new PluginConfig();
+           
+            
         }
 
         /// <summary>
@@ -45,6 +57,16 @@ namespace EFWCoreLib.CoreFrame.Plugin
         /// <param name="plugfile">插件配置文件路径</param>
         public void LoadPlugin(string plugfile)
         {
+            container = ZhyContainer.CreateUnity();
+            plugin = new PluginConfig();
+
+            switch (appType)
+            {
+                case AppType.WCF:
+                    helper = new WcfFrame.ServerController.ControllerHelper();
+                    break;
+            }
+
             var fileMap = new ExeConfigurationFileMap { ExeConfigFilename = plugfile };
             System.Configuration.Configuration configuration = ConfigurationManager.OpenMappedExeConfiguration(fileMap, ConfigurationUserLevel.None);
 
@@ -54,7 +76,7 @@ namespace EFWCoreLib.CoreFrame.Plugin
 
             var plugininfo = (PluginSectionHandler)configuration.GetSection("plugin");
             if (plugininfo != null)
-                plugin.Add(plugininfo);
+                plugin.Load(plugininfo,plugfile);
 
             if (plugin.defaultdbkey != "")
                 database = FactoryDatabase.GetDatabase(plugin.defaultdbkey);
@@ -67,6 +89,81 @@ namespace EFWCoreLib.CoreFrame.Plugin
                 cache = ZhyContainer.CreateCache(plugin.defaultcachekey);
             else
                 cache = ZhyContainer.CreateCache();
+        }
+
+        public void LoadAttribute(string plugfile)
+        {
+            string dllpath = new System.IO.FileInfo(plugfile).DirectoryName + "\\dll";
+            List<Assembly> dllList = new List<Assembly>();
+            foreach (businessinfoDll dll in plugin.businessinfoDllList)
+            {
+                //方式一:直接读取文件，这种方式不支持热插拔
+                //dllList.Add(Assembly.LoadFrom(dllpath + "\\" + dll.name));
+                //方式二：把dll读到内存再加载
+                FileStream fs = new FileStream(dllpath + "\\" + dll.name, FileMode.Open, FileAccess.Read);
+                BinaryReader br = new BinaryReader(fs);
+                byte[] bFile = br.ReadBytes((int)fs.Length);
+                br.Close();
+                fs.Close();
+                dllList.Add(Assembly.Load(bFile));
+            }
+            if (dllList.Count > 0)
+            {
+                switch (appType)
+                {
+                    case AppType.Web:
+                        EntityManager.LoadAttribute(dllList, cache, plugin.name);
+                        WebControllerManager.LoadAttribute(dllList, this);
+                        WebServicesManager.LoadAttribute(dllList, cache, plugin.name);
+                        break;
+                    case AppType.Winform:
+                    case AppType.WCFClient:
+                        EntityManager.LoadAttribute(dllList, cache, plugin.name);
+                        WinformControllerManager.LoadAttribute(dllList, this);
+                        break;
+                    case AppType.WCF:
+                        EntityManager.LoadAttribute(dllList, cache, plugin.name);
+                        WcfControllerManager.LoadAttribute(dllList, this);
+                        break;
+                }
+            }
+        }
+
+        public void Remove()
+        {
+            ICacheManager _cache = cache;
+
+            switch (AppGlobal.appType)
+            {
+                case AppType.Web:
+                    EntityManager.ClearAttributeData(_cache, plugin.name);
+                    WebControllerManager.ClearAttributeData(_cache, plugin.name);
+                    WebServicesManager.ClearAttributeData(_cache, plugin.name);
+                    break;
+                case AppType.Winform:
+                case AppType.WCFClient:
+                    EntityManager.ClearAttributeData(_cache, plugin.name);
+                    WinformControllerManager.ClearAttributeData(_cache, plugin.name);
+                    break;
+                case AppType.WCF:
+                    EntityManager.ClearAttributeData(_cache, plugin.name);
+                    WcfControllerManager.ClearAttributeData(_cache, plugin.name);
+                    break;
+            }
+        }
+
+        public Object WcfServerExecuteMethod(string controllername, string methodname, object[] paramValue, string jsondata, EFWCoreLib.WcfFrame.ServerController.WCFClientInfo ClientInfo)
+        {
+            EFWCoreLib.WcfFrame.ServerController.WcfServerController wscontroller = helper.CreateController(plugin.name, controllername) as EFWCoreLib.WcfFrame.ServerController.WcfServerController;
+            wscontroller.ParamJsonData = jsondata;
+            wscontroller.ClientInfo = ClientInfo;
+            MethodInfo methodinfo = helper.CreateMethodInfo(plugin.name, controllername, methodname, wscontroller);
+            return methodinfo.Invoke(wscontroller, paramValue);
+        }
+
+        public Object WcfClientExecuteMethod()
+        {
+            return null;
         }
     }
 }

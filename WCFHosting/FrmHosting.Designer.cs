@@ -30,20 +30,24 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHosting));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnStart = new System.Windows.Forms.ToolStripButton();
             this.btnStop = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnSetting = new System.Windows.Forms.ToolStripButton();
+            this.btnplugin = new System.Windows.Forms.ToolStripButton();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.注册ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabMain = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.richTextMsg = new System.Windows.Forms.RichTextBox();
+            this.richTextMsg = new System.Windows.Forms.ListBox();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.清除日志ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.复制日志ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.gridClientList = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,15 +72,24 @@
             this.停止ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnplugin = new System.Windows.Forms.ToolStripButton();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lbStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lsServerUrl = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lbRunTime = new System.Windows.Forms.ToolStripStatusLabel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolStrip1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.tabMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.contextMenuStrip2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridClientList)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridRouter)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -126,6 +139,15 @@
             this.btnSetting.Text = "设置";
             this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
             // 
+            // btnplugin
+            // 
+            this.btnplugin.Image = ((System.Drawing.Image)(resources.GetObject("btnplugin.Image")));
+            this.btnplugin.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnplugin.Name = "btnplugin";
+            this.btnplugin.Size = new System.Drawing.Size(52, 22);
+            this.btnplugin.Text = "插件";
+            this.btnplugin.Click += new System.EventHandler(this.btnplugin_Click);
+            // 
             // toolStripDropDownButton1
             // 
             this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -143,39 +165,40 @@
             // 帮助ToolStripMenuItem
             // 
             this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
-            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.帮助ToolStripMenuItem.Text = "帮助";
             // 
             // 注册ToolStripMenuItem
             // 
             this.注册ToolStripMenuItem.Name = "注册ToolStripMenuItem";
-            this.注册ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.注册ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.注册ToolStripMenuItem.Text = "注册";
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(97, 6);
             // 
             // 关于ToolStripMenuItem
             // 
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.关于ToolStripMenuItem.Text = "关于";
             this.关于ToolStripMenuItem.Click += new System.EventHandler(this.关于ToolStripMenuItem_Click);
             // 
-            // tabControl1
+            // tabMain
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 25);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(810, 573);
-            this.tabControl1.TabIndex = 0;
+            this.tabMain.Controls.Add(this.tabPage1);
+            this.tabMain.Controls.Add(this.tabPage2);
+            this.tabMain.Controls.Add(this.tabPage3);
+            this.tabMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabMain.Location = new System.Drawing.Point(0, 25);
+            this.tabMain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabMain.Name = "tabMain";
+            this.tabMain.SelectedIndex = 0;
+            this.tabMain.Size = new System.Drawing.Size(810, 543);
+            this.tabMain.TabIndex = 0;
+            this.tabMain.SelectedIndexChanged += new System.EventHandler(this.tabMain_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -184,22 +207,47 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage1.Size = new System.Drawing.Size(802, 543);
+            this.tabPage1.Size = new System.Drawing.Size(802, 513);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "输出";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // richTextMsg
             // 
+            this.richTextMsg.ContextMenuStrip = this.contextMenuStrip2;
             this.richTextMsg.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextMsg.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.richTextMsg.FormattingEnabled = true;
+            this.richTextMsg.HorizontalScrollbar = true;
+            this.richTextMsg.IntegralHeight = false;
+            this.richTextMsg.ItemHeight = 18;
             this.richTextMsg.Location = new System.Drawing.Point(3, 4);
-            this.richTextMsg.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.richTextMsg.Name = "richTextMsg";
-            this.richTextMsg.ReadOnly = true;
-            this.richTextMsg.Size = new System.Drawing.Size(796, 535);
-            this.richTextMsg.TabIndex = 0;
-            this.richTextMsg.Text = "";
-            this.richTextMsg.WordWrap = false;
+            this.richTextMsg.Size = new System.Drawing.Size(796, 505);
+            this.richTextMsg.TabIndex = 1;
+            this.richTextMsg.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.richTextMsg_DrawItem);
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.清除日志ToolStripMenuItem,
+            this.复制日志ToolStripMenuItem});
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(125, 48);
+            // 
+            // 清除日志ToolStripMenuItem
+            // 
+            this.清除日志ToolStripMenuItem.Name = "清除日志ToolStripMenuItem";
+            this.清除日志ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.清除日志ToolStripMenuItem.Text = "清除日志";
+            this.清除日志ToolStripMenuItem.Click += new System.EventHandler(this.清除日志ToolStripMenuItem_Click);
+            // 
+            // 复制日志ToolStripMenuItem
+            // 
+            this.复制日志ToolStripMenuItem.Name = "复制日志ToolStripMenuItem";
+            this.复制日志ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.复制日志ToolStripMenuItem.Text = "复制日志";
+            this.复制日志ToolStripMenuItem.Click += new System.EventHandler(this.复制日志ToolStripMenuItem_Click);
             // 
             // tabPage2
             // 
@@ -208,7 +256,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage2.Size = new System.Drawing.Size(802, 543);
+            this.tabPage2.Size = new System.Drawing.Size(802, 513);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "客户端列表";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -234,7 +282,7 @@
             this.gridClientList.Name = "gridClientList";
             this.gridClientList.ReadOnly = true;
             this.gridClientList.RowTemplate.Height = 23;
-            this.gridClientList.Size = new System.Drawing.Size(796, 535);
+            this.gridClientList.Size = new System.Drawing.Size(796, 505);
             this.gridClientList.TabIndex = 0;
             // 
             // Column1
@@ -272,9 +320,9 @@
             // Column3
             // 
             this.Column3.DataPropertyName = "startTime";
-            dataGridViewCellStyle2.Format = "G";
-            dataGridViewCellStyle2.NullValue = null;
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Format = "G";
+            dataGridViewCellStyle3.NullValue = null;
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle3;
             this.Column3.HeaderText = "连接时间";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
@@ -307,7 +355,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 26);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(802, 543);
+            this.tabPage3.Size = new System.Drawing.Size(802, 513);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "路由器";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -329,7 +377,7 @@
             this.gridRouter.Name = "gridRouter";
             this.gridRouter.ReadOnly = true;
             this.gridRouter.RowTemplate.Height = 23;
-            this.gridRouter.Size = new System.Drawing.Size(802, 543);
+            this.gridRouter.Size = new System.Drawing.Size(802, 513);
             this.gridRouter.TabIndex = 0;
             // 
             // Column5
@@ -424,22 +472,84 @@
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
-            // btnplugin
+            // statusStrip1
             // 
-            this.btnplugin.Image = ((System.Drawing.Image)(resources.GetObject("btnplugin.Image")));
-            this.btnplugin.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnplugin.Name = "btnplugin";
-            this.btnplugin.Size = new System.Drawing.Size(52, 22);
-            this.btnplugin.Text = "插件";
-            this.btnplugin.Click += new System.EventHandler(this.btnplugin_Click);
+            this.statusStrip1.AutoSize = false;
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.lbStatus,
+            this.toolStripStatusLabel3,
+            this.lsServerUrl,
+            this.toolStripStatusLabel5,
+            this.lbRunTime});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 568);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(810, 30);
+            this.statusStrip1.SizingGrip = false;
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(32, 25);
+            this.toolStripStatusLabel1.Text = "状态";
+            // 
+            // lbStatus
+            // 
+            this.lbStatus.AutoSize = false;
+            this.lbStatus.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.lbStatus.ForeColor = System.Drawing.Color.Blue;
+            this.lbStatus.Name = "lbStatus";
+            this.lbStatus.Size = new System.Drawing.Size(100, 25);
+            // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(56, 25);
+            this.toolStripStatusLabel3.Text = "服务地址";
+            // 
+            // lsServerUrl
+            // 
+            this.lsServerUrl.AutoSize = false;
+            this.lsServerUrl.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.lsServerUrl.ForeColor = System.Drawing.Color.Blue;
+            this.lsServerUrl.Name = "lsServerUrl";
+            this.lsServerUrl.Size = new System.Drawing.Size(450, 25);
+            // 
+            // toolStripStatusLabel5
+            // 
+            this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
+            this.toolStripStatusLabel5.Size = new System.Drawing.Size(56, 25);
+            this.toolStripStatusLabel5.Text = "运行时间";
+            // 
+            // lbRunTime
+            // 
+            this.lbRunTime.AutoSize = false;
+            this.lbRunTime.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.lbRunTime.ForeColor = System.Drawing.Color.Blue;
+            this.lbRunTime.Name = "lbRunTime";
+            this.lbRunTime.Size = new System.Drawing.Size(110, 25);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FrmHosting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(810, 598);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabMain);
             this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.statusStrip1);
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -453,13 +563,16 @@
             this.Load += new System.EventHandler(this.FrmHosting_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
+            this.tabMain.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.contextMenuStrip2.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridClientList)).EndInit();
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridRouter)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -468,10 +581,9 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabMain;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.RichTextBox richTextMsg;
         private System.Windows.Forms.DataGridView gridClientList;
         private System.Windows.Forms.ToolStripButton btnStart;
         private System.Windows.Forms.ToolStripButton btnStop;
@@ -505,6 +617,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.ToolStripButton btnplugin;
+        private System.Windows.Forms.ListBox richTextMsg;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem 清除日志ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 复制日志ToolStripMenuItem;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel lbStatus;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.ToolStripStatusLabel lsServerUrl;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
+        private System.Windows.Forms.ToolStripStatusLabel lbRunTime;
+        private System.Windows.Forms.Timer timer1;
 
     }
 }

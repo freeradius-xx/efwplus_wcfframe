@@ -24,7 +24,7 @@ namespace EFWCoreLib.CoreFrame.Init.AttributeManager
         /// </summary>
         /// <param name="BusinessDll">Dll路径</param>
         /// <param name="cache">存入缓存</param>
-        public static void LoadAttribute(List<string> BusinessDll, ICacheManager cache,string pluginName)
+        public static void LoadAttribute(List<Assembly> BusinessDll, ICacheManager cache,string pluginName)
         {
             string cacheKey = pluginName+"@"+GetCacheKey();
 
@@ -33,7 +33,7 @@ namespace EFWCoreLib.CoreFrame.Init.AttributeManager
             for (int k = 0; k < BusinessDll.Count; k++)
             {
 
-                System.Reflection.Assembly assembly = System.Reflection.Assembly.LoadFrom(BusinessDll[k]);
+                System.Reflection.Assembly assembly = BusinessDll[k]; //System.Reflection.Assembly.LoadFrom(BusinessDll[k]);
                 Type[] types = assembly.GetTypes();
                 for (int i = 0; i < types.Length; i++)
                 {

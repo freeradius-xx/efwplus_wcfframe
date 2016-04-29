@@ -43,6 +43,7 @@
             this.pb_Cancel = new System.Windows.Forms.PictureBox();
             this.lab_Cancel = new System.Windows.Forms.Label();
             this.lab_OK = new System.Windows.Forms.Label();
+            this.btnconn = new System.Windows.Forms.LinkLabel();
             this.BasepanelEx.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_background)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Ok)).BeginInit();
@@ -51,6 +52,7 @@
             // 
             // BasepanelEx
             // 
+            this.BasepanelEx.Controls.Add(this.btnconn);
             this.BasepanelEx.Controls.Add(this.lab_Cancel);
             this.BasepanelEx.Controls.Add(this.lab_OK);
             this.BasepanelEx.Controls.Add(this.pb_Cancel);
@@ -201,10 +203,10 @@
             this.pb_Ok.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_Ok.TabIndex = 23;
             this.pb_Ok.TabStop = false;
-            this.pb_Ok.MouseLeave += new System.EventHandler(this.pcb_OK_MouseLeave);
-            this.pb_Ok.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.pb_Ok_PreviewKeyDown);
             this.pb_Ok.Click += new System.EventHandler(this.btLogin_Click);
+            this.pb_Ok.MouseLeave += new System.EventHandler(this.pcb_OK_MouseLeave);
             this.pb_Ok.MouseHover += new System.EventHandler(this.pcb_OK_MouseHover);
+            this.pb_Ok.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.pb_Ok_PreviewKeyDown);
             // 
             // pb_Cancel
             // 
@@ -215,8 +217,8 @@
             this.pb_Cancel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_Cancel.TabIndex = 24;
             this.pb_Cancel.TabStop = false;
-            this.pb_Cancel.MouseLeave += new System.EventHandler(this.pcb_Cancel_MouseLeave);
             this.pb_Cancel.Click += new System.EventHandler(this.btCancel_Click);
+            this.pb_Cancel.MouseLeave += new System.EventHandler(this.pcb_Cancel_MouseLeave);
             this.pb_Cancel.MouseHover += new System.EventHandler(this.pcb_Cancel_MouseHover);
             // 
             // lab_Cancel
@@ -229,8 +231,8 @@
             this.lab_Cancel.Size = new System.Drawing.Size(41, 12);
             this.lab_Cancel.TabIndex = 4;
             this.lab_Cancel.Text = "退  出";
-            this.lab_Cancel.MouseLeave += new System.EventHandler(this.pcb_Cancel_MouseLeave);
             this.lab_Cancel.Click += new System.EventHandler(this.btCancel_Click);
+            this.lab_Cancel.MouseLeave += new System.EventHandler(this.pcb_Cancel_MouseLeave);
             this.lab_Cancel.MouseHover += new System.EventHandler(this.pcb_Cancel_MouseHover);
             // 
             // lab_OK
@@ -243,9 +245,23 @@
             this.lab_OK.Size = new System.Drawing.Size(41, 12);
             this.lab_OK.TabIndex = 3;
             this.lab_OK.Text = "登  录";
-            this.lab_OK.MouseLeave += new System.EventHandler(this.pcb_OK_MouseLeave);
             this.lab_OK.Click += new System.EventHandler(this.btLogin_Click);
+            this.lab_OK.MouseLeave += new System.EventHandler(this.pcb_OK_MouseLeave);
             this.lab_OK.MouseHover += new System.EventHandler(this.pcb_OK_MouseHover);
+            // 
+            // btnconn
+            // 
+            this.btnconn.ActiveLinkColor = System.Drawing.Color.Blue;
+            this.btnconn.AutoSize = true;
+            this.btnconn.BackColor = System.Drawing.Color.White;
+            this.btnconn.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.btnconn.Location = new System.Drawing.Point(407, 282);
+            this.btnconn.Name = "btnconn";
+            this.btnconn.Size = new System.Drawing.Size(77, 12);
+            this.btnconn.TabIndex = 25;
+            this.btnconn.TabStop = true;
+            this.btnconn.Text = "设置通讯连接";
+            this.btnconn.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnconn_LinkClicked);
             // 
             // FrmLogin
             // 
@@ -286,5 +302,6 @@
         private System.Windows.Forms.PictureBox pb_Ok;
         private System.Windows.Forms.Label lab_Cancel;
         private System.Windows.Forms.Label lab_OK;
+        private System.Windows.Forms.LinkLabel btnconn;
     }
 }

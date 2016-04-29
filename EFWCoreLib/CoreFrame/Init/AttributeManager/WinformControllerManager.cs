@@ -12,13 +12,14 @@ namespace EFWCoreLib.CoreFrame.Init.AttributeManager
 {
     public class WinformControllerManager 
     {
-        public static void LoadAttribute(List<string> BusinessDll,ModulePlugin mp)
+        public static void LoadAttribute(List<Assembly> BusinessDll, ModulePlugin mp)
         {
             List<WinformControllerAttributeInfo> cmdControllerList = new List<WinformControllerAttributeInfo>();
 
             for (int k = 0; k < BusinessDll.Count; k++)
             {
-                System.Reflection.Assembly assembly = System.Reflection.Assembly.LoadFrom(BusinessDll[k]);
+                //System.Reflection.Assembly assembly = System.Reflection.Assembly.LoadFrom(BusinessDll[k]);
+                System.Reflection.Assembly assembly = BusinessDll[k];
                 Type[] types = assembly.GetTypes();
                 for (int i = 0; i < types.Length; i++)
                 {
@@ -58,8 +59,8 @@ namespace EFWCoreLib.CoreFrame.Init.AttributeManager
                             winView.ViewTypeName = viewAttribute[n].ViewTypeName;
                             winView.IsDefaultView = winView.Name == cmdC.defaultViewName ? true : false;
 
-                            Assembly _assembly = Assembly.LoadFrom(winView.DllName);
-                            winView.ViewType = _assembly.GetType(winView.ViewTypeName, false, true);
+                            //Assembly _assembly = Assembly.LoadFrom(winView.DllName);
+                            winView.ViewType = assembly.GetType(winView.ViewTypeName, false, true);
                             cmdC.ViewList.Add(winView);
                         }
                         cmdControllerList.Add(cmdC);

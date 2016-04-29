@@ -6,15 +6,22 @@ using EFWCoreLib.CoreFrame.Init;
 using EFWCoreLib.CoreFrame.Init.AttributeManager;
 using Microsoft.Practices.EnterpriseLibrary.Caching;
 using EFWCoreLib.CoreFrame.Plugin;
+using System.Reflection;
 
 namespace EFWCoreLib.CoreFrame.Init
 {
     /// <summary>
     /// 程序运行后的插件管理
+    /// 插件实现热插拔，有两种方式：
+    /// 1）用AppDomain，但这种方式在这里行不通，因为AppDomain之间传递的对象太复杂
+    /// 2）用内存中读取dll的方式
     /// </summary>
     public class AppPluginManage
     {
-        public static Dictionary<string, ModulePlugin> PluginDic;
+        public static bool IsOpenDomain = false;//是否开启程序域来动态管理插件
+        public static Dictionary<string, ModulePlugin> PluginDic;//插件
+        public static Dictionary<string, AppDomain> DomainDic;//程序域来动态管理插件
+
 
         /// <summary>
         /// 加载所有插件
@@ -29,94 +36,76 @@ namespace EFWCoreLib.CoreFrame.Init
             }
         }
 
+        /// <summary>
+        /// 加载插件，创建AppDomain来动态加载或卸载dll
+        /// </summary>
+        /// <param name="plugfile"></param>
         public static void AddPlugin(string plugfile)
         {
             if (PluginDic == null)
                 PluginDic = new Dictionary<string, ModulePlugin>();
+            if (DomainDic == null)
+                DomainDic = new Dictionary<string, AppDomain>();
 
-            ModulePlugin mp = new ModulePlugin();
-            mp.LoadPlugin(plugfile);
-
-            if (PluginDic.ContainsKey(mp.plugin.name) == false)
+            if (IsOpenDomain)//开启程序域
             {
-                PluginDic.Add(mp.plugin.name, mp);
-                List<string> dllList = new List<string>();
-                switch (AppGlobal.appType)
+                //AppDomainSetup setup = new AppDomainSetup();
+                //setup.ApplicationName = "ApplicationLoader";
+                //setup.ApplicationBase = AppDomain.CurrentDomain.BaseDirectory;
+                //setup.PrivateBinPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "private");
+                //setup.CachePath = setup.ApplicationBase;
+                //setup.ShadowCopyFiles = "true";
+                //setup.ShadowCopyDirectories = setup.ApplicationBase;
+                //AppDomain.CurrentDomain.SetShadowCopyFiles();
+                //AppDomain appDomain = AppDomain.CreateDomain("ApplicationLoaderDomain", null, setup);
+                //String name = Assembly.GetExecutingAssembly().GetName().FullName;
+                //ModulePlugin mp = (ModulePlugin)appDomain.CreateInstanceAndUnwrap(name, typeof(ModulePlugin).FullName);
+                //mp.appType = AppGlobal.appType;
+                //mp.LoadPlugin(plugfile);
+
+                //if (PluginDic.ContainsKey(mp.plugin.name) == false)
+                //{
+                //    PluginDic.Add(mp.plugin.name, mp);
+                //    DomainDic.Add(mp.plugin.name, appDomain);
+                //    mp.LoadAttribute(plugfile);
+                //}
+            }
+            else
+            {
+                ModulePlugin mp = new ModulePlugin();
+                mp.appType = AppGlobal.appType;
+                mp.LoadPlugin(plugfile);
+
+                if (PluginDic.ContainsKey(mp.plugin.name) == false)
                 {
-                    case AppType.Web:
-                        foreach (businessinfoDll dll in mp.plugin.businessinfoDllList)
-                        {
-                            dllList.Add(AppGlobal.AppRootPath + "bin\\" + dll.name);
-                        }
-                        if (dllList.Count > 0)
-                        {
-                            EntityManager.LoadAttribute(dllList, mp.cache, mp.plugin.name);
-                            WebControllerManager.LoadAttribute(dllList, mp);
-                            WebServicesManager.LoadAttribute(dllList, mp.cache, mp.plugin.name);
-                        }
-                        break;
-                    case AppType.Winform:
-                        foreach (businessinfoDll dll in mp.plugin.businessinfoDllList)
-                        {
-                            dllList.Add(AppGlobal.AppRootPath + dll.name);
-                        }
-                        if (dllList.Count > 0)
-                        {
-                            EntityManager.LoadAttribute(dllList, mp.cache, mp.plugin.name);
-                            WinformControllerManager.LoadAttribute(dllList, mp);
-                        }
-                        break;
-                    case AppType.WCF:
-                        foreach (businessinfoDll dll in mp.plugin.businessinfoDllList)
-                        {
-                            dllList.Add(AppGlobal.AppRootPath + dll.name);
-                        }
-                        if (dllList.Count > 0)
-                        {
-                            EntityManager.LoadAttribute(dllList, mp.cache, mp.plugin.name);
-                            WcfControllerManager.LoadAttribute(dllList, mp);
-                        }
-                        break;
-                    case AppType.WCFClient:
-                        foreach (businessinfoDll dll in mp.plugin.businessinfoDllList)
-                        {
-                            dllList.Add(AppGlobal.AppRootPath + dll.name);
-                        }
-                        if (dllList.Count > 0)
-                        {
-                            WinformControllerManager.LoadAttribute(dllList, mp);
-                        }
-                        break;
+                    PluginDic.Add(mp.plugin.name, mp);
+                    mp.LoadAttribute(plugfile);
                 }
             }
         }
-
+        /// <summary>
+        /// 卸载插件
+        /// </summary>
+        /// <param name="plugname"></param>
         public static void RemovePlugin(string plugname)
         {
             if (PluginDic.ContainsKey(plugname) == true)
             {
-                ICacheManager _cache = PluginDic[plugname].cache;
-
-                switch (AppGlobal.appType)
-                {
-                    case AppType.Web:
-                        EntityManager.ClearAttributeData(_cache, plugname);
-                        WebControllerManager.ClearAttributeData(_cache, plugname);
-                        WebServicesManager.ClearAttributeData(_cache, plugname);
-                        break;
-                    case AppType.Winform:
-                        EntityManager.ClearAttributeData(_cache, plugname);
-                        WinformControllerManager.ClearAttributeData(_cache, plugname);
-                        break;
-                    case AppType.WCF:
-                        EntityManager.ClearAttributeData(_cache, plugname);
-                        WcfControllerManager.ClearAttributeData(_cache, plugname);
-                        break;
-                }
-
+                PluginDic[plugname].Remove();
                 PluginDic.Remove(plugname);
             }
         }
+        /// <summary>
+        /// 卸载所有插件
+        /// </summary>
+        public static void RemoveAllPlugin()
+        {
+            foreach (var item in PluginDic)
+            {
+                RemovePlugin(item.Key);
+            }
+        }
+
 
         public static WebControllerAttributeInfo GetPluginWebControllerAttributeInfo(string pluginname, string name, out ModulePlugin mp)
         {

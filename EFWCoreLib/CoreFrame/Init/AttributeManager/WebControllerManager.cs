@@ -12,13 +12,13 @@ namespace EFWCoreLib.CoreFrame.Init.AttributeManager
 {
     public class WebControllerManager 
     {
-        public static void LoadAttribute(List<string> BusinessDll,ModulePlugin mp)
+        public static void LoadAttribute(List<Assembly> BusinessDll, ModulePlugin mp)
         {
             List<WebControllerAttributeInfo> cmdControllerList = new List<WebControllerAttributeInfo>();
 
             for (int k = 0; k < BusinessDll.Count; k++)
             {
-                System.Reflection.Assembly assembly = System.Reflection.Assembly.LoadFrom(BusinessDll[k]);
+                System.Reflection.Assembly assembly = BusinessDll[k]; //System.Reflection.Assembly.LoadFrom(BusinessDll[k]);
                 Type[] types = assembly.GetTypes();
                 for (int i = 0; i < types.Length; i++)
                 {

@@ -10,6 +10,7 @@ using System.Text;
 using System.Xml.Linq;
 using EFWCoreLib.WcfFrame.WcfService.Contract;
 using EFWCoreLib.WcfFrame.ServerController;
+using System.Drawing;
 
 namespace EFWCoreLib.WcfFrame.WcfService
 {
@@ -28,9 +29,9 @@ namespace EFWCoreLib.WcfFrame.WcfService
 
         public RouterHandlerService()
         {
-            hostwcfMsg(DateTime.Now, "Router服务正在初始化...");
+            hostwcfMsg(Color.Blue,DateTime.Now, "Router服务正在初始化...");
             RegistrationInfo.AddRouterBill();
-            hostwcfMsg(DateTime.Now, "Router服务初始化完成");
+            hostwcfMsg(Color.Blue,DateTime.Now, "Router服务初始化完成");
             hostwcfRouter(RegistrationList.Values.ToList());
         }
 
@@ -65,7 +66,7 @@ namespace EFWCoreLib.WcfFrame.WcfService
                     IClientChannel clientChannel = proxy as IClientChannel;
                     //Console.WriteLine(String.Format("Request received at {0}, to {1}\r\n\tAction: {2}", DateTime.Now, clientChannel.RemoteAddress.Uri.AbsoluteUri, requestMessage.Headers.Action));
                     if (WcfServerManage.IsDebug)
-                        hostwcfMsg(DateTime.Now, String.Format("路由请求消息发送：  {0}", clientChannel.RemoteAddress.Uri.AbsoluteUri));
+                        hostwcfMsg(Color.Black, DateTime.Now, String.Format("路由请求消息发送：  {0}", clientChannel.RemoteAddress.Uri.AbsoluteUri));
                     // 调用绑定的终结点的服务方法
                     Message responseMessage = proxy.ProcessMessage(requestMessage);
 

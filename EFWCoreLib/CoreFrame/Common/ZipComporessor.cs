@@ -3,6 +3,7 @@ using System.IO;
 using ICSharpCode.SharpZipLib.Zip;
 using System.Text;
 using ICSharpCode.SharpZipLib.BZip2;
+using ICSharpCode.SharpZipLib.GZip;
 
 namespace EFWCoreLib.CoreFrame.Common
 {
@@ -22,7 +23,7 @@ namespace EFWCoreLib.CoreFrame.Common
             byte[] buffer = Encoding.UTF8.GetBytes(input);
             using (MemoryStream outputStream = new MemoryStream())
             {
-                using (BZip2OutputStream zipStream = new BZip2OutputStream(outputStream))
+                using (GZipOutputStream zipStream = new GZipOutputStream(outputStream))
                 {
                     zipStream.Write(buffer, 0, buffer.Length);
                     zipStream.Close();
@@ -41,7 +42,7 @@ namespace EFWCoreLib.CoreFrame.Common
             byte[] buffer = Convert.FromBase64String(input);
             using (Stream inputStream = new MemoryStream(buffer))
             {
-                BZip2InputStream zipStream = new BZip2InputStream(inputStream);
+                GZipInputStream zipStream = new GZipInputStream(inputStream);
 
                 using (StreamReader reader = new StreamReader(zipStream, Encoding.UTF8))
                 {

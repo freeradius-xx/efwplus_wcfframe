@@ -78,6 +78,10 @@ namespace EFWCoreLib.WcfFrame.WcfService
             return WcfServerManage.ServerConfig();
         }
 
+        public string WcfServicesAllInfo()
+        {
+            return DebugWcfServices.getWcfServicesAllInfo();
+        }
         #endregion
 
         void Channel_Faulted(object sender, EventArgs e)
@@ -90,6 +94,11 @@ namespace EFWCoreLib.WcfFrame.WcfService
             //Loader.ShowHostMsg(DateTime.Now, "WCF通道关闭");
             //throw new Exception("WCF通道关闭");
         }
+
+       
+
+       
+ 
     }
 
 

@@ -123,17 +123,9 @@
     <Content Include="msn.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\实例Books\Books_Wcf.Winform\Books_Wcf.Winform.csproj">
-      <Project>{37492867-21a2-4102-8f30-eccafa84edea}</Project>
-      <Name>Books_Wcf.Winform</Name>
-    </ProjectReference>
     <ProjectReference Include="..\EfwControls\EfwControls.csproj">
       <Project>{a7618987-492b-4d5d-92c2-0381ec45817f}</Project>
       <Name>EfwControls</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WinMainUIFrame.Winform\WinMainUIFrame.Winform.csproj">
-      <Project>{1932a78b-7d0a-4c2f-9855-afb43c327c7b}</Project>
-      <Name>WinMainUIFrame.Winform</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

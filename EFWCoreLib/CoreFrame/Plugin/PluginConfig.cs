@@ -10,7 +10,7 @@ namespace EFWCoreLib.CoreFrame.Plugin
     /// <summary>
     /// 插件配置文件数据
     /// </summary>
-    public class PluginConfig
+    public class PluginConfig : MarshalByRefObject
     {
         public string name { get; set; }
         public string version { get; set; }
@@ -23,7 +23,7 @@ namespace EFWCoreLib.CoreFrame.Plugin
         public List<baseinfoData> baseinfoDataList { get; set; }
         public List<businessinfoDll> businessinfoDllList { get; set; }
 
-        public void Add(PluginSectionHandler plugin)
+        public void Load(PluginSectionHandler plugin, string plugfile)
         {
             if (plugin != null)
             {
@@ -49,14 +49,16 @@ namespace EFWCoreLib.CoreFrame.Plugin
                     if (businessinfoDllList.FindIndex(x => x.name == dll.name) == -1)
                     {
                         bool exists = false;
-                        if (plugintype.ToLower() == "winform" || plugintype.ToLower() == "wcf")
-                        {
-                            exists = new FileInfo(AppGlobal.AppRootPath + dll.name).Exists;
-                        }
-                        else if (plugintype.ToLower() == "web")
-                        {
-                            exists = new FileInfo(AppGlobal.AppRootPath +"bin\\" + dll.name).Exists;
-                        }
+                        //if (plugintype.ToLower() == "winform" || plugintype.ToLower() == "wcf")
+                        //{
+                        //    exists = new FileInfo(AppGlobal.AppRootPath + dll.name).Exists;
+                        //}
+                        //else if (plugintype.ToLower() == "web")
+                        //{
+                        //    exists = new FileInfo(AppGlobal.AppRootPath +"bin\\" + dll.name).Exists;
+                        //}
+                        string dllpath = new System.IO.FileInfo(plugfile).DirectoryName + "\\dll";
+                        exists = new FileInfo(dllpath + "\\" + dll.name).Exists;
 
                         if (exists)
                             businessinfoDllList.Add(dll);

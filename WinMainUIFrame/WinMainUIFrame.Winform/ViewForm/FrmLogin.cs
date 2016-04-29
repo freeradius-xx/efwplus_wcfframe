@@ -177,5 +177,10 @@ namespace WinMainUIFrame.Winform.ViewForm
                 btLogin_Click(null, null);
             }
         }
+
+        private void btnconn_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            AppGlobal.AppConfig();
+        }
     }
 }

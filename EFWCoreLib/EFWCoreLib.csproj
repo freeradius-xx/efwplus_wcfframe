@@ -145,6 +145,12 @@
     <Compile Include="CoreFrame\Init\AttributeManager\WebControllerManager.cs" />
     <Compile Include="CoreFrame\Init\AttributeManager\WebServicesManager.cs" />
     <Compile Include="CoreFrame\Init\AttributeManager\WinformControllerManager.cs" />
+    <Compile Include="CoreFrame\Init\FrmConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CoreFrame\Init\FrmConfig.Designer.cs">
+      <DependentUpon>FrmConfig.cs</DependentUpon>
+    </Compile>
     <Compile Include="CoreFrame\Init\FrmSplash.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +181,7 @@
     <Compile Include="CoreFrame\Init\AttributeManager\EntityManager.cs" />
     <Compile Include="CoreFrame\Init\AppPluginManage.cs" />
     <Compile Include="CoreFrame\ORM\SqlMapper.cs" />
+    <Compile Include="CoreFrame\Plugin\AbstractControllerHelper.cs" />
     <Compile Include="CoreFrame\Plugin\ModulePlugin.cs" />
     <Compile Include="CoreFrame\Plugin\PluginConfig.cs" />
     <Compile Include="CoreFrame\Plugin\PluginSectionHandler.cs" />
@@ -249,6 +256,9 @@
       <DependentUpon>BaseFormBusiness.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="CoreFrame\Init\FrmConfig.resx">
+      <DependentUpon>FrmConfig.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CoreFrame\Init\FrmSplash.resx">
       <DependentUpon>FrmSplash.cs</DependentUpon>
     </EmbeddedResource>
@@ -297,7 +307,9 @@
     <Compile Include="WcfFrame\ClientController\ReplyClientCallBack.cs" />
     <Compile Include="WcfFrame\ClientController\WcfClientController.cs" />
     <Compile Include="WcfFrame\ClientController\WcfClientManage.cs" />
+    <Compile Include="WcfFrame\JSONH.cs" />
     <Compile Include="WcfFrame\ServerController\ControllerHelper.cs" />
+    <Compile Include="WcfFrame\ServerController\DebugWcfServices.cs" />
     <Compile Include="WcfFrame\ServerController\JsonWcfServerController.cs" />
     <Compile Include="WcfFrame\ServerController\WcfServerController.cs" />
     <Compile Include="WcfFrame\ServerController\WcfServerManage.cs" />

@@ -18,6 +18,7 @@ namespace WCFHosting
     {
         ServiceHost mAppHost = null;
         ServiceHost mRouterHost = null;
+        long timeCount = 0;//运行次数
         HostState RunState
         {
             set
@@ -28,6 +29,9 @@ namespace WCFHosting
                     btnStop.Enabled = false;
                     启动ToolStripMenuItem.Enabled = true;
                     停止ToolStripMenuItem.Enabled = false;
+
+                    lbStatus.Text = "服务未启动";
+                    timer1.Enabled = false;
                 }
                 else
                 {
@@ -35,6 +39,10 @@ namespace WCFHosting
                     btnStop.Enabled = true;
                     启动ToolStripMenuItem.Enabled = false;
                     停止ToolStripMenuItem.Enabled = true;
+
+                    lbStatus.Text = "服务已运行";
+                    timeCount = 0;
+                    timer1.Enabled = true;
                 }
             }
         }
@@ -79,7 +87,7 @@ namespace WCFHosting
             WcfServerManage.OverTime = Convert.ToInt32(HostSettingConfig.GetValue("overtimetime"));
             WcfServerManage.StartWCFHost();
 
-            AddMsg(DateTime.Now, "WCF主机启动完成");
+            AddMsg(Color.Blue,DateTime.Now, "WCF主机启动完成");
            
         }
         private void StartRouterHost()
@@ -98,7 +106,7 @@ namespace WCFHosting
 
             mRouterHost.Open();
 
-            AddMsg(DateTime.Now, "路由器启动完成");
+            AddMsg(Color.Blue,DateTime.Now, "路由器启动完成");
             //Loader.hostwcfclientinfoList = new HostWCFClientInfoListHandler(BindGridClient);
            
         }
@@ -120,15 +128,16 @@ namespace WCFHosting
                     {
                         WcfServerManage.StopWCFHost();
                         mAppHost.Close();
-                        AddMsg(DateTime.Now, "WCF主机已关闭");
+                        AddMsg(Color.Blue, DateTime.Now, "WCF主机已关闭");
                     }
 
                     if (mRouterHost != null)
                     {
                         mRouterHost.Close();
                         RouterHandlerService.Dispose();
-                        AddMsg(DateTime.Now, "路由器已关闭");
+                        AddMsg(Color.Blue, DateTime.Now, "路由器已关闭");
                     }
+
                 }
                 catch
                 {
@@ -149,26 +158,27 @@ namespace WCFHosting
             this.notifyIcon1.Text = this.Text;
 
             RunState = HostState.NoOpen;
-
+            lsServerUrl.Text = ReadConfig.GetWcfServerUrl();
             btnStart_Click(null, null);//打开服务主机后自动启动服务
         }
 
-        public delegate void textInvoke(string msg);
+        public delegate void textInvoke(Color clr, string msg);
         public delegate void gridInvoke(DataGridView grid, object data);
-        private void settext(string msg)
+        private void settext(Color clr, string msg)
         {
             if (richTextMsg.InvokeRequired)
             {
                 textInvoke ti = new textInvoke(settext);
-                this.BeginInvoke(ti, new object[] { msg });
+                this.BeginInvoke(ti, new object[] { clr, msg });
             }
             else
             {
-                if (richTextMsg.Text.Length == 0)
-                    msg = msg.Replace("\n", "");
-                if (richTextMsg.Lines.Length > 1 && richTextMsg.Lines[richTextMsg.Lines.Length - 1].Length == 0)
-                    msg = msg.Replace("\n", "");
-                richTextMsg.AppendText(msg + "\n");
+                ListViewItem lstItem = new ListViewItem(msg);
+                lstItem.ForeColor = clr;
+                if (richTextMsg.Items.Count > 1000)
+                    richTextMsg.Items.Clear();
+                richTextMsg.Items.Add(lstItem);
+                richTextMsg.SelectedIndex = richTextMsg.Items.Count - 1;
             }
         }
         private void setgrid(DataGridView grid, object data)
@@ -190,9 +200,10 @@ namespace WCFHosting
         {
             setgrid(gridClientList,dic);
         }
-        private void AddMsg(DateTime time, string msg)
+        private void AddMsg(Color clr, DateTime time, string msg)
         {
-            settext("\n[" + time.ToString("yyyy-MM-dd HH:mm:ss") + "] : " + msg);
+            msg = msg.Length > 10000 ? msg.Substring(0, 10000) : msg;
+            settext(clr,"[" + time.ToString("yyyy-MM-dd HH:mm:ss") + "] : " + msg);
         }
         private void BindGridRouter(List<RegistrationInfo> dic)
         {
@@ -253,6 +264,60 @@ namespace WCFHosting
         {
             FrmPlugin plugin = new FrmPlugin();
             plugin.ShowDialog();
+        }
+
+        private void 清除日志ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextMsg.Items.Clear();
+        }
+
+        private void 复制日志ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (richTextMsg.SelectedItem == null)
+                return;
+            StringBuilder strMessage = new StringBuilder();
+            for (int i = 0; i < richTextMsg.Items.Count; i++)
+            {
+                if (richTextMsg.GetSelected(i))
+                    strMessage.Append(richTextMsg.SelectedItem.ToString());
+            }
+
+            Clipboard.SetDataObject(strMessage.ToString());
+        }
+
+        private void richTextMsg_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0)
+                return;
+            ListViewItem lstItem = (ListViewItem)richTextMsg.Items[e.Index];
+            e.DrawBackground();
+            Brush brsh = Brushes.White;
+            if ((e.State & DrawItemState.Selected) != DrawItemState.Selected)
+                brsh = new SolidBrush(lstItem.ForeColor);
+            String sText = lstItem.Text.Replace('\n', ' ');
+            SizeF sz = e.Graphics.MeasureString(sText, e.Font, new SizeF(e.Bounds.Width, e.Bounds.Height));
+            e.Graphics.DrawString(sText, e.Font, brsh, e.Bounds.Left, e.Bounds.Top + (e.Bounds.Height - sz.Height) / 2 + 0.5f);
+        }
+
+        private void tabMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabMain.SelectedIndex == 2)
+                lsServerUrl.Text = ReadConfig.GetRouterUrl();
+            else
+                lsServerUrl.Text = ReadConfig.GetWcfServerUrl();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timeCount++;
+            //显示运行时间
+            long iHour = timeCount / 3600;
+            long iMin = (timeCount % 3600) / 60;
+            long iSec = timeCount % 60;
+            if (iHour > 23)
+                lbRunTime.Text = String.Format("{0}天 {1:02d}:{2:0#}:{3:0#}", iHour / 24, iHour % 24, iMin, iSec);
+            else
+                lbRunTime.Text = String.Format("{0:0#}:{1:0#}:{2:0#}", iHour, iMin, iSec);
         }
     }
 

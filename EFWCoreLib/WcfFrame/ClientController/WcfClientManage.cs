@@ -8,6 +8,8 @@ using EFWCoreLib.CoreFrame.Init;
 using System.Net;
 using System.Text.RegularExpressions;
 using EFWCoreLib.CoreFrame.Common;
+using EFWCoreLib.WcfFrame.ServerController;
+using Newtonsoft.Json;
 
 namespace EFWCoreLib.WcfFrame.ClientController
 {
@@ -189,6 +191,7 @@ namespace EFWCoreLib.WcfFrame.ClientController
                 if (WcfClientManage.IsCompressJson)//开启压缩
                 {
                     jsondata = ZipComporessor.Compress(jsondata);//压缩传入参数
+                    //jsondata = JsonComporessor.Compress(jsondata);//压缩传入参数
                 }
 
                 IWCFHandlerService _wcfService = AppGlobal.cache.GetData("WCFService") as IWCFHandlerService;
@@ -203,6 +206,7 @@ namespace EFWCoreLib.WcfFrame.ClientController
                 if (WcfClientManage.IsCompressJson)
                 {
                     retJson = ZipComporessor.Decompress(retJson);
+                    //retJson = JsonComporessor.Decompress(retJson);
                 }
 
                 if (WcfClientManage.IsHeartbeat == false)//如果没有启动心跳，则请求发送心跳
@@ -236,6 +240,7 @@ namespace EFWCoreLib.WcfFrame.ClientController
                 if (WcfClientManage.IsCompressJson)//开启压缩
                 {
                     jsondata = ZipComporessor.Compress(jsondata);//压缩传入参数
+                    //jsondata = JsonComporessor.Compress(jsondata);//压缩传入参数
                 }
 
                 IWCFHandlerService _wcfService = AppGlobal.cache.GetData("WCFService") as IWCFHandlerService;
@@ -253,6 +258,7 @@ namespace EFWCoreLib.WcfFrame.ClientController
                         if (WcfClientManage.IsCompressJson)
                         {
                             retJson = ZipComporessor.Decompress(retJson);
+                            //retJson = JsonComporessor.Decompress(retJson);
                         }
 
                         action(retJson);
@@ -320,6 +326,19 @@ namespace EFWCoreLib.WcfFrame.ClientController
         public static void ReplyClient(string jsondata)
         {
 
+        }
+
+
+        public static List<dwPlugin> GetWcfServicesAllInfo()
+        {
+            IWCFHandlerService _wcfService = AppGlobal.cache.GetData("WCFService") as IWCFHandlerService;
+            using (var scope = new OperationContextScope(_wcfService as IContextChannel))
+            {
+                var router = System.ServiceModel.Channels.MessageHeader.CreateHeader("routerID", myNamespace, AppGlobal.cache.GetData("routerID").ToString());
+                OperationContext.Current.OutgoingMessageHeaders.Add(router);
+                string ret = _wcfService.WcfServicesAllInfo();
+                return JsonConvert.DeserializeObject<List<dwPlugin>>(ret);
+            }
         }
 
         //向服务端发送心跳，间隔时间为5s

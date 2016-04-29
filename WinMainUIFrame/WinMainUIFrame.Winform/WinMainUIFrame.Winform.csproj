@@ -38,7 +38,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\</OutputPath>
+    <OutputPath>..\..\Output_Client\ModulePlugin\WcfMainUIFrame\dll\</OutputPath>
     <DefineConstants>TRACE;DEBUG;WcfFrame</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -96,9 +96,6 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="WinMainUIFrame">
-      <HintPath>..\..\Output\WinMainUIFrame.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\CustomConfigManager.cs" />
@@ -308,6 +305,10 @@
     <ProjectReference Include="..\EfwControls\EfwControls.csproj">
       <Project>{a7618987-492b-4d5d-92c2-0381ec45817f}</Project>
       <Name>EfwControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WinMainUIFrame\WinMainUIFrame.csproj">
+      <Project>{d780897a-2d34-4830-b98e-eed04dfc8acf}</Project>
+      <Name>WinMainUIFrame</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

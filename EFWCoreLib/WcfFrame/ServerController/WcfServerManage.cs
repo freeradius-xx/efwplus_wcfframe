@@ -9,6 +9,7 @@ using EFWCoreLib.WcfFrame.WcfService.Contract;
 using System.Reflection;
 using EFWCoreLib.CoreFrame.Init;
 using EFWCoreLib.CoreFrame.Common;
+using System.Drawing;
 
 namespace EFWCoreLib.WcfFrame.ServerController
 {
@@ -36,9 +37,9 @@ namespace EFWCoreLib.WcfFrame.ServerController
         /// </summary>
         public static void StartWCFHost()
         {
-            ShowHostMsg(DateTime.Now, "WCFHandlerService服务正在初始化...");
+            ShowHostMsg(Color.Blue,DateTime.Now, "WCFHandlerService服务正在初始化...");
             AppGlobal.AppStart();
-            ShowHostMsg(DateTime.Now, "WCFHandlerService服务初始化完成");
+            ShowHostMsg(Color.Blue,DateTime.Now, "WCFHandlerService服务初始化完成");
 
             if (IsHeartbeat == true)
             {
@@ -108,7 +109,7 @@ namespace EFWCoreLib.WcfFrame.ServerController
 
                 //显示调试信息
                 if (WcfServerManage.IsDebug == true)
-                    ShowHostMsg(DateTime.Now, "客户端[" + clientId + "]正在执行：" + controller + "." + method + "(" + jsondata + ")");
+                    ShowHostMsg(Color.Black, DateTime.Now, "客户端[" + clientId + "]正在执行：" + controller + "." + method + "(" + jsondata + ")");
 
                 begintime();
                 object[] paramValue = null;//jsondata?
@@ -118,15 +119,24 @@ namespace EFWCoreLib.WcfFrame.ServerController
                 if (WcfServerManage.IsCompressJson)
                 {
                     _jsondata = ZipComporessor.Decompress(jsondata);
+                    //_jsondata = JsonComporessor.Decompress(jsondata);
                 }
 
-                WcfServerController wscontroller = ControllerHelper.CreateController(controller);
-                wscontroller.ParamJsonData = _jsondata;
-                wscontroller.ClientInfo = ClientInfo;
+                string[] names = controller.Split(new char[] { '@' });
+                if (names.Length != 2) 
+                    throw new Exception("控制器名称错误!");
+                string pluginname = names[0];
+                string cname = names[1];
 
-                MethodInfo methodinfo = ControllerHelper.CreateMethodInfo(controller, method, wscontroller);
-                //?此处存在并发问题
-                Object retObj = methodinfo.Invoke(wscontroller, paramValue); //带参数方法的调用并返回值
+                Object retObj = null;
+                if (AppPluginManage.PluginDic.ContainsKey(pluginname) == true)
+                {
+                    EFWCoreLib.CoreFrame.Plugin.ModulePlugin plugin = AppPluginManage.PluginDic[pluginname];
+                    retObj = plugin.WcfServerExecuteMethod(cname, method, paramValue, _jsondata, ClientInfo);
+                }
+                else
+                    throw new Exception("请求的插件未找到");
+
                 if (retObj != null)
                     retJson = retObj.ToString();
 
@@ -136,6 +146,7 @@ namespace EFWCoreLib.WcfFrame.ServerController
                 if (WcfServerManage.IsCompressJson)
                 {
                     retJson = ZipComporessor.Compress(retJson);
+                    //retJson = JsonComporessor.Compress(retJson);
                 }
 
                 //System.Threading.Thread.Sleep(20000);//测试并发问题，此处也没有问题
@@ -150,7 +161,7 @@ namespace EFWCoreLib.WcfFrame.ServerController
                 }
                 //显示调试信息
                 if (WcfServerManage.IsDebug == true)
-                    ShowHostMsg(DateTime.Now, "客户端[" + clientId + "]收到结果(耗时[" + outtime + "])：" + retJson);
+                    ShowHostMsg(Color.Green, DateTime.Now, "客户端[" + clientId + "]收到结果(耗时[" + outtime + "])：" + retJson);
 
                 //更新客户端信息
                 UpdateRequestClient(clientId, jsondata == null ? 0 : jsondata.Length, retJson == null ? 0 : retJson.Length);
@@ -168,8 +179,9 @@ namespace EFWCoreLib.WcfFrame.ServerController
                     if (WcfServerManage.IsCompressJson)
                     {
                         retJson = ZipComporessor.Compress(retJson);
+                        //retJson = JsonComporessor.Compress(retJson);
                     }
-                    ShowHostMsg(DateTime.Now, "客户端[" + clientId + "]执行失败：" + controller + "." + method + "(" + jsondata + ")\n错误原因：" + err.Message);
+                    ShowHostMsg(Color.Red, DateTime.Now, "客户端[" + clientId + "]执行失败：" + err.Message);
                     return retJson;
                 }
                 else
@@ -178,8 +190,9 @@ namespace EFWCoreLib.WcfFrame.ServerController
                     if (WcfServerManage.IsCompressJson)
                     {
                         retJson = ZipComporessor.Compress(retJson);
+                        //retJson = JsonComporessor.Compress(retJson);
                     }
-                    ShowHostMsg(DateTime.Now, "客户端[" + clientId + "]执行失败：" + controller + "." + method + "(" + jsondata + ")\n错误原因：" + err.InnerException.Message);
+                    ShowHostMsg(Color.Red, DateTime.Now, "客户端[" + clientId + "]执行失败：" + err.InnerException.Message);
                     return retJson;
                 }
             }
@@ -245,7 +258,7 @@ namespace EFWCoreLib.WcfFrame.ServerController
             {
                 wcfClientDic.Add(clientId, info);
             }
-            ShowHostMsg(DateTime.Now, "客户端[" + ipaddress + "]已连接WCF服务主机");
+            ShowHostMsg(Color.Blue, DateTime.Now, "客户端[" + ipaddress + "]已连接WCF服务主机");
         }
 
         private static bool UpdateRequestClient(string clientId, int rlen, int slen)
@@ -286,7 +299,7 @@ namespace EFWCoreLib.WcfFrame.ServerController
                 {
 
                     wcfClientDic.Remove(clientId);
-                    ShowHostMsg(DateTime.Now, "客户端[" + clientId + "]已退出断开连接WCF服务主机");
+                    ShowHostMsg(Color.Blue, DateTime.Now, "客户端[" + clientId + "]已退出断开连接WCF服务主机");
                 }
             }
         }
@@ -298,7 +311,7 @@ namespace EFWCoreLib.WcfFrame.ServerController
                 {
                     if (wcfClientDic[clientId].IsConnect == false)
                     {
-                        ShowHostMsg(DateTime.Now, "客户端[" + clientId + "]已重新连接WCF服务主机");
+                        ShowHostMsg(Color.Blue,DateTime.Now, "客户端[" + clientId + "]已重新连接WCF服务主机");
                         wcfClientDic[clientId].IsConnect = true;
                     }
                 }
@@ -314,16 +327,16 @@ namespace EFWCoreLib.WcfFrame.ServerController
                     if (wcfClientDic[clientId].IsConnect == true)
                     {
                         wcfClientDic[clientId].IsConnect = false;
-                        ShowHostMsg(DateTime.Now, "客户端[" + clientId + "]已超时断开连接WCF服务主机");
+                        ShowHostMsg(Color.Blue,DateTime.Now, "客户端[" + clientId + "]已超时断开连接WCF服务主机");
                     }
                 }
             }
         }
-        private static void ShowHostMsg(DateTime time, string text)
+        private static void ShowHostMsg(Color clr,DateTime time, string text)
         {
             lock (hostwcfMsg)
             {
-                hostwcfMsg.BeginInvoke(time, text, null, null);//异步方式不影响后台数据请求
+                hostwcfMsg.BeginInvoke(clr,time, text, null, null);//异步方式不影响后台数据请求
                 //hostwcfMsg(time, text);
             }
         }
@@ -414,7 +427,7 @@ namespace EFWCoreLib.WcfFrame.ServerController
     /// <summary>
     /// 连接客户端信息
     /// </summary>
-    public class WCFClientInfo:ICloneable
+    public class WCFClientInfo : MarshalByRefObject,ICloneable
     {
         public string clientId { get; set; }
         public string ipAddress { get; set; }
@@ -447,5 +460,5 @@ namespace EFWCoreLib.WcfFrame.ServerController
     }
 
     public delegate void HostWCFClientInfoListHandler(List<WCFClientInfo> dic);
-    public delegate void HostWCFMsgHandler(DateTime time, string text);
+    public delegate void HostWCFMsgHandler(System.Drawing.Color clr, DateTime time, string text);
 }

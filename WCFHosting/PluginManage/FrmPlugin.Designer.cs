@@ -28,19 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gridlocal = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.btnDel = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.重载插件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.内存卸载ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.内存加载ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnreload = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.btnDel = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridlocal)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,6 +73,7 @@
             this.Column2,
             this.Column3,
             this.Column4});
+            this.gridlocal.ContextMenuStrip = this.contextMenuStrip1;
             this.gridlocal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridlocal.Location = new System.Drawing.Point(0, 0);
             this.gridlocal.MultiSelect = false;
@@ -75,51 +84,6 @@
             this.gridlocal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridlocal.Size = new System.Drawing.Size(534, 295);
             this.gridlocal.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.btnDel);
-            this.panel2.Controls.Add(this.btnAdd);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 295);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(534, 67);
-            this.panel2.TabIndex = 1;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(418, 20);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 28);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "关闭";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // btnDel
-            // 
-            this.btnDel.Location = new System.Drawing.Point(127, 20);
-            this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(75, 28);
-            this.btnDel.TabIndex = 1;
-            this.btnDel.Text = "卸载插件";
-            this.btnDel.UseVisualStyleBackColor = true;
-            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(31, 20);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 28);
-            this.btnAdd.TabIndex = 0;
-            this.btnAdd.Text = "添加插件";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // openFileDialog
-            // 
-            this.openFileDialog.Filter = "插件包|*.zip";
             // 
             // Column1
             // 
@@ -154,6 +118,98 @@
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.重载插件ToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.内存卸载ToolStripMenuItem,
+            this.内存加载ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 76);
+            // 
+            // 重载插件ToolStripMenuItem
+            // 
+            this.重载插件ToolStripMenuItem.Name = "重载插件ToolStripMenuItem";
+            this.重载插件ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.重载插件ToolStripMenuItem.Text = "重载插件";
+            this.重载插件ToolStripMenuItem.Click += new System.EventHandler(this.重载插件ToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(121, 6);
+            // 
+            // 内存卸载ToolStripMenuItem
+            // 
+            this.内存卸载ToolStripMenuItem.Name = "内存卸载ToolStripMenuItem";
+            this.内存卸载ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.内存卸载ToolStripMenuItem.Text = "内存卸载";
+            this.内存卸载ToolStripMenuItem.Click += new System.EventHandler(this.内存卸载ToolStripMenuItem_Click);
+            // 
+            // 内存加载ToolStripMenuItem
+            // 
+            this.内存加载ToolStripMenuItem.Name = "内存加载ToolStripMenuItem";
+            this.内存加载ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.内存加载ToolStripMenuItem.Text = "内存加载";
+            this.内存加载ToolStripMenuItem.Click += new System.EventHandler(this.内存加载ToolStripMenuItem_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btnreload);
+            this.panel2.Controls.Add(this.button3);
+            this.panel2.Controls.Add(this.btnDel);
+            this.panel2.Controls.Add(this.btnAdd);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 295);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(534, 67);
+            this.panel2.TabIndex = 1;
+            // 
+            // btnreload
+            // 
+            this.btnreload.Location = new System.Drawing.Point(193, 20);
+            this.btnreload.Name = "btnreload";
+            this.btnreload.Size = new System.Drawing.Size(75, 28);
+            this.btnreload.TabIndex = 3;
+            this.btnreload.Text = "重载插件";
+            this.btnreload.UseVisualStyleBackColor = true;
+            this.btnreload.Click += new System.EventHandler(this.重载插件ToolStripMenuItem_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(418, 20);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 28);
+            this.button3.TabIndex = 2;
+            this.button3.Text = "关闭";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // btnDel
+            // 
+            this.btnDel.Location = new System.Drawing.Point(112, 20);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(75, 28);
+            this.btnDel.TabIndex = 1;
+            this.btnDel.Text = "卸载插件";
+            this.btnDel.UseVisualStyleBackColor = true;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(31, 20);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 28);
+            this.btnAdd.TabIndex = 0;
+            this.btnAdd.Text = "添加插件";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.Filter = "插件包|*.zip";
+            // 
             // FrmPlugin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -171,6 +227,7 @@
             this.Load += new System.EventHandler(this.FrmPlugin_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridlocal)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -189,5 +246,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.Button btnreload;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 重载插件ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 内存卸载ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 内存加载ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }

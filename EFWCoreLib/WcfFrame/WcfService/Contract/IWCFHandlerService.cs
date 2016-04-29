@@ -70,6 +70,13 @@ namespace EFWCoreLib.WcfFrame.WcfService.Contract
         /// </summary>
         [OperationContract(IsOneWay = false)]
         string ServerConfig();
+
+        /// <summary>
+        /// 返回所有WCF服务的配置信息，包括插件名称、控制器名称、方法名称
+        /// </summary>
+        /// <returns></returns>
+        [OperationContract(IsOneWay = false)]
+        string WcfServicesAllInfo();
     }
 
     /// <summary>

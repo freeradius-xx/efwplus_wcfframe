@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Web.Services;
 using Microsoft.Practices.EnterpriseLibrary.Caching;
@@ -9,13 +10,14 @@ namespace EFWCoreLib.CoreFrame.Init.AttributeManager
 {
     public class WebServicesManager 
     {
-        public static void LoadAttribute(List<string> BusinessDll, ICacheManager cache, string pluginName)
+        public static void LoadAttribute(List<Assembly> BusinessDll, ICacheManager cache, string pluginName)
         {
             List<WebServicesAttributeInfo> webserviceList = new List<WebServicesAttributeInfo>();
 
             for (int k = 0; k < BusinessDll.Count; k++)
             {
-                System.Reflection.Assembly assembly = System.Reflection.Assembly.LoadFrom(BusinessDll[k]);
+                //System.Reflection.Assembly assembly = System.Reflection.Assembly.LoadFrom(BusinessDll[k]);
+                System.Reflection.Assembly assembly = BusinessDll[k]; 
                 Type[] types = assembly.GetTypes();
                 for (int i = 0; i < types.Length; i++)
                 {

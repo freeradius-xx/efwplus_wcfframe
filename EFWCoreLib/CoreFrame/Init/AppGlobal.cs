@@ -119,20 +119,20 @@ namespace EFWCoreLib.CoreFrame.Init
                         codeList = new List<FunClass>();
                         missingDll = new List<string>();
 
+                        //加载插件
                         AppPluginManage.LoadAllPlugin();
 
+                        //下面三个需要配置unity.config
                         //初始化Web定制任务
                         MultiTask.Init(container, taskList);//任务                       
                         //是否开启Web控制器请求权限认证
-
                         //扩展Global，网站程序启动、停止可自定义代码
                         GlobalExtend.StartInit();
                         //初始化委托代码
                         BaseDelegateCode.Init(container, codeList);//执行函数
 
                         _isCalled = true;
-                       
-
+                      
                         IsRun = true;
 
                         if (missingDll.Count > 0)
@@ -192,12 +192,18 @@ namespace EFWCoreLib.CoreFrame.Init
             Application.Run(frmSplash);
         }
 
+        public static void AppConfig()
+        {
+            FrmConfig config = new FrmConfig();
+            config.ShowDialog();
+        }
+
         public static void AppExit()
         {
             (winfromMain as Form).Dispose();
         }
 
-        static void AppGlobal_Init(object sender, EventArgs e)
+        static bool AppGlobal_Init()
         {
             try
             {
@@ -244,6 +250,8 @@ namespace EFWCoreLib.CoreFrame.Init
 #endif
                         break;
                 }
+
+                return true;
                 
             }
             catch (Exception err)
@@ -252,8 +260,9 @@ namespace EFWCoreLib.CoreFrame.Init
                 ZhyContainer.CreateException().HandleException(err, "HISPolicy");
                 //Application.Exit();
                 //throw new Exception(err.Message + "\n\n请联系管理员！");
-                MessageBox.Show(err.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                AppExit();
+                MessageBox.Show(err.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                //AppExit();
+                return false;
             }
         }
     }

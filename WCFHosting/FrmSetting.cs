@@ -33,6 +33,7 @@ namespace WCFHosting
             HostSettingConfig.SetValue("overtimetime", txtovertime.Text);
             HostSettingConfig.SaveConfig();
             isOk = true;
+            MessageBox.Show("保存参数后，需重启服务才会使用到！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
 

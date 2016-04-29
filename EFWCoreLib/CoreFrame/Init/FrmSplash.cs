@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace EFWCoreLib.CoreFrame.Init
 {
+    public delegate bool LoadingHandler();
 	/// <summary>
 	/// frmSplash 的摘要说明。
 	/// </summary>
@@ -20,6 +21,8 @@ namespace EFWCoreLib.CoreFrame.Init
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripMenuItem 退出ToolStripMenuItem;
         private PictureBox pictureBox1;
+        private LinkLabel btnConfig;
+        private LinkLabel btnclose;
         private IContainer components;
 
 
@@ -35,8 +38,8 @@ namespace EFWCoreLib.CoreFrame.Init
             //
         }
 
-        private EventHandler _handler;
-        public FrmSplash(EventHandler handler)
+        private LoadingHandler _handler;
+        public FrmSplash(LoadingHandler handler)
         {
             InitializeComponent();
             _handler = handler;
@@ -75,6 +78,8 @@ namespace EFWCoreLib.CoreFrame.Init
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnConfig = new System.Windows.Forms.LinkLabel();
+            this.btnclose = new System.Windows.Forms.LinkLabel();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -144,11 +149,43 @@ namespace EFWCoreLib.CoreFrame.Init
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
+            // btnConfig
+            // 
+            this.btnConfig.AutoSize = true;
+            this.btnConfig.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnConfig.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.btnConfig.Font = new System.Drawing.Font("楷体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnConfig.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.btnConfig.Location = new System.Drawing.Point(12, 138);
+            this.btnConfig.Name = "btnConfig";
+            this.btnConfig.Size = new System.Drawing.Size(106, 18);
+            this.btnConfig.TabIndex = 2;
+            this.btnConfig.TabStop = true;
+            this.btnConfig.Text = "设置通讯连接";
+            this.btnConfig.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnConfig_LinkClicked);
+            // 
+            // btnclose
+            // 
+            this.btnclose.AutoSize = true;
+            this.btnclose.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnclose.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.btnclose.Font = new System.Drawing.Font("楷体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnclose.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.btnclose.Location = new System.Drawing.Point(277, 138);
+            this.btnclose.Name = "btnclose";
+            this.btnclose.Size = new System.Drawing.Size(58, 18);
+            this.btnclose.TabIndex = 3;
+            this.btnclose.TabStop = true;
+            this.btnclose.Text = "关  闭";
+            this.btnclose.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnclose_LinkClicked);
+            // 
             // FrmSplash
             // 
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(347, 167);
             this.ControlBox = false;
+            this.Controls.Add(this.btnclose);
+            this.Controls.Add(this.btnConfig);
             this.Controls.Add(this.pictureBox1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -162,6 +199,7 @@ namespace EFWCoreLib.CoreFrame.Init
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
         #endregion
@@ -169,10 +207,13 @@ namespace EFWCoreLib.CoreFrame.Init
 
         private void FrmSplash_Load(object sender, EventArgs e)
         {
+            this.btnConfig.Visible = false;
+            this.btnclose.Visible = false;
+
             this.timer1.Enabled = true;
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.Icon = EFWCoreLib.Properties.Resources.msn;
-            this.notifyIcon1.Text = "EFW框架客户端程序";
+            this.notifyIcon1.Text = "EFW框架客户端程序";            
         }
 
         private void FrmSplash_FormClosing(object sender, FormClosingEventArgs e)
@@ -184,8 +225,16 @@ namespace EFWCoreLib.CoreFrame.Init
         {
             this.timer1.Enabled = false;
             if (_handler != null)
-                _handler.Invoke(null, null);
-            this.Hide();
+            {
+                if (_handler.Invoke())
+                    this.Hide();
+                else
+                {
+                    //显示连接失败，配置连接
+                    btnConfig.Visible = true;
+                    btnclose.Visible = true;
+                }
+            }
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -221,5 +270,15 @@ namespace EFWCoreLib.CoreFrame.Init
         }
 
         #endregion
+
+        private void btnclose_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void btnConfig_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            AppGlobal.AppConfig();
+        }
     }
 }

@@ -108,6 +108,7 @@
     <Compile Include="PluginManage\PluginSysManage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReadConfig.cs" />
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -160,14 +161,6 @@
     <ProjectReference Include="..\EFWCoreLib\EFWCoreLib.csproj">
       <Project>{c5a8c124-18c0-43f4-b5a2-0f71bb833e82}</Project>
       <Name>EFWCoreLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WinMainUIFrame\WinMainUIFrame\WinMainUIFrame.csproj">
-      <Project>{d780897a-2d34-4830-b98e-eed04dfc8acf}</Project>
-      <Name>WinMainUIFrame</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\实例Books\Books_Wcf\Books_Wcf.csproj">
-      <Project>{79168a48-52a6-4486-9cd1-c3e05f9bd94b}</Project>
-      <Name>Books_Wcf</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

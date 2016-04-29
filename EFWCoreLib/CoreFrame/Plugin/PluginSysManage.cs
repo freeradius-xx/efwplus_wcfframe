@@ -17,7 +17,10 @@ namespace EFWCoreLib.CoreFrame.Plugin
             xmlDoc = new System.Xml.XmlDocument();
             xmlDoc.Load(pluginsysFile);
         }
-
+        /// <summary>
+        /// 获取所有插件路径
+        /// </summary>
+        /// <returns></returns>
         public static List<string> GetAllPluginFile()
         {
             List<string> pflist = new List<string>();
@@ -43,6 +46,37 @@ namespace EFWCoreLib.CoreFrame.Plugin
                 pflist.Add(n.Attributes["path"].Value);
             }
             return pflist;
+        }
+        /// <summary>
+        /// 根据插件名获取插件路径
+        /// </summary>
+        /// <param name="pluginname"></param>
+        /// <returns></returns>
+        public static string GetPluginFile(string pluginname)
+        {
+            string pluginpath = null;
+            if (xmlDoc == null) InitConfig();
+            XmlNode xn = null;
+            string path = AppGlobal.AppRootPath;
+            switch (AppGlobal.appType)
+            {
+                case AppType.Web:
+                    xn = xmlDoc.DocumentElement.SelectSingleNode("WebModulePlugin/Plugin[@name=" + pluginname + "]");
+                    break;
+
+                case AppType.Winform:
+                    xn = xmlDoc.DocumentElement.SelectSingleNode("WinformModulePlugin/Plugin[@name=" + pluginname + "]");
+                    break;
+                case AppType.WCF:
+                case AppType.WCFClient:
+                    xn = xmlDoc.DocumentElement.SelectSingleNode("WcfModulePlugin/Plugin[@name=" + pluginname + "]");
+                    break;
+            }
+            if (xn != null)
+            {
+                pluginpath = xn.Attributes["path"].Value;
+            }
+            return pluginpath;
         }
 
         public static void GetWinformEntry(out string entryplugin, out string entrycontroller)

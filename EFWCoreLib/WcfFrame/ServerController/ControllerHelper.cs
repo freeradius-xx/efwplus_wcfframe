@@ -7,19 +7,23 @@ using EFWCoreLib.CoreFrame.Init;
 using EFWCoreLib.CoreFrame.Init.AttributeManager;
 using System.Reflection;
 using EFWCoreLib.CoreFrame.Business;
+using EFWCoreLib.CoreFrame.DbProvider;
+using Microsoft.Practices.Unity;
+using Microsoft.Practices.EnterpriseLibrary.Caching;
+using EFWCoreLib.CoreFrame.Business.Interface;
+using Microsoft.Practices.EnterpriseLibrary.PolicyInjection;
 
 namespace EFWCoreLib.WcfFrame.ServerController
 {
-    public class ControllerHelper
+    public class ControllerHelper : AbstractControllerHelper
     {
-        public static WcfServerController CreateController(string controllername)
+
+        public override AbstractController CreateController(string pluginname, string controllername)
         {
-            string[] names = controllername.Split(new char[] { '@' });
-            if (names.Length != 2) throw new Exception("控制器名称错误!");
-            string pluginname = names[0];
-            string cname = names[1];
+            string pname = pluginname;
+            string cname = controllername;
             ModulePlugin mp;
-            WcfControllerAttributeInfo wattr = AppPluginManage.GetPluginWcfControllerAttributeInfo(pluginname,cname, out mp);
+            WcfControllerAttributeInfo wattr = AppPluginManage.GetPluginWcfControllerAttributeInfo(pname, cname, out mp);
             //WcfServerController iController = wattr.wcfController as WcfServerController;
             WcfServerController iController = (WcfServerController)EFWCoreLib.CoreFrame.Business.FactoryModel.GetObject(wattr.wcfControllerType, mp.database, mp.container, mp.cache, mp.plugin.name, null);
             iController.BindDb(mp.database, mp.container, mp.cache,mp.plugin.name);
@@ -30,15 +34,13 @@ namespace EFWCoreLib.WcfFrame.ServerController
             return iController;
         }
 
-        public static MethodInfo CreateMethodInfo(string controllername, string methodname, AbstractController controller)
+        public override MethodInfo CreateMethodInfo(string pluginname, string controllername, string methodname, AbstractController controller)
         {
-            string[] names = controllername.Split(new char[] { '@' });
-            if (names.Length != 2) throw new Exception("控制器名称错误!");
-            string pluginname = names[0];
-            string cname = names[1];
+            string pname = pluginname;
+            string cname = controllername;
 
             ModulePlugin mp;
-            WcfControllerAttributeInfo cattr = AppPluginManage.GetPluginWcfControllerAttributeInfo(pluginname,cname, out mp);
+            WcfControllerAttributeInfo cattr = AppPluginManage.GetPluginWcfControllerAttributeInfo(pname, cname, out mp);
 
             WcfMethodAttributeInfo mattr = cattr.MethodList.Find(x => x.methodName == methodname);
             if (mattr == null) throw new Exception("控制器中没有此方法名");
@@ -57,5 +59,6 @@ namespace EFWCoreLib.WcfFrame.ServerController
 
             return mattr.methodInfo;
         }
+
     }
 }
