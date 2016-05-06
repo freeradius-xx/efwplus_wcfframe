@@ -210,5 +210,15 @@ namespace WCFHosting
             EFWCoreLib.CoreFrame.Init.AppPluginManage.AddPlugin(PluginSysManage.localpath + "\\ModulePlugin\\" + pc.name + "\\plugin.xml");
             MessageBox.Show("内存加载插件完成！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void 查看配置ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (gridlocal.CurrentCell == null) return;
+            List<PluginClass> plist = gridlocal.DataSource as List<PluginClass>;
+            PluginClass pc = plist[gridlocal.CurrentCell.RowIndex];
+
+            WCFHosting.PluginManage.FrmPluginXML xml = new PluginManage.FrmPluginXML(PluginSysManage.localpath + "\\ModulePlugin\\" + pc.name + "\\plugin.xml");
+            xml.ShowDialog();
+        }
     }
 }

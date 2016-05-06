@@ -14,6 +14,7 @@ using EFWCoreLib.CoreFrame.DbProvider;
 using EFWCoreLib.CoreFrame.Init.AttributeManager;
 using EFWCoreLib.CoreFrame.Plugin;
 using System.Windows.Forms;
+using System.Reflection;
 
 
 namespace EFWCoreLib.CoreFrame.Init
@@ -28,7 +29,7 @@ namespace EFWCoreLib.CoreFrame.Init
         /// </summary>
         public static AppType appType;
         /// <summary>
-        /// 应用程序根目录
+        /// 应用程序根目录，后面不需要跟\\
         /// </summary>
         public static string AppRootPath;
 
@@ -119,8 +120,10 @@ namespace EFWCoreLib.CoreFrame.Init
                         codeList = new List<FunClass>();
                         missingDll = new List<string>();
 
+                        
                         //加载插件
                         AppPluginManage.LoadAllPlugin();
+                        //AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(CurrentDomain_AssemblyResolve);
 
                         //下面三个需要配置unity.config
                         //初始化Web定制任务
@@ -160,6 +163,33 @@ namespace EFWCoreLib.CoreFrame.Init
                     }
                 }
             }
+        }
+
+        static System.Reflection.Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
+        {
+            AssemblyName assemblyName = new AssemblyName(args.Name);
+            string dllname = assemblyName.Name + ".dll";
+            string dllpath = null;
+            foreach (var p in AppPluginManage.PluginDic)
+            {
+                if (p.Value.plugin.businessinfoDllList.FindIndex(x => x.name == dllname) != -1)
+                {
+                    dllpath = p.Value.assemblyPath;
+                    break;
+                }
+            }
+            if (dllpath != null)
+            {
+                FileStream fs = new FileStream(Path.Combine(dllpath, dllname), FileMode.Open, FileAccess.Read);
+                BinaryReader br = new BinaryReader(fs);
+                byte[] bFile = br.ReadBytes((int)fs.Length);
+                br.Close();
+                fs.Close();
+                return Assembly.Load(bFile);
+                //return Assembly.ReflectionOnlyLoadFrom();
+            }
+            else
+                return Assembly.ReflectionOnlyLoad(args.Name);
         }
 
         public static void AppEnd()

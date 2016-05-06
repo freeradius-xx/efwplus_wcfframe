@@ -55,16 +55,24 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching">
-      <HintPath>..\..\Output\Microsoft.Practices.EnterpriseLibrary.Caching.dll</HintPath>
+      <HintPath>..\..\OtherTool\lib\Microsoft.Practices.EnterpriseLibrary.Caching.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Practices.Unity">
-      <HintPath>..\..\Output\Microsoft.Practices.Unity.dll</HintPath>
+      <HintPath>..\..\OtherTool\lib\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Practices.Unity.Configuration">
-      <HintPath>..\..\Output\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <HintPath>..\..\OtherTool\lib\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Practices.Unity.Interception">
-      <HintPath>..\..\Output\Microsoft.Practices.Unity.Interception.dll</HintPath>
+      <HintPath>..\..\OtherTool\lib\Microsoft.Practices.Unity.Interception.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\OtherTool\lib\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -105,6 +113,7 @@
     <ProjectReference Include="..\..\EFWCoreLib\EFWCoreLib.csproj">
       <Project>{c5a8c124-18c0-43f4-b5a2-0f71bb833e82}</Project>
       <Name>EFWCoreLib</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

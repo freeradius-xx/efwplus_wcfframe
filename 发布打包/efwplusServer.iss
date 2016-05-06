@@ -39,9 +39,9 @@ Source: "D:\工作台\efwplus_wcfframe\发布打包\efwplusServer\*"; DestDir: "{app}";
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{group}\efwplusServer中间件"; Filename: "{app}\Server\{#ServerExeName}"
-Name: "{group}\TestWcfService服务测试工具"; Filename: "{app}\TestWcfService\{#TestWcfServiceExeName}"
-Name: "{group}\EntityCodeMaker代码生成工具"; Filename: "{app}\EntityCodeMaker\{#EntityCodeMakerExeName}"
+Name: "{group}\efwplusServer中间件"; Filename: "{app}\{#ServerExeName}"
+Name: "{group}\TestWcfService服务测试工具"; Filename: "{app}\{#TestWcfServiceExeName}"
+Name: "{group}\EntityCodeMaker代码生成工具"; Filename: "{app}\{#EntityCodeMakerExeName}"
 Name: "{group}\Upgrade升级打包工具"; Filename: "{app}\Upgrade\{#UpgradeExeName}"
-Name: "{group}\PulginPack插件打包工具"; Filename: "{app}\Server\{#PulginPackExeName}"
+Name: "{group}\PulginPack插件打包工具"; Filename: "{app}\{#PulginPackExeName}"
 Name: "{group}\Uninstall"; Filename: "{uninstallexe}"

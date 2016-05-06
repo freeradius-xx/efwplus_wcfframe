@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHosting));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnStart = new System.Windows.Forms.ToolStripButton();
             this.btnStop = new System.Windows.Forms.ToolStripButton();
@@ -77,6 +77,8 @@
             this.lbStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lsServerUrl = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lbClientCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbRunTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -103,7 +105,7 @@
             this.toolStripDropDownButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(810, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(935, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -167,12 +169,14 @@
             this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
             this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.帮助ToolStripMenuItem.Text = "帮助";
+            this.帮助ToolStripMenuItem.Click += new System.EventHandler(this.帮助ToolStripMenuItem_Click);
             // 
             // 注册ToolStripMenuItem
             // 
             this.注册ToolStripMenuItem.Name = "注册ToolStripMenuItem";
             this.注册ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.注册ToolStripMenuItem.Text = "注册";
+            this.注册ToolStripMenuItem.Click += new System.EventHandler(this.注册ToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
@@ -196,7 +200,7 @@
             this.tabMain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabMain.Name = "tabMain";
             this.tabMain.SelectedIndex = 0;
-            this.tabMain.Size = new System.Drawing.Size(810, 543);
+            this.tabMain.Size = new System.Drawing.Size(935, 523);
             this.tabMain.TabIndex = 0;
             this.tabMain.SelectedIndexChanged += new System.EventHandler(this.tabMain_SelectedIndexChanged);
             // 
@@ -207,7 +211,7 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage1.Size = new System.Drawing.Size(802, 513);
+            this.tabPage1.Size = new System.Drawing.Size(927, 493);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "输出";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -223,7 +227,7 @@
             this.richTextMsg.ItemHeight = 18;
             this.richTextMsg.Location = new System.Drawing.Point(3, 4);
             this.richTextMsg.Name = "richTextMsg";
-            this.richTextMsg.Size = new System.Drawing.Size(796, 505);
+            this.richTextMsg.Size = new System.Drawing.Size(921, 485);
             this.richTextMsg.TabIndex = 1;
             this.richTextMsg.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.richTextMsg_DrawItem);
             // 
@@ -256,7 +260,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage2.Size = new System.Drawing.Size(802, 513);
+            this.tabPage2.Size = new System.Drawing.Size(927, 493);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "客户端列表";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -282,16 +286,17 @@
             this.gridClientList.Name = "gridClientList";
             this.gridClientList.ReadOnly = true;
             this.gridClientList.RowTemplate.Height = 23;
-            this.gridClientList.Size = new System.Drawing.Size(796, 505);
+            this.gridClientList.Size = new System.Drawing.Size(921, 485);
             this.gridClientList.TabIndex = 0;
             // 
             // Column1
             // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column1.DataPropertyName = "clientId";
             this.Column1.HeaderText = "客户端编码";
+            this.Column1.MinimumWidth = 200;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
-            this.Column1.Width = 250;
             // 
             // Column9
             // 
@@ -320,9 +325,9 @@
             // Column3
             // 
             this.Column3.DataPropertyName = "startTime";
-            dataGridViewCellStyle3.Format = "G";
-            dataGridViewCellStyle3.NullValue = null;
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Format = "G";
+            dataGridViewCellStyle1.NullValue = null;
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle1;
             this.Column3.HeaderText = "连接时间";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
@@ -355,9 +360,9 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 26);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(802, 513);
+            this.tabPage3.Size = new System.Drawing.Size(927, 493);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "路由器";
+            this.tabPage3.Text = "路由均衡";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // gridRouter
@@ -377,7 +382,7 @@
             this.gridRouter.Name = "gridRouter";
             this.gridRouter.ReadOnly = true;
             this.gridRouter.RowTemplate.Height = 23;
-            this.gridRouter.Size = new System.Drawing.Size(802, 513);
+            this.gridRouter.Size = new System.Drawing.Size(927, 493);
             this.gridRouter.TabIndex = 0;
             // 
             // Column5
@@ -393,6 +398,7 @@
             this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column6.DataPropertyName = "Address";
             this.Column6.HeaderText = "地址";
+            this.Column6.MinimumWidth = 300;
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             // 
@@ -402,7 +408,7 @@
             this.Column7.HeaderText = "标识";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
-            this.Column7.Width = 150;
+            this.Column7.Width = 300;
             // 
             // Column8
             // 
@@ -480,19 +486,23 @@
             this.lbStatus,
             this.toolStripStatusLabel3,
             this.lsServerUrl,
+            this.toolStripStatusLabel2,
+            this.lbClientCount,
             this.toolStripStatusLabel5,
             this.lbRunTime});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 568);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 548);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(810, 30);
+            this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.statusStrip1.Size = new System.Drawing.Size(935, 30);
             this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
+            this.toolStripStatusLabel1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripStatusLabel1.Image")));
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(32, 25);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(48, 25);
             this.toolStripStatusLabel1.Text = "状态";
             // 
             // lbStatus
@@ -507,8 +517,9 @@
             // 
             // toolStripStatusLabel3
             // 
+            this.toolStripStatusLabel3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripStatusLabel3.Image")));
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(56, 25);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(72, 25);
             this.toolStripStatusLabel3.Text = "服务地址";
             // 
             // lsServerUrl
@@ -518,13 +529,33 @@
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.lsServerUrl.ForeColor = System.Drawing.Color.Blue;
+            this.lsServerUrl.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lsServerUrl.Name = "lsServerUrl";
-            this.lsServerUrl.Size = new System.Drawing.Size(450, 25);
+            this.lsServerUrl.Size = new System.Drawing.Size(324, 25);
+            this.lsServerUrl.Spring = true;
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripStatusLabel2.Image")));
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(84, 25);
+            this.toolStripStatusLabel2.Text = "客户端数量";
+            // 
+            // lbClientCount
+            // 
+            this.lbClientCount.AutoSize = false;
+            this.lbClientCount.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.lbClientCount.ForeColor = System.Drawing.Color.Blue;
+            this.lbClientCount.Name = "lbClientCount";
+            this.lbClientCount.Size = new System.Drawing.Size(110, 25);
             // 
             // toolStripStatusLabel5
             // 
+            this.toolStripStatusLabel5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripStatusLabel5.Image")));
             this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
-            this.toolStripStatusLabel5.Size = new System.Drawing.Size(56, 25);
+            this.toolStripStatusLabel5.Size = new System.Drawing.Size(72, 25);
             this.toolStripStatusLabel5.Text = "运行时间";
             // 
             // lbRunTime
@@ -546,7 +577,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(810, 598);
+            this.ClientSize = new System.Drawing.Size(935, 578);
             this.Controls.Add(this.tabMain);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusStrip1);
@@ -554,11 +585,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmHosting";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "WCF服务主机";
+            this.Text = "efwplusServer云医院中间件";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmHosting_FormClosing);
             this.Load += new System.EventHandler(this.FrmHosting_Load);
             this.toolStrip1.ResumeLayout(false);
@@ -604,18 +634,6 @@
         private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.DataGridView gridRouter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.ToolStripButton btnplugin;
         private System.Windows.Forms.ListBox richTextMsg;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
@@ -629,6 +647,20 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
         private System.Windows.Forms.ToolStripStatusLabel lbRunTime;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel lbClientCount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
 
     }
 }

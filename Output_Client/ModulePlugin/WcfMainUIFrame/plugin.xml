@@ -22,6 +22,7 @@
       <data key="LoginCompleted" value="" />
     </baseinfo>
     <businessinfo>
+      <dll name="WinMainUIFrame.dll" version="1.0" />
       <dll name="WinMainUIFrame.Winform.dll" version="1.0" />
     </businessinfo>
     <issue>

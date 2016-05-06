@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过下列属性集
 // 控制。更改这些属性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("WCF服务主机")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("中间件")]
+[assembly: AssemblyDescription("警告：本计算机程序受著作权法和国际条约保护。如未经授权而擅自复制或传播本程序（或其中任何部分），将受到严厉的民事及刑事制裁，并将在法律许可范围内受到最大程度的起诉。")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("曾浩")]
-[assembly: AssemblyProduct("WCF中间件")]
+[assembly: AssemblyCompany("http://www.efwplus.cn  343588387@qq.com")]
+[assembly: AssemblyProduct("云医院中间件")]
 [assembly: AssemblyCopyright("Copyright © 曾浩 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

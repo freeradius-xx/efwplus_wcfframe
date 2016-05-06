@@ -11,6 +11,7 @@ using System.ServiceModel;
 using System.ServiceModel.Description;
 using EFWCoreLib.WcfFrame.ServerController;
 using EFWCoreLib.WcfFrame.WcfService;
+using System.Diagnostics;
 
 namespace WCFHosting
 {
@@ -18,6 +19,7 @@ namespace WCFHosting
     {
         ServiceHost mAppHost = null;
         ServiceHost mRouterHost = null;
+        ServiceHost mFileHost = null;
         long timeCount = 0;//运行次数
         HostState RunState
         {
@@ -59,23 +61,12 @@ namespace WCFHosting
 
         private void StartAppHost()
         {
-
-           
-
             WcfServerManage.hostwcfclientinfoList = new HostWCFClientInfoListHandler(BindGridClient);
             WcfServerManage.hostwcfMsg = new HostWCFMsgHandler(AddMsg);
 
             mAppHost = new ServiceHost(typeof(WCFHandlerService));
-
-            //ServiceMetadataBehavior smb = mAppHost.Description.Behaviors.Find<ServiceMetadataBehavior>();
-            //if (smb == null)
-            //{
-            //    mAppHost.Description.Behaviors.Add(new ServiceMetadataBehavior());
-            //}
-
-            //mAppHost.AddServiceEndpoint(typeof(IMetadataExchange), MetadataExchangeBindings.CreateMexTcpBinding(), "mex");
-
             mAppHost.Open();
+
             WcfServerManage.IsDebug = HostSettingConfig.GetValue("debug") == "1" ? true : false;
             WcfServerManage.IsHeartbeat = HostSettingConfig.GetValue("heartbeat") == "1" ? true : false;
             WcfServerManage.HeartbeatTime = Convert.ToInt32(HostSettingConfig.GetValue("heartbeattime"));
@@ -87,8 +78,7 @@ namespace WCFHosting
             WcfServerManage.OverTime = Convert.ToInt32(HostSettingConfig.GetValue("overtimetime"));
             WcfServerManage.StartWCFHost();
 
-            AddMsg(Color.Blue,DateTime.Now, "WCF主机启动完成");
-           
+            AddMsg(Color.Blue, DateTime.Now, "基础服务启动完成");
         }
         private void StartRouterHost()
         {
@@ -96,27 +86,52 @@ namespace WCFHosting
             RouterHandlerService.hostwcfRouter = new HostWCFRouterListHandler(BindGridRouter);
 
             mRouterHost = new ServiceHost(typeof(RouterHandlerService));
-
-            //ServiceMetadataBehavior smb = mRouterHost.Description.Behaviors.Find<ServiceMetadataBehavior>();
-            //if (smb == null)
-            //{
-            //    mRouterHost.Description.Behaviors.Add(new ServiceMetadataBehavior());
-            //}
-            //mRouterHost.AddServiceEndpoint(typeof(IMetadataExchange), MetadataExchangeBindings.CreateMexTcpBinding(), "mex");
-
             mRouterHost.Open();
 
-            AddMsg(Color.Blue,DateTime.Now, "路由器启动完成");
-            //Loader.hostwcfclientinfoList = new HostWCFClientInfoListHandler(BindGridClient);
-           
+            AddMsg(Color.Blue,DateTime.Now, "路由服务启动完成");
+            
         }
+        private void StartFileHost()
+        {
+            FileTransferHandlerService.hostwcfMsg = new HostWCFMsgHandler(AddMsg);
+
+            mFileHost = new ServiceHost(typeof(FileTransferHandlerService));
+            mFileHost.Open();
+
+            AddMsg(Color.Blue, DateTime.Now, "文件传输服务启动完成");
+        }
+
         private void btnStart_Click(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(HostSettingConfig.GetValue("wcfservice")) == 1)
-                StartAppHost();
-            if (Convert.ToInt32(HostSettingConfig.GetValue("router")) == 1)
-                StartRouterHost();
-            RunState = HostState.Opened;
+            string expireDate;
+            int res = TimeCDKEY.InitRegedit(out expireDate);
+            if (res == 0)
+            {
+                AddMsg(Color.Green, DateTime.Now, "软件已注册，到期时间【" + expireDate + "】");
+                if (Convert.ToInt32(HostSettingConfig.GetValue("wcfservice")) == 1)
+                    StartAppHost();
+                if (Convert.ToInt32(HostSettingConfig.GetValue("router")) == 1)
+                    StartRouterHost();
+                if (Convert.ToInt32(HostSettingConfig.GetValue("filetransfer")) == 1)
+                    StartFileHost();
+                RunState = HostState.Opened;
+            }
+            else if (res == 1)
+            {
+                AddMsg(Color.Red, DateTime.Now, "软件尚未注册，请注册软件！");
+            }
+            else if (res == 2)
+            {
+                AddMsg(Color.Red, DateTime.Now, "注册机器与本机不一致,请联系管理员！");
+            }
+            else if (res == 3)
+            {
+                AddMsg(Color.Red, DateTime.Now, "软件试用已到期！");
+            }
+            else
+            {
+                AddMsg(Color.Red, DateTime.Now, "软件运行出错，请重新启动！");
+            }
         }
         private void btnStop_Click(object sender, EventArgs e)
         {
@@ -128,14 +143,20 @@ namespace WCFHosting
                     {
                         WcfServerManage.StopWCFHost();
                         mAppHost.Close();
-                        AddMsg(Color.Blue, DateTime.Now, "WCF主机已关闭");
+                        AddMsg(Color.Blue, DateTime.Now, "基础服务已关闭");
                     }
 
                     if (mRouterHost != null)
                     {
                         mRouterHost.Close();
                         RouterHandlerService.Dispose();
-                        AddMsg(Color.Blue, DateTime.Now, "路由器已关闭");
+                        AddMsg(Color.Blue, DateTime.Now, "路由服务已关闭");
+                    }
+
+                    if (mFileHost != null)
+                    {
+                        mFileHost.Close();
+                        AddMsg(Color.Blue, DateTime.Now, "文件传输服务已关闭");
                     }
 
                 }
@@ -145,6 +166,8 @@ namespace WCFHosting
                         mAppHost.Abort();
                     if (mRouterHost != null)
                         mRouterHost.Abort();
+                    if (mFileHost != null)
+                        mFileHost.Abort();
                 }
                 RunState = HostState.NoOpen;
             }
@@ -152,7 +175,7 @@ namespace WCFHosting
 
         private void FrmHosting_Load(object sender, EventArgs e)
         {
-            this.Text = "WCF服务主机【" + HostSettingConfig.GetValue("hostname") + "】";
+            this.Text = "efwplusServer 云医院中间件【" + HostSettingConfig.GetValue("hostname") + "】";
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.Icon = this.Icon;
             this.notifyIcon1.Text = this.Text;
@@ -232,7 +255,7 @@ namespace WCFHosting
 
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("您确定要退出WCF服务主机吗？", "询问窗", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            if (MessageBox.Show("您确定要退出中间件服务器吗？", "询问窗", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
                 this.Dispose(true);
             }
@@ -250,7 +273,7 @@ namespace WCFHosting
             set.ShowDialog();
             if (set.isOk == true)
             {
-                this.Text = "WCF服务主机【" + HostSettingConfig.GetValue("hostname") + "】";
+                this.Text = "efwplusServer 云医院中间件【" + HostSettingConfig.GetValue("hostname") + "】";
                 this.notifyIcon1.Text = this.Text;
             }
         }
@@ -318,6 +341,19 @@ namespace WCFHosting
                 lbRunTime.Text = String.Format("{0}天 {1:02d}:{2:0#}:{3:0#}", iHour / 24, iHour % 24, iMin, iSec);
             else
                 lbRunTime.Text = String.Format("{0:0#}:{1:0#}:{2:0#}", iHour, iMin, iSec);
+
+            lbClientCount.Text = gridClientList.RowCount.ToString();
+        }
+
+        private void 帮助ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("http://www.efwplus.cn");
+        }
+
+        private void 注册ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCDKEY cdkey = new frmCDKEY();
+            cdkey.ShowDialog();
         }
     }
 

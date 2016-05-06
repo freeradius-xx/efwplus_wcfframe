@@ -12,46 +12,73 @@ namespace EFWCoreLib.WcfFrame.WcfService.Contract
     /// 文件传输服务
     /// </summary>
     [ServiceKnownType(typeof(DBNull))]
-    [ServiceContract(Namespace = "http://www.efwplus.cn/", Name = "FileTransferHandlerService", SessionMode = SessionMode.Required)]
+    [ServiceContract(Namespace = "http://www.efwplus.cn/", Name = "FileTransferHandlerService", SessionMode = SessionMode.NotAllowed)]
     public interface IFileTransfer
     {
+        //上传文件
         [OperationContract]
-        result UpLoadFile(FileWrapper fileWrapper);
+        UpFileResult UpLoadFile(UpFile filestream);
 
+        //上传进度
         [OperationContract]
-        Stream DownLoadFile(string downfilepath);
+        int GetUpLoadFileProgress(string upkey);
+
+        //下载文件
+        [OperationContract]
+        DownFileResult DownLoadFile(DownFile downfile);
+
+        //下载进度
+        [OperationContract]
+        void SetDownLoadFileProgress(string clientId, string downkey, int progressnum);
     }
 
-    /// <summary>
-    /// 消息契约（定义与SOAP消息相对应的强类型）
-    /// 因为我们用流传输，所以用消息契约代替传统的数据契约
-    /// 
-    /// </summary>
     [MessageContract]
-    public class FileWrapper
+    public class DownFile
     {
-        /// <summary>
-        ///SOAP的消息头这里即为标记文件的路径
-        /// </summary>
         [MessageHeader]
-        public string FilePath;
-        /// <summary>
-        /// SOAP消息的内容，指定成员序列化正文中的元素
-        /// </summary>
-        [MessageBodyMember]
-        public Stream FileData;
+        public string clientId { get; set; }
+        [MessageHeader]
+        public string DownKey { get; set; }
+        [MessageHeader]
+        public string FileName { get; set; }
     }
 
-    /// <summary>
-    /// 返回结果
-    /// </summary>
     [MessageContract]
-    public class result
+    public class UpFileResult
     {
-        [MessageBodyMember]
-        public bool returnresult;
+        [MessageHeader]
+        public bool IsSuccess { get; set; }
+        [MessageHeader]
+        public string Message { get; set; }
+    }
 
+    [MessageContract]
+    public class UpFile
+    {
+        [MessageHeader]
+        public string clientId { get; set; }
+        [MessageHeader]
+        public string UpKey { get; set; }
+        [MessageHeader]
+        public long FileSize { get; set; }
+        [MessageHeader]
+        public string FileName { get; set; }
+        [MessageHeader]
+        public string FileExt { get; set; }//带.
         [MessageBodyMember]
-        public bool returnfilepath;
+        public Stream FileStream { get; set; }
+    }
+
+    [MessageContract]
+    public class DownFileResult
+    {
+        [MessageHeader]
+        public long FileSize { get; set; }
+        [MessageHeader]
+        public bool IsSuccess { get; set; }
+        [MessageHeader]
+        public string Message { get; set; }
+        [MessageBodyMember]
+        public Stream FileStream { get; set; }
     }
 }

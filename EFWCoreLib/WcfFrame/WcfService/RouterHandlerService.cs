@@ -29,9 +29,9 @@ namespace EFWCoreLib.WcfFrame.WcfService
 
         public RouterHandlerService()
         {
-            hostwcfMsg(Color.Blue,DateTime.Now, "Router服务正在初始化...");
+            hostwcfMsg(Color.Blue, DateTime.Now, "RouterHandlerService服务正在初始化...");
             RegistrationInfo.AddRouterBill();
-            hostwcfMsg(Color.Blue,DateTime.Now, "Router服务初始化完成");
+            hostwcfMsg(Color.Blue, DateTime.Now, "RouterHandlerService服务初始化完成");
             hostwcfRouter(RegistrationList.Values.ToList());
         }
 

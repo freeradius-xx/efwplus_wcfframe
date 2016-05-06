@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 using EFWCoreLib.CoreFrame.Common;
 using EFWCoreLib.WcfFrame.ServerController;
 using Newtonsoft.Json;
+using System.IO;
 
 namespace EFWCoreLib.WcfFrame.ClientController
 {
@@ -340,6 +341,257 @@ namespace EFWCoreLib.WcfFrame.ClientController
                 return JsonConvert.DeserializeObject<List<dwPlugin>>(ret);
             }
         }
+
+
+        #region 上传下载文件
+        /// <summary>
+        /// 上传文件，上传文件的进度只能通过时时获取服务端Read的进度
+        /// </summary>
+        /// <param name="filepath">文件本地路径</param>
+        /// <returns>上传成功后返回的文件名</returns>
+        public static string UpLoadFile(string filepath)
+        {
+            return UpLoadFile(filepath, null);
+        }
+        /// <summary>
+        /// 上传文件，上传文件的进度只能通过时时获取服务端Read的进度
+        /// </summary>
+        /// <param name="filepath">文件本地路径</param>
+        /// <returns>上传成功后返回的文件名</returns>
+        public static string UpLoadFile(string filepath, Action<int> action)
+        {
+            ChannelFactory<IFileTransfer> mfileChannelFactory = null;
+            IFileTransfer fileHandlerService = null;
+            try
+            {
+                FileInfo finfo = new FileInfo(filepath);
+                if (finfo.Exists == false)
+                    throw new Exception("文件不存在！");
+
+                mfileChannelFactory = new ChannelFactory<IFileTransfer>("fileendpoint");
+                fileHandlerService = mfileChannelFactory.CreateChannel();
+
+                UpFile uf = new UpFile();
+                if (AppGlobal.cache.Contains("WCFClientID"))
+                    uf.clientId = AppGlobal.cache.GetData("WCFClientID").ToString();
+                uf.UpKey = Guid.NewGuid().ToString();
+                uf.FileExt = finfo.Extension;
+                uf.FileName = finfo.Name;
+                uf.FileSize = finfo.Length;
+                uf.FileStream = finfo.OpenRead();
+
+                if (action != null)
+                    getUpLoadFileProgress(uf.UpKey, action);//获取上传进度条
+
+                UpFileResult result = fileHandlerService.UpLoadFile(uf);
+
+                //mfileChannelFactory.Close();//关闭会话
+
+                if (result.IsSuccess)
+                    return result.Message;
+                else
+                    throw new Exception("上传文件失败！");
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message + "\n上传文件失败！");
+            }
+            finally
+            {
+                if (fileHandlerService != null)
+                    (fileHandlerService as IContextChannel).Close();
+                if (mfileChannelFactory != null)
+                    mfileChannelFactory.Close();
+            }
+        }
+        /// <summary>
+        /// 下载文件，下载文件进度在Read的时候可以显示
+        /// </summary>
+        /// <param name="filename">下载文件名</param>
+        /// <returns>下载成功后返回存储在本地文件路径</returns>
+        public static string DownLoadFile(string filename)
+        {
+            return DownLoadFile(filename, null);
+        }
+        /// <summary>
+        /// 下载文件，下载文件进度在Read的时候可以显示
+        /// </summary>
+        /// <param name="filename">下载文件名</param>
+        /// <param name="action">进度0-100</param>
+        /// <returns>下载成功后返回存储在本地文件路径</returns>
+        public static string DownLoadFile(string filename, Action<int> action)
+        {
+            ChannelFactory<IFileTransfer> mfileChannelFactory=null;
+            IFileTransfer fileHandlerService=null;
+            try
+            {
+                if (string.IsNullOrEmpty(filename))
+                    throw new Exception("文件名不为空！");
+
+                string filebufferpath = AppGlobal.AppRootPath + @"filebuffer\";
+                if (!Directory.Exists(filebufferpath))
+                {
+                    Directory.CreateDirectory(filebufferpath);
+                }
+
+                mfileChannelFactory = new ChannelFactory<IFileTransfer>("fileendpoint");
+                fileHandlerService = mfileChannelFactory.CreateChannel();
+                DownFile df = new DownFile();
+                if (AppGlobal.cache.Contains("WCFClientID"))
+                    df.clientId = AppGlobal.cache.GetData("WCFClientID").ToString();
+                df.DownKey = Guid.NewGuid().ToString();
+                df.FileName = filename;
+
+                
+                DownFileResult result = fileHandlerService.DownLoadFile(df);
+                //mfileChannelFactory.Close();//关闭会话
+                if (result.IsSuccess)
+                {
+                    string filepath = filebufferpath + filename;
+                    if (File.Exists(filepath))
+                    {
+                        File.Delete(filepath);
+                    }
+                    
+                    FileStream fs = new FileStream(filepath, FileMode.Create, FileAccess.Write);
+
+                    int oldprogressnum = 0;
+                    decimal progressnum = 0;
+                    long bufferlen=4096;
+                    int count = 0;
+                    byte[] buffer = new byte[bufferlen];
+
+                    //设置服务端的下载进度
+                    setDownFileProgress(df.clientId, df.DownKey, (delegate()
+                    {
+                        return Convert.ToInt32(Math.Ceiling(progressnum));
+                    }));
+
+                    while ((count = result.FileStream.Read(buffer, 0, buffer.Length)) > 0)
+                    {
+                        fs.Write(buffer, 0, count);
+
+                        //获取下载进度
+                        getprogress(result.FileSize, bufferlen, ref progressnum);
+                        if (oldprogressnum < Convert.ToInt32(Math.Ceiling(progressnum)))
+                        {
+                            oldprogressnum = Convert.ToInt32(Math.Ceiling(progressnum));
+                            //setDownFileProgress(df.clientId, df.DownKey, oldprogressnum);//设置服务端的下载进度
+                            if (action != null)
+                            {
+                                action(Convert.ToInt32(Math.Ceiling(progressnum)));
+                            }
+                        }
+                    }
+                    //清空缓冲区
+                    fs.Flush();
+                    //关闭流
+                    fs.Close();
+
+                    //System.Threading.Thread.Sleep(200);
+                    return filepath;
+                }
+                else
+                    throw new Exception("下载文件失败！");
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message + "\n下载文件失败！");
+            }
+            finally
+            {
+                if (fileHandlerService != null)
+                    (fileHandlerService as IContextChannel).Close();
+                if (mfileChannelFactory != null)
+                    mfileChannelFactory.Close();
+            }
+        }
+
+        static void getprogress(long filesize, long bufferlen, ref decimal progressnum)
+        {
+            decimal percent = Convert.ToDecimal(100 / Convert.ToDecimal(filesize / bufferlen));
+            progressnum = progressnum + percent > 100 ? 100 : progressnum + percent;
+        }
+        static void getUpLoadFileProgress(string upkey, Action<int> action)
+        {
+            new Action<string, Action<int>>(delegate(string _upkey, Action<int> _action)
+            {
+                ChannelFactory<IFileTransfer> mfileChannelFactory = null;
+                IFileTransfer fileHandlerService = null;
+                try
+                {
+
+                    mfileChannelFactory = new ChannelFactory<IFileTransfer>("fileendpoint");
+                    fileHandlerService = mfileChannelFactory.CreateChannel();
+
+                    int oldnum = 0;
+                    int num = 0;
+                    while ((num = fileHandlerService.GetUpLoadFileProgress(_upkey)) != 100)
+                    {
+                        if (oldnum < num)
+                        {
+                            oldnum = num;
+                            action(num);
+                        }
+                        System.Threading.Thread.Sleep(100);
+                    }
+                    action(100);
+                }
+                catch (Exception e)
+                {
+                    throw new Exception(e.Message + "\n获取上传文件进度失败！");
+                }
+                finally
+                {
+                    if (fileHandlerService != null)
+                        (fileHandlerService as IContextChannel).Close();
+                    if (mfileChannelFactory != null)
+                        mfileChannelFactory.Close();
+                }
+
+            }).BeginInvoke(upkey, action, null, null);
+        }
+        static void setDownFileProgress(string clientId, string downkey, Func<int> func)
+        {
+            //string _clientId = clientId;
+            //string _downkey = downkey;
+            //int _progressnum = progressnum;
+            new Action<string, string, Func<int>>(delegate(string _clientId, string _downkey, Func<int> _func)
+            {
+                ChannelFactory<IFileTransfer> mfileChannelFactory = null;
+                IFileTransfer fileHandlerService = null;
+                try
+                {
+                    mfileChannelFactory = new ChannelFactory<IFileTransfer>("fileendpoint");
+                    fileHandlerService = mfileChannelFactory.CreateChannel();
+
+                    int _oldprogressnum = 0;
+                    int _progressnum=0;
+                    while ((_progressnum = _func()) != 100)
+                    {
+                        if (_oldprogressnum < _progressnum)
+                        {
+                            _oldprogressnum = _progressnum;
+                            fileHandlerService.SetDownLoadFileProgress(_clientId, _downkey, _progressnum);
+                        }
+                        System.Threading.Thread.Sleep(100);
+                    }
+                    fileHandlerService.SetDownLoadFileProgress(_clientId, _downkey, 100);
+                }
+                catch (Exception e)
+                {
+                    throw new Exception(e.Message + "\n设置下载文件进度失败！");
+                }
+                finally
+                {
+                    if (fileHandlerService != null)
+                        (fileHandlerService as IContextChannel).Close();
+                    if (mfileChannelFactory != null)
+                        mfileChannelFactory.Close();
+                }
+            }).BeginInvoke(clientId, downkey, func, null, null);
+        }
+        #endregion
 
         //向服务端发送心跳，间隔时间为5s
         static System.Timers.Timer timer;

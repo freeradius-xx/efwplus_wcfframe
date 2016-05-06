@@ -37,9 +37,9 @@ namespace EFWCoreLib.WcfFrame.ServerController
         /// </summary>
         public static void StartWCFHost()
         {
-            ShowHostMsg(Color.Blue,DateTime.Now, "WCFHandlerService服务正在初始化...");
+            hostwcfMsg(Color.Blue, DateTime.Now, "WCFHandlerService服务正在初始化...");
             AppGlobal.AppStart();
-            ShowHostMsg(Color.Blue,DateTime.Now, "WCFHandlerService服务初始化完成");
+            hostwcfMsg(Color.Blue, DateTime.Now, "WCFHandlerService服务初始化完成");
 
             if (IsHeartbeat == true)
             {
@@ -241,8 +241,6 @@ namespace EFWCoreLib.WcfFrame.ServerController
             sb.Append(IsEncryptionJson);
             return sb.ToString();
         }
-
-
 
         public static HostWCFClientInfoListHandler hostwcfclientinfoList;
         public static HostWCFMsgHandler hostwcfMsg;

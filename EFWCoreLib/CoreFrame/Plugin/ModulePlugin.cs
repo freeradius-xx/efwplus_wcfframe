@@ -44,6 +44,10 @@ namespace EFWCoreLib.CoreFrame.Plugin
         public AbstractControllerHelper helper { get; set; }
 
         public AppType appType { get; set; }
+        /// <summary>
+        /// 插件程序集的路径
+        /// </summary>
+        public string assemblyPath { get; set; }
 
         public ModulePlugin()
         {
@@ -66,6 +70,8 @@ namespace EFWCoreLib.CoreFrame.Plugin
                     helper = new WcfFrame.ServerController.ControllerHelper();
                     break;
             }
+
+            assemblyPath = new FileInfo(plugfile).Directory.FullName + "\\dll";
 
             var fileMap = new ExeConfigurationFileMap { ExeConfigFilename = plugfile };
             System.Configuration.Configuration configuration = ConfigurationManager.OpenMappedExeConfiguration(fileMap, ConfigurationUserLevel.None);
@@ -98,14 +104,14 @@ namespace EFWCoreLib.CoreFrame.Plugin
             foreach (businessinfoDll dll in plugin.businessinfoDllList)
             {
                 //方式一:直接读取文件，这种方式不支持热插拔
-                //dllList.Add(Assembly.LoadFrom(dllpath + "\\" + dll.name));
-                //方式二：把dll读到内存再加载
-                FileStream fs = new FileStream(dllpath + "\\" + dll.name, FileMode.Open, FileAccess.Read);
-                BinaryReader br = new BinaryReader(fs);
-                byte[] bFile = br.ReadBytes((int)fs.Length);
-                br.Close();
-                fs.Close();
-                dllList.Add(Assembly.Load(bFile));
+                dllList.Add(Assembly.LoadFrom(dllpath + "\\" + dll.name));
+                //方式二：把dll读到内存再加载,再次加载内存会不断变大
+                //FileStream fs = new FileStream(dllpath + "\\" + dll.name, FileMode.Open, FileAccess.Read);
+                //BinaryReader br = new BinaryReader(fs);
+                //byte[] bFile = br.ReadBytes((int)fs.Length);
+                //br.Close();
+                //fs.Close();
+                //dllList.Add(Assembly.Load(bFile));
             }
             if (dllList.Count > 0)
             {

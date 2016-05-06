@@ -1,4 +1,5 @@
 obj/
 bin/
+发布打包/
 *.csproj.user
 *.suo

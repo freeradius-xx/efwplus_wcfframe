@@ -47,7 +47,7 @@ namespace WinMainUIFrame.Winform.Controller
             else
                 frmmain = (IfrmMain)iBaseView["FrmMainRibbon"];
 
-            DebugLogin();
+            //DebugLogin();
         }
         //调试免登录
         private void DebugLogin()
