@@ -12,3 +12,5 @@
 
 时间：2016-05-06 16:10:02		耗时：1110.0635		方法：WcfMainUIFrame@LoginController.UserLogin(["admin","1"])
 
+时间：2016-05-09 15:54:36		耗时：3424.1959		方法：WcfMainUIFrame@LoginController.UserLogin(["admin","1"])
+
